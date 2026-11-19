@@ -7,17 +7,13 @@
   `scripts/prepare-media.mjs`. Photos were resized and stripped of metadata (including GPS). Video
   clips were trimmed to short sections and exported without sound.
 
-## Background film
-`public/videos/flight.mp4`, `public/videos/flight-mobile.mp4` and `public/images/stock/hero-savanna.jpg` (its first frame):
-"View of a Volcano Surrounded with Clouds" by Mikhail Nilov on Pexels,
+## Link-share picture
+`public/images/stock/hero-savanna.jpg` (used only in the link-share picture, `public/brand/og.jpg`) is the first
+frame of "View of a Volcano Surrounded with Clouds" by Mikhail Nilov on Pexels,
 https://www.pexels.com/video/8334109/ , used under the Pexels License (free for commercial use,
-no attribution required). Resized and exported without sound at 12.5 frames a second, with a key
-frame every 8 frames so the site can jump to any moment quickly as the page is scrolled:
+no attribution required).
 
-```bash
-ffmpeg -i volcano.mp4 -vf "fps=12.5,scale=1280:-2" -c:v libx264 -preset slow -crf 31 -g 8 -keyint_min 8 -sc_threshold 0 -bf 0 -an -pix_fmt yuv420p -movflags +faststart flight.mp4
-ffmpeg -i volcano.mp4 -vf "fps=12.5,crop=608:1080:605:0,scale=480:854" -c:v libx264 -preset slow -crf 31 -g 8 -keyint_min 8 -sc_threshold 0 -bf 0 -an -pix_fmt yuv420p -movflags +faststart flight-mobile.mp4
-```
+The landscape behind the pages is not a photograph: it is drawn in code (`components/layout/SceneArt.tsx`).
 
 ## Stock photographs
 `public/images/stock/*`: free photographs from Unsplash, used under the Unsplash License

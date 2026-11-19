@@ -10,7 +10,7 @@ import { Link } from '@/i18n/navigation';
 export function CtaLink({ children, className = '', ...props }: ComponentProps<typeof Link>) {
   return (
     <Link
-      className={`cta-link group inline-flex min-h-11 items-center gap-3 self-start font-display text-[1.75rem] leading-none text-snow sm:text-[2rem] ${className}`}
+      className={`cta-link group inline-flex min-h-11 items-center gap-3 self-start text-[1.5rem] font-extrabold leading-none tracking-[-0.03em] text-snow sm:text-[1.75rem] ${className}`}
       {...props}
     >
       <span>{children}</span>

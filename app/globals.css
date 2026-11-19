@@ -31,24 +31,54 @@
   --color-danger: var(--danger);
 
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-heading), ui-serif, Georgia, serif;
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   /* Light theme: the default. */
   :root {
     color-scheme: light;
-    --page: #f4f7f5;
-    --text: #10292c;
-    --text-2: #2f4547;
-    --text-dim: #93a6a6; /* words not yet "read" in a scroll-lit statement */
-    --accent: #005e64;
+    --page: #dff3f1;
+    --text: #06282d;
+    --text-2: #24474b;
+    --text-dim: #7fa3a3; /* words not yet "read" in a scroll-lit statement */
+    --accent: #00666c;
     --danger: #b42318;
-    --surface: rgb(255 255 255 / 0.88); /* cards and panels */
-    --surface-dense: rgb(255 255 255 / 0.94); /* the same on phones, where nothing is blurred */
-    --surface-line: rgb(16 41 44 / 0.1);
-    /* Veil over the moving background: light over the sky, stronger over the forest. */
-    --wash: linear-gradient(to bottom, rgb(244 247 245 / 0.08) 0%, rgb(244 247 245 / 0.42) 40%, rgb(244 247 245 / 0.72) 100%);
+    /* Cards and panels: light glass that takes on the colour of the sky behind it. */
+    --surface: rgb(255 255 255 / 0.58);
+    --surface-dense: rgb(255 255 255 / 0.8); /* the same on phones, where nothing is blurred */
+    --surface-line: rgb(255 255 255 / 0.75);
+    --surface-shadow: 0 18px 40px -28px rgb(6 40 45 / 0.45);
+
+    /* The living landscape (components/layout/SceneArt.tsx). */
+    --sky-1: #4f9fe0;
+    --sky-2: #74cbe6;
+    --sky-3: #c2efe6;
+    --sky-4: #ffefc2;
+    --day-1: #7cc3f0;
+    --day-2: #b9e6f1;
+    --day-3: #e6f7f1;
+    --sun: #fffbe6;
+    --sun-glow: 255 205 105;
+    --cloud: 255 255 255;
+    --volcano-1: #6fa6c4;
+    --volcano-2: #a4d3da;
+    --volcano-shadow: #3f7fa6;
+    --volcano-glow: #ffe2a6;
+    --snow: #ffffff;
+    --range-1: #7fcbbf;
+    --range-2: #4fb39b;
+    --range-3: #2b9b79;
+    --range-4a: #43ae5c;
+    --range-4b: #12705a;
+    --front-1: #0a4a49;
+    --front-2: #052a30;
+    --lake-1: #fff1bf;
+    --lake-2: #9fe3da;
+    --bird: #0d3b41;
+    --turbine: #f6fcfb;
+    --mote: 255 244 190;
+    --mist: 236 248 245;
 
     --focus-ring: var(--accent);
     /* Height of the header (see components/layout/Header.tsx). */
@@ -56,32 +86,63 @@
   }
 
   /* Dark theme: chosen with the sun/moon button in the header
-     (components/layout/ThemeToggle.tsx sets data-theme on <html>). */
+     (components/layout/ThemeToggle.tsx sets data-theme on <html>).
+     The landscape becomes night: moon, stars, fireflies. */
   :root[data-theme='dark'] {
     color-scheme: dark;
-    --page: #021316;
+    --page: #03181d;
     --text: #eef4f1;
-    --text-2: #a2b7b5;
+    --text-2: #a9c0be;
     --text-dim: #4d6264;
-    --accent: #8cc63f;
+    --accent: #9bd64a;
     --danger: #fca5a5;
-    --surface: rgb(2 19 22 / 0.72);
-    --surface-dense: rgb(2 19 22 / 0.88);
-    --surface-line: rgb(238 244 241 / 0.12);
-    --wash: linear-gradient(to bottom, rgb(2 19 22 / 0.25) 0%, rgb(2 19 22 / 0.5) 100%);
+    --surface: rgb(6 36 43 / 0.5);
+    --surface-dense: rgb(5 32 38 / 0.82);
+    --surface-line: rgb(255 255 255 / 0.1);
+    --surface-shadow: 0 18px 40px -28px rgb(0 0 0 / 0.7);
+
+    --sky-1: #020c14;
+    --sky-2: #04202c;
+    --sky-3: #0b3d4b;
+    --sky-4: #1c5f69;
+    --day-1: #031520;
+    --day-2: #062836;
+    --day-3: #0a3a48;
+    --sun: #eef8ff;
+    --sun-glow: 140 200 235;
+    --cloud: 150 195 215;
+    --volcano-1: #143848;
+    --volcano-2: #1e505c;
+    --volcano-shadow: #0a2633;
+    --volcano-glow: #3f7f95;
+    --snow: #cfe6ee;
+    --range-1: #154651;
+    --range-2: #103a46;
+    --range-3: #0c2f3a;
+    --range-4a: #0d3b3c;
+    --range-4b: #07262d;
+    --front-1: #051d23;
+    --front-2: #020f13;
+    --lake-1: #7cc4d2;
+    --lake-2: #1f5c6b;
+    --bird: transparent;
+    --turbine: #9fc3c9;
+    --mote: 190 240 110;
+    --mist: 4 26 32;
   }
 
-  /* Anything placed on a photograph, on film or on a dark panel keeps
-     light text in both themes: give its container the class "on-dark". */
+  /* Anything placed on a photograph or on a dark panel keeps light text in
+     both themes: give its container the class "on-dark". */
   .on-dark {
     --text: #eef4f1;
-    --text-2: #a2b7b5;
+    --text-2: #a9c0be;
     --text-dim: #4d6264;
-    --accent: #8cc63f;
+    --accent: #9bd64a;
     --danger: #fca5a5;
-    --surface: rgb(2 19 22 / 0.72);
-    --surface-dense: rgb(2 19 22 / 0.88);
-    --surface-line: rgb(238 244 241 / 0.12);
+    --surface: rgb(6 36 43 / 0.5);
+    --surface-dense: rgb(5 32 38 / 0.82);
+    --surface-line: rgb(255 255 255 / 0.1);
+    --surface-shadow: 0 18px 40px -28px rgb(0 0 0 / 0.7);
     color: var(--text);
   }
 
@@ -111,16 +172,17 @@
   h1,
   h2 {
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 800;
     line-height: 1.06;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
     text-wrap: balance;
   }
 
   h3,
   h4 {
-    font-weight: 600;
-    line-height: 1.3;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
 
@@ -179,43 +241,41 @@
   }
 }
 
-/* Large display type, sized to the screen. */
+/* Large display type, sized to the screen: the heaviest weight, set tight. */
 @utility display-1 {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(3rem, 7.6vw, 8rem);
-  line-height: 0.96;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 6.6vw, 6.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
 }
 
 @utility display-2 {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.375rem, 4.9vw, 4.75rem);
-  line-height: 1;
-  letter-spacing: -0.015em;
+  font-weight: 800;
+  font-size: clamp(2.125rem, 4.4vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
 }
 
 @utility display-3 {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.875rem, 2.9vw, 2.75rem);
-  line-height: 1.06;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  font-size: clamp(1.625rem, 2.7vw, 2.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
 }
 
-/* Surface for cards and panels, so their text stays readable over the film
-   behind the page (white in the light theme, dark in the dark theme).
-   Wide screens frost the film behind them. Phones and tablets skip the
-   blur, which is costly over moving video, and use a denser surface
-   instead (--surface-dense). */
+/* Cards and panels: light glass over the sky (frosted on wide screens;
+   phones skip the blur, which is costly, and use a denser surface). */
 @utility panel {
   border: 1px solid var(--surface-line);
   background-color: var(--surface-dense);
+  box-shadow: var(--surface-shadow);
 
   @media (min-width: 64rem) {
     background-color: var(--surface);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px) saturate(1.3);
   }
 }
 
@@ -287,24 +347,21 @@
 }
 
 /* ---- Opening of the home page ----
-   A camera move through the real footage:
    1. A plain screen with the logo and a fine line that draws itself.
-   2. The screen clears and the logo comes forward and is gone. The camera
-      is close in the clouds on the volcano...
-   3. ...and sweeps back until the whole forest is in view. The headline
-      then comes into focus.
+   2. The screen clears and the logo comes forward and is gone.
+   3. The landscape builds itself: the sun comes up from behind the volcano
+      and the hills rise into place one range after another, far to near
+      (see "The living landscape" below). The headline then comes into focus.
    The first screen is pale in the light theme and dark in the dark theme
-   (--fog). Only transforms and opacity are animated, and the picture
-   underneath is complete from the first moment, which keeps the page quick
-   to show. It plays once per visit: ScrollEffects.tsx then sets
-   data-intro="done" on <html>, so coming back to the home page skips it.
-   See HomeHero.tsx and, for the camera, "The film behind every page". */
+   (--fog). Only transforms and opacity are animated. It plays once per
+   visit: ScrollEffects.tsx then sets data-intro="done" on <html>, so coming
+   back to the home page skips it. See HomeHero.tsx. */
 .has-intro {
   --intro: 2.5s;
 }
 
 .intro {
-  --fog: 240 245 243;
+  --fog: 223 243 241;
   position: fixed;
   inset: 0;
   z-index: 60;
@@ -313,7 +370,7 @@
 }
 
 :root[data-theme='dark'] .intro {
-  --fog: 5 28 32;
+  --fog: 3 24 29;
 }
 
 .intro-cover {
@@ -383,13 +440,6 @@
   }
 }
 
-/* The camera starts close on the summit, slightly tilted. */
-@keyframes intro-zoom {
-  from {
-    transform: scale(3.2) rotate(-2deg);
-  }
-}
-
 /* The home page headline comes into focus as it rises. */
 .rise-focus {
   animation: rise-focus 1.3s var(--ease-glide) both;
@@ -418,6 +468,21 @@
   display: none;
 }
 
+/* A short statement card (mission, vision, the four steps): light glass with
+   a bar of brand colour along the top, lime running into cyan. */
+.statement {
+  position: relative;
+  overflow: hidden;
+}
+
+.statement::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(to right, var(--color-lime), var(--color-sky));
+}
+
 /* Main call to action: words in the heading typeface on a fine accent line.
    No button shape. See components/ui/CtaLink.tsx. */
 .cta-link > span {
@@ -430,34 +495,366 @@
   background-size: 100% 2px;
 }
 
-/* ---- The film behind every page (LivingBackground.tsx) ----
-   Scrolling flies the camera through the film (the script moves the film's
-   position). On top of that the picture is pushed in slightly: --s is how
-   far the page has been scrolled, 0 to 1 over eight screens. */
-.site-film-move {
-  /* Everything turns about the summit of the volcano. */
-  transform-origin: 50% 22%;
-  transform: scale(calc(1.1 + var(--s, 0) * 0.14));
+/* ---- The living landscape (SceneArt.tsx, LivingBackground.tsx) ----
+   A fixed picture behind every page, built from separate layers.
+   --s is how far the view has lifted: 0 = the whole landscape (top of the
+   home page), 1 = clear sky with only the far hills at the foot (further
+   down the home page, and every other page). The script sets it from the
+   scroll position. Each layer sinks by its own share (--sink), nearer
+   layers further, which gives the depth. */
+.scene {
+  --s: 1;
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--sky-1) 0%, var(--sky-2) 32%, var(--sky-3) 52%, var(--sky-4) 64%);
+}
+
+:root[data-js] .scene[data-home] {
+  --s: 0;
+}
+
+/* The stage keeps the picture's shape (16:9) and covers the screen from
+   the bottom centre, so a phone sees the middle of the picture. */
+.scene-stage {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: max(100vw, 177.78lvh);
+  height: max(100lvh, 56.25vw);
+  transform: translateX(-50%);
+}
+
+.scene-layer,
+.scene-rise,
+.scene-day,
+.scene-stars,
+.scene-clouds,
+.scene-birds,
+.scene-mist,
+.scene-shade,
+.scene-rise > svg {
+  position: absolute;
+  inset: 0;
+}
+
+.scene-rise > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.scene-layer {
+  transform: translate3d(0, calc(var(--s) * var(--sink)), 0);
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
   will-change: transform;
 }
 
-/* The mist over the film. Clear at the top of the home page (the script
-   then fades it in with scrolling); always on everywhere else. */
-.site-film-veil {
-  background-image: var(--wash);
+/* The volcano and the birds turn faint once the view has lifted, so they
+   sit quietly behind the text. */
+.scene-far,
+.scene-flock {
+  opacity: calc(1 - var(--s) * 0.6);
 }
 
-.site-film[data-home] .site-film-veil {
+/* Clear day sky that fades in as the view lifts; mist over the far hills. */
+.scene-day {
+  background: linear-gradient(to bottom, var(--day-1) 0%, var(--day-2) 45%, var(--day-3) 100%);
+  opacity: var(--s);
+}
+
+.scene-mist {
+  background: linear-gradient(to top, rgb(var(--mist) / 0.72) 0%, rgb(var(--mist) / 0.4) 18%, rgb(var(--mist) / 0) 42%);
+  opacity: var(--s);
+}
+
+.scene-shade {
+  background: linear-gradient(to top, var(--front-2) 0%, color-mix(in srgb, var(--front-2) 80%, transparent) 16%, transparent 48%);
+  opacity: calc(1 - var(--s));
+}
+
+/* The home page headline lifts and fades as the view rises, so it is never
+   left sitting on the bright sky. (The script also gives --s to the hero.) */
+.hero-copy {
+  opacity: calc(1 - var(--s, 0) * 2.6);
+  transform: translate3d(0, calc(var(--s, 0) * -3.5rem), 0);
+}
+
+/* Stars: only in the dark theme. */
+.scene-stars {
   opacity: 0;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 18%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 31% 9%, #fff 50%, transparent 51%),
+    radial-gradient(1.6px 1.6px at 47% 26%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 58% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 73% 22%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 86% 8%, #fff 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 93% 31%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 22% 34%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 40% 40%, #fff 50%, transparent 51%), radial-gradient(1.3px 1.3px at 66% 38%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 5% 42%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 80% 44%, #fff 50%, transparent 51%);
+  background-size: 37% 62%;
+  animation: scene-twinkle 5s ease-in-out infinite alternate;
 }
 
-/* The opening: the camera sweeps back from the clouds on the summit. */
-:root:has(.intro) .site-film-move {
-  animation: intro-zoom 2.3s cubic-bezier(0.7, 0, 0.16, 1) 1.15s backwards;
+:root[data-theme='dark'] .scene-stars {
+  opacity: 0.9;
+}
+
+/* Sun (moon at night): a disc, a soft glow that breathes and slow rays. */
+.scene-sun {
+  position: absolute;
+  width: 5.4%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+}
+
+.scene-sun > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  translate: -50% -50%;
+}
+
+/* Behind the text further down the page, only the soft glow is left: the
+   bright disc and the rays fade as the view lifts. */
+.scene-sun-disc {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 42% 40%, #fff, var(--sun) 70%);
+  box-shadow: 0 0 2.2vw 0.4vw rgb(var(--sun-glow) / 0.75);
+  opacity: calc(1 - var(--s));
+}
+
+.scene-sun-glow {
+  width: 900%;
+  height: 900%;
+  background: radial-gradient(circle, rgb(var(--sun-glow) / 0.62) 0%, rgb(var(--sun-glow) / 0.26) 26%, rgb(var(--sun-glow) / 0) 62%);
+  animation: scene-breathe 7s ease-in-out infinite alternate;
+}
+
+.scene-sun-rays {
+  width: 1500%;
+  height: 1500%;
+  background: repeating-conic-gradient(from 0deg, rgb(var(--sun-glow) / 0.13) 0deg 6deg, rgb(var(--sun-glow) / 0) 6deg 22deg);
+  mask-image: radial-gradient(circle, #000 8%, transparent 58%);
+  opacity: calc(1 - var(--s) * 0.75);
+  animation: scene-spin 160s linear infinite;
+}
+
+/* Clouds: soft banks that drift across. */
+.scene-cloud {
+  position: absolute;
+  left: 0;
+  aspect-ratio: 4.4;
+  filter: blur(7px);
+  animation: scene-drift linear infinite;
+  will-change: transform;
+}
+
+.scene-cloud > i {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, rgb(var(--cloud) / 0.96), rgb(var(--cloud) / 0.72));
+}
+
+.scene-cloud > i:nth-child(1) {
+  inset: 46% 0 0 4%;
+}
+
+.scene-cloud > i:nth-child(2) {
+  inset: 12% 46% 22% 16%;
+}
+
+.scene-cloud > i:nth-child(3) {
+  inset: 0 22% 18% 40%;
+}
+
+.scene-cloud > i:nth-child(4) {
+  inset: 30% 4% 12% 62%;
+}
+
+:root[data-theme='dark'] .scene-cloud > i {
+  background: rgb(var(--cloud) / 0.2);
+}
+
+/* Birds: each flock crosses the sky; each bird beats its wings. */
+.scene-flock {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+  animation: scene-fly linear infinite;
+  will-change: transform;
+}
+
+.scene-flock svg {
+  position: absolute;
+  overflow: visible;
+  transform-origin: 50% 80%;
+  animation: scene-flap 0.62s ease-in-out infinite alternate;
+}
+
+.scene-flock path {
+  fill: none;
+  stroke: var(--bird);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Wind turbines: a tower with turning blades. */
+.scene-turbine {
+  position: absolute;
+  width: 0.24%;
+  min-width: 2px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(to right, var(--turbine), color-mix(in srgb, var(--turbine) 70%, #5d8f93));
+  translate: -50% 0;
+}
+
+.scene-blades {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  fill: var(--turbine);
+  animation: scene-spin linear infinite;
+}
+
+/* Light on the lake, and motes of light over the trees. */
+.scene-glint {
+  position: absolute;
+  width: 1.6%;
+  height: 0.22%;
+  border-radius: 99px;
+  background: #fff;
+  animation: scene-glint 4.5s ease-in-out infinite;
+}
+
+.scene-mote {
+  position: absolute;
+  width: 0.28%;
+  min-width: 3px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgb(var(--mote));
+  box-shadow: 0 0 8px 2px rgb(var(--mote) / 0.7);
+  opacity: 0;
+  animation: scene-mote ease-in-out infinite;
+}
+
+@keyframes scene-twinkle {
+  to {
+    opacity: 0.45;
+  }
+}
+
+@keyframes scene-breathe {
+  to {
+    transform: scale(1.12);
+    opacity: 0.82;
+  }
+}
+
+@keyframes scene-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes scene-drift {
+  from {
+    transform: translate3d(-120%, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(max(100vw, 177.78lvh) + 20%), 0, 0);
+  }
+}
+
+@keyframes scene-fly {
+  from {
+    transform: translate3d(-12vw, 0, 0);
+  }
+  50% {
+    transform: translate3d(calc(max(100vw, 177.78lvh) * 0.5), -3vh, 0);
+  }
+  to {
+    transform: translate3d(calc(max(100vw, 177.78lvh) + 12vw), 1vh, 0);
+  }
+}
+
+@keyframes scene-flap {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0.3);
+  }
+}
+
+@keyframes scene-glint {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes scene-mote {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(1.2vw, -9vh, 0);
+  }
+}
+
+/* The opening: every layer rises into place, far to near, and the sun
+   comes up. (--i is the layer's place in that order.) */
+:root:has(.intro) .scene-rise {
+  animation: scene-rise 1.5s var(--ease-glide) calc(1.05s + var(--i) * 0.13s) backwards;
+}
+
+:root:has(.intro) .scene-sunrise .scene-rise {
+  animation: scene-sunrise 2.4s var(--ease-glide) 1.15s backwards;
+}
+
+:root:has(.intro) .scene-clouds,
+:root:has(.intro) .scene-birds {
+  animation: scene-appear 1.6s ease-out 1.6s backwards;
+}
+
+@keyframes scene-rise {
+  from {
+    transform: translate3d(0, 46%, 0);
+  }
+}
+
+@keyframes scene-sunrise {
+  from {
+    transform: translate3d(0, 22%, 0);
+  }
+}
+
+@keyframes scene-appear {
+  from {
+    opacity: 0;
+  }
 }
 
 /* ...and not again when the visitor returns to the home page. */
-:root[data-intro='done'] .site-film-move {
+:root[data-intro='done'] .scene-rise,
+:root[data-intro='done'] .scene-clouds,
+:root[data-intro='done'] .scene-birds {
   animation: none;
 }
 

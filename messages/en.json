@@ -49,7 +49,8 @@
   },
   "home": {
     "hero": {
-      "title": "We are the solution for a healthier planet.",
+      "titleLead": "We are the solution",
+      "titleRest": "for a healthier planet.",
       "sub": "We help industry, government and communities protect the environment while their business grows.",
       "primaryCta": "Let’s talk"
     },

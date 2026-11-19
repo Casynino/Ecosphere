@@ -18,9 +18,8 @@ export async function SectorsSection({ locale }: { locale: Locale }) {
   return (
     <section className="py-10 lg:py-14">
       <Container>
-        <div className="panel rounded-[24px] p-6 sm:p-10 lg:p-14">
           <SectionHeading title={t('title')} intro={t('intro')} action={<ArrowLink href="/sectors">{t('link')}</ArrowLink>} />
-          <ul data-reveal className="sector-panes mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:mt-10 lg:flex lg:h-[26rem]">
+          <ul data-reveal className="sector-panes mt-5 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-4 lg:flex lg:h-[26rem]">
             {sectors.map((sector) => (
               <li key={sector.slug}>
                 <Link
@@ -38,9 +37,9 @@ export async function SectorsSection({ locale }: { locale: Locale }) {
                   />
                   <span
                     aria-hidden="true"
-                    className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(2_19_22/0.9)_0%,rgb(2_19_22/0.3)_50%,rgb(2_19_22/0.05)_100%)]"
+                    className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(5_42_48/0.92)_0%,rgb(5_42_48/0.3)_50%,rgb(5_42_48/0.05)_100%)]"
                   />
-                  <h3 className="whitespace-nowrap font-display text-xl font-normal tracking-[-0.02em] sm:text-[1.75rem]">
+                  <h3 className="whitespace-nowrap text-xl font-extrabold tracking-[-0.03em] sm:text-[1.625rem]">
                     {sector.name[locale]}
                   </h3>
                   <p className="sector-text mt-2 hidden max-w-md leading-snug text-white/90 sm:block lg:min-w-72">
@@ -50,7 +49,6 @@ export async function SectorsSection({ locale }: { locale: Locale }) {
               </li>
             ))}
           </ul>
-        </div>
       </Container>
     </section>
   );

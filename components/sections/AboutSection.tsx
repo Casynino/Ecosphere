@@ -17,40 +17,36 @@ export async function AboutSection({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <section className="relative pb-10 pt-20 lg:pb-14 lg:pt-28">
-      {/* The dark foot of the opening film lifts away as the page begins. */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[36svh] bg-[linear-gradient(to_bottom,#021316,rgb(2_19_22/0))]" aria-hidden="true" />
-
-      <Container className="relative">
-        <div data-reveal className="panel rounded-[24px] p-6 sm:p-10 lg:p-14">
-          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
-            <div>
-              <h2 className="display-3">{t('home.about.title')}</h2>
-              <p className="mt-5 text-lg text-mist">{t('company.about')}</p>
-              <ArrowLink href="/about" className="mt-6">
-                {t('home.about.link')}
-              </ArrowLink>
-            </div>
-            <div className="grid grid-cols-5 gap-3 sm:gap-4">
-              <Photo
-                photo={photos.drawingsReview}
-                locale={locale}
-                sizes="(min-width: 1024px) 320px, 55vw"
-                className="col-span-3 aspect-[4/5]"
-              />
-              <div className="col-span-2 grid grid-rows-2 gap-3 sm:gap-4">
-                <Photo photo={photos.teamOnWharf} locale={locale} sizes="(min-width: 1024px) 210px, 36vw" className="min-h-0" />
-                <Photo photo={stock.handsSoil} locale={locale} sizes="(min-width: 1024px) 210px, 36vw" className="min-h-0" />
-              </div>
+    <section className="pb-10 pt-10 lg:pb-14 lg:pt-16">
+      <Container>
+        {/* Words straight on the sky, pictures beside them. */}
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+          <div data-reveal>
+            <h2 className="display-3">{t('home.about.title')}</h2>
+            <p className="mt-5 max-w-xl text-lg text-mist">{t('company.about')}</p>
+            <ArrowLink href="/about" className="mt-6">
+              {t('home.about.link')}
+            </ArrowLink>
+          </div>
+          <div data-reveal className="grid grid-cols-5 gap-3 sm:gap-4">
+            <Photo
+              photo={photos.drawingsReview}
+              locale={locale}
+              sizes="(min-width: 1024px) 340px, 55vw"
+              className="col-span-3 aspect-[4/5] shadow-[0_24px_50px_-30px_rgb(6_40_45/0.6)]"
+            />
+            <div className="col-span-2 grid grid-rows-2 gap-3 sm:gap-4">
+              <Photo photo={photos.teamOnWharf} locale={locale} sizes="(min-width: 1024px) 220px, 36vw" className="min-h-0" />
+              <Photo photo={stock.handsSoil} locale={locale} sizes="(min-width: 1024px) 220px, 36vw" className="min-h-0" />
             </div>
           </div>
         </div>
 
-        <div className="mt-4 grid gap-4 sm:mt-6 sm:gap-6 md:grid-cols-2">
+        <div className="mt-10 grid gap-3 sm:gap-5 md:grid-cols-2 lg:mt-14">
           {statements.map((item) => (
-            <article key={item.title} data-reveal className="panel rounded-[24px] p-6 sm:p-10">
-              <h3 className="display-3">{item.title}</h3>
-              <p className="mt-4 text-mist">{item.body}</p>
+            <article key={item.title} data-reveal className="panel statement rounded-card p-5 sm:p-7">
+              <h3 className="text-xl font-extrabold tracking-[-0.03em] text-snow sm:text-2xl">{item.title}</h3>
+              <p className="mt-2.5 text-mist">{item.body}</p>
             </article>
           ))}
         </div>

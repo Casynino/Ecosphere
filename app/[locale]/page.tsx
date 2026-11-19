@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
   return pageMetadata({ locale, title: t('titleDefault'), description: t('description'), absoluteTitle: true });
 }
 
-// The home page scrolls normally from top to bottom. Each section is a
-// frosted panel over the moving forest behind the page.
+// The home page scrolls normally from top to bottom. Headings sit straight
+// on the sky of the living landscape; text that needs it sits on light glass.
 export default async function HomePage({ params }: LocaleParams) {
   const locale = await getPageLocale(params);
   const t = await getTranslations();
@@ -39,19 +39,17 @@ export default async function HomePage({ params }: LocaleParams) {
       {/* Leadership */}
       <section className="pb-16 pt-10 lg:pb-24 lg:pt-14">
         <Container>
-          <div className="panel rounded-[24px] p-6 sm:p-10 lg:p-14">
             <SectionHeading
               title={t('home.leadership.title')}
               action={<ArrowLink href="/leadership">{t('home.leadership.link')}</ArrowLink>}
             />
-            <ul data-reveal className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 lg:mt-10 lg:grid-cols-4">
+            <ul data-reveal className="mt-5 grid grid-cols-2 gap-x-4 gap-y-8 sm:mt-8 sm:gap-x-6 lg:grid-cols-4">
               {leaders.map((leader) => (
                 <li key={leader.slug}>
                   <LeaderPreviewCard leader={leader} photoAlt={t('leadership.photoAlt', { name: leader.name })} />
                 </li>
               ))}
             </ul>
-          </div>
         </Container>
       </section>
 

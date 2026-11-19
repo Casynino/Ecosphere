@@ -85,16 +85,23 @@ themes are at the top of `app/globals.css`. Anything placed on a photograph or f
 so its text stays light in both themes.
 
 All movement is in `app/globals.css` and two small scripts, with no animation library:
-- `components/layout/LivingBackground.tsx`: the film behind every page, a real drone flight over savanna
-  towards a volcano. It does not play by itself: scrolling flies the camera (down = forward, up = back),
-  while the page scrolls normally and nothing is pinned. The still picture shows first; the film loads after
-  the page (about 3.4 MB on computers, 1.7 MB on phones) and is skipped on data-saver or 2G connections.
-  A veil over the film keeps text readable (pale in the light theme, dark in the dark theme).
+- `components/layout/SceneArt.tsx`: the living landscape behind every page, drawn in code in the logo's
+  colours (no photograph, no video, a few kilobytes): sun, drifting cloud, a snow-capped volcano, forested
+  hills with turning wind turbines, a lake, acacia trees and birds. In the dark theme it becomes night
+  (moon, stars, fireflies). Its colours are the `--sky-*`, `--range-*` and similar values at the top of
+  `globals.css`; its motion is under "The living landscape".
+- `components/layout/LivingBackground.tsx`: ties the landscape to scrolling. At the top of the home page the
+  whole landscape is in view; as the visitor scrolls, the view lifts (the hills sink at different speeds, which
+  gives depth) and leaves a bright sky behind the text. Other pages start in the sky. The page itself always
+  scrolls normally and nothing is pinned.
 - `components/layout/ScrollEffects.tsx`: sections fade up as they scroll into view, and pictures in banners
   move a little slower than the page.
 - The opening of the home page ("Opening of the home page" in `globals.css`, markup in
-  `components/sections/HomeHero.tsx`): the logo on a plain screen, then the camera sweeps back from the clouds
-  on the volcano to the whole forest and the headline comes into focus. It plays once per visit.
+  `components/sections/HomeHero.tsx`): the logo on a plain screen, then the landscape builds itself (the sun
+  comes up, the hills rise into place) and the headline comes into focus. It plays once per visit.
+
+Headings sit straight on the sky in Manrope's heaviest weight; text that needs a surface sits on light glass
+(the `panel` class).
 
 On the home page, the Services panel and the Sector pictures react to the pointer with plain CSS
 (see "Services panel" and "Sector pictures" in `globals.css`).

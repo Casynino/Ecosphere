@@ -16,9 +16,8 @@ export async function FieldShowcase({ locale }: { locale: Locale }) {
   return (
     <section className="py-10 lg:py-14">
       <Container>
-        <div className="panel rounded-[24px] p-6 sm:p-10 lg:p-14">
           <SectionHeading title={t('title')} intro={t('body')} action={<ArrowLink href="/projects">{t('link')}</ArrowLink>} />
-          <ul data-reveal className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:mt-10 lg:grid-cols-3">
+          <ul data-reveal className="mt-5 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-4 lg:grid-cols-3">
             {row.map((photo, index) => (
               <li key={photo.src.src} className={index === 0 ? 'col-span-2 lg:col-span-1' : ''}>
                 <Photo
@@ -30,7 +29,6 @@ export async function FieldShowcase({ locale }: { locale: Locale }) {
               </li>
             ))}
           </ul>
-        </div>
       </Container>
     </section>
   );

@@ -83,7 +83,7 @@ export function MobileMenu() {
                   href={item.href}
                   aria-current={isActive(pathname, item.href) ? 'page' : undefined}
                   onClick={() => setOpenedOn(null)}
-                  className="block py-3.5 font-display text-xl text-white aria-[current=page]:text-accent"
+                  className="block py-3.5 text-xl font-bold tracking-[-0.02em] text-white aria-[current=page]:text-accent"
                 >
                   {t(item.key)}
                 </Link>
@@ -93,7 +93,7 @@ export function MobileMenu() {
           <Link
             href="/contact"
             onClick={() => setOpenedOn(null)}
-            className="cta-link mt-8 inline-flex min-h-11 items-center gap-3 font-display text-[1.75rem] leading-none text-white"
+            className="cta-link mt-8 inline-flex min-h-11 items-center gap-3 text-[1.5rem] font-extrabold leading-none tracking-[-0.03em] text-white"
           >
             <span>{t('cta')}</span>
             <ArrowRight className="h-6 w-6 text-accent" strokeWidth={1.25} aria-hidden="true" />

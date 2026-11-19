@@ -49,7 +49,8 @@
   },
   "home": {
     "hero": {
-      "title": "Sisi ndio suluhisho kwa sayari yenye afya bora.",
+      "titleLead": "Sisi ndio suluhisho",
+      "titleRest": "kwa sayari yenye afya bora.",
       "sub": "Tunasaidia viwanda, serikali na jamii kulinda mazingira huku biashara zao zikikua.",
       "primaryCta": "Tuzungumze"
     },

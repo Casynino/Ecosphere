@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Instrument_Serif, Manrope } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import type { ReactNode } from 'react';
@@ -7,6 +7,7 @@ import { Analytics } from '@/components/Analytics';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { LivingBackground } from '@/components/layout/LivingBackground';
+import { SceneArt } from '@/components/layout/SceneArt';
 import { ScrollEffects } from '@/components/layout/ScrollEffects';
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -17,10 +18,9 @@ import { siteUrl } from '@/lib/seo';
 import { organizationJsonLd } from '@/lib/structured-data';
 import '../globals.css';
 
+// One typeface for the whole site: Manrope. Headings use its heaviest weight,
+// set tight (see app/globals.css); text uses the regular weights.
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', display: 'swap' });
-// Headings: Instrument Serif, an elegant display serif with a plain "&".
-// It has one weight and a very small file, which keeps pages quick to show.
-const heading = Instrument_Serif({ subsets: ['latin'], weight: '400', variable: '--font-heading', display: 'swap' });
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 }
 
 export const viewport: Viewport = {
-  themeColor: '#00323a',
+  themeColor: '#052a30',
 };
 
 export default async function LocaleLayout({ children, params }: LocaleParams & { children: ReactNode }) {
@@ -50,12 +50,14 @@ export default async function LocaleLayout({ children, params }: LocaleParams & 
   const t = await getTranslations();
 
   return (
-    <html lang={locale} className={`${manrope.variable} ${heading.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={manrope.variable} suppressHydrationWarning>
       <body className="font-sans">
-        {/* Applies a remembered dark theme before anything is drawn, so the page never flashes. */}
+        {/* Before anything is drawn: note that scripts run (the landscape then starts in full view on
+            the home page) and apply a remembered dark theme, so the page never flashes. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: "try{if(localStorage.getItem('theme')==='dark')document.documentElement.dataset.theme='dark'}catch(e){}",
+            __html:
+              "document.documentElement.dataset.js='1';try{if(localStorage.getItem('theme')==='dark')document.documentElement.dataset.theme='dark'}catch(e){}",
           }}
         />
         {/* Only the header strings are sent to the browser; pages are rendered on the server. */}
@@ -67,7 +69,9 @@ export default async function LocaleLayout({ children, params }: LocaleParams & 
           <noscript>
             <style>{'.site-header{background:#021316}'}</style>
           </noscript>
-          <LivingBackground />
+          <LivingBackground>
+            <SceneArt />
+          </LivingBackground>
           <Header />
           <main id="main" tabIndex={-1} className="outline-none">
             {children}
