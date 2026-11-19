@@ -2,6 +2,7 @@
 
 ## Client's own material
 - `public/brand/*`: made from `Logo_Ecosphere-Solutions.pdf` by `scripts/generate-brand-assets.mjs`.
+- `public/images/leadership/*`: portraits supplied by the client, cropped by `scripts/prepare-media.mjs`.
 - `public/images/field/*` and `public/videos/*`: chosen from the client's "VIDEO & PICS" folder by
   `scripts/prepare-media.mjs`. Photos were resized and stripped of metadata (including GPS). Video
   clips were trimmed to short sections and exported without sound.

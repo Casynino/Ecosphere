@@ -20,6 +20,12 @@ const photos = {
   'f9e4e667-0e1c-44c6-9309-adbcb61a7a64.JPG': 'team-site-office.jpg',
 };
 
+// Leadership portraits, cropped to an upright 4:5 frame from the top so the face is kept.
+const portraits = {
+  '8bc095e5-2723-405c-b846-6602b4121700 2.JPG': 'norga-komba.jpg',
+  '5695071e-14e3-49cc-96c7-1e8873be37c2 2.JPG': 'ian-komba.jpg',
+};
+
 // [source file, start (s), length (s), output name]
 const clips = [
   ['e2108f53-8a3c-4f7a-b895-849fe0a8d54c.MP4', 100, 18, 'on-site-discussion'],
@@ -28,6 +34,7 @@ const clips = [
 ];
 
 mkdirSync('public/images/field', { recursive: true });
+mkdirSync('public/images/leadership', { recursive: true });
 mkdirSync('public/videos', { recursive: true });
 
 for (const [source, output] of Object.entries(photos)) {
@@ -36,6 +43,16 @@ for (const [source, output] of Object.entries(photos)) {
     .resize({ width: 1600, height: 1600, fit: 'inside', withoutEnlargement: true })
     .jpeg({ quality: 84, mozjpeg: true })
     .toFile(path.join('public/images/field', output));
+}
+
+for (const [source, output] of Object.entries(portraits)) {
+  const image = sharp(path.join(SOURCE, source)).rotate();
+  const { width } = await image.metadata();
+  const side = Math.min(width, 720);
+  await image
+    .resize({ width: side, height: Math.round(side * 1.25), fit: 'cover', position: 'north' })
+    .jpeg({ quality: 86, mozjpeg: true })
+    .toFile(path.join('public/images/leadership', output));
 }
 
 for (const [source, start, length, name] of clips) {
@@ -51,4 +68,4 @@ for (const [source, start, length, name] of clips) {
   ]);
 }
 
-console.log('Media written to public/images/field and public/videos');
+console.log('Media written to public/images/field, public/images/leadership and public/videos');

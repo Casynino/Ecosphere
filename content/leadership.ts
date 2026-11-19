@@ -1,11 +1,12 @@
 import type { StaticImageData } from 'next/image';
+import ianKomba from '@/public/images/leadership/ian-komba.jpg';
+import norgaKomba from '@/public/images/leadership/norga-komba.jpg';
 import type { Localized } from './types';
 
-// To add a photo: save a square-ish portrait in /public/images/leadership/,
-// import it here and set it as `photo`. Example:
-//   import norgaKomba from '@/public/images/leadership/norga-komba.jpg';
-//   ... photo: norgaKomba,
-// While `photo` is null the site shows a circle with the person's initials.
+// To add a photo: save an upright portrait in /public/images/leadership/
+// (scripts/prepare-media.mjs crops and resizes them), import it here as
+// above and set it as `photo`. While `photo` is null the card shows the
+// person's initials instead.
 
 export type Leader = {
   slug: string;
@@ -32,7 +33,7 @@ export const leaders: Leader[] = [
       en: 'Provides strategic leadership to Ecosphere Solutions Limited, with expertise in environmental and natural resources governance, environmental policy, sustainable development and responsible investment.',
       sw: 'Hutoa uongozi wa kimkakati kwa Ecosphere Solutions Limited, akiwa na utaalamu katika utawala wa mazingira na maliasili, sera za mazingira, maendeleo endelevu na uwekezaji unaowajibika.',
     },
-    photo: null,
+    photo: norgaKomba,
   },
   {
     slug: 'ian-komba',
@@ -47,7 +48,7 @@ export const leaders: Leader[] = [
       en: 'Provides leadership in operations, project delivery and business development, bringing technical expertise in structural and civil engineering to support the successful delivery of infrastructure and sustainable development projects.',
       sw: 'Hutoa uongozi katika uendeshaji, utekelezaji wa miradi na uendelezaji wa biashara, akileta utaalamu wa kiufundi katika uhandisi wa miundo na ujenzi ili kufanikisha utekelezaji wa miradi ya miundombinu na ya maendeleo endelevu.',
     },
-    photo: null,
+    photo: ianKomba,
   },
   {
     slug: 'marus-gbomagba',

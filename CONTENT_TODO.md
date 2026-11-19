@@ -4,9 +4,10 @@ Everything below is a placeholder or an assumption. Nothing here was invented as
 where real content is missing, the site says so on screen.
 
 ## Needed before launch
-- [ ] **Leadership portraits.** Dr. Norga Komba and Eng. Ian Komba (received in chat, not yet as files),
-      Dr. Marus Gbomagba, Adv. Violet Mushi. Save them in `public/images/leadership/` and set `photo`
-      in `content/leadership.ts`. Until then each card shows initials.
+- [ ] **Leadership portraits for Dr. Marus Gbomagba and Adv. Violet Mushi.** Their cards show initials.
+      Dr. Norga Komba and Eng. Ian Komba are in place. Eng. Ian's photo is small (420 px wide); a larger
+      original would look sharper. Add files to the client folder, list them in `scripts/prepare-media.mjs`
+      and set `photo` in `content/leadership.ts`.
 - [ ] **Resend account and keys** for the contact form (`RESEND_API_KEY`, `CONTACT_TO_EMAIL`).
 - [ ] **Domain name** and, when ready, the **domain email** to replace `intecosphere.solutions@gmail.com`
       (`NEXT_PUBLIC_CONTACT_EMAIL` and `CONTACT_TO_EMAIL`).
