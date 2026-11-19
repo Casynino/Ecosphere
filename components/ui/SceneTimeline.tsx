@@ -6,7 +6,7 @@
 export function SceneTimeline({ labels }: { labels: string[] }) {
   return (
     <div className="mt-8 hidden [.is-pinned_&]:block">
-      <div className="relative h-px bg-white/25">
+      <div className="relative h-px bg-snow/25">
         <span className="scene-bar absolute inset-x-0 -top-px h-[3px] bg-lime" aria-hidden="true" />
       </div>
       <ol

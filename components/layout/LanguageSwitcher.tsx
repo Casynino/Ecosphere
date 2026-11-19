@@ -20,7 +20,7 @@ export function LanguageSwitcher() {
           hrefLang={code}
           lang={code}
           aria-current={code === locale ? 'true' : undefined}
-          className="px-1.5 py-2 text-white/60 transition-colors hover:text-white aria-[current=true]:text-white"
+          className="px-1.5 py-2 text-white/60 transition-colors hover:text-snow aria-[current=true]:text-white"
         >
           {code.toUpperCase()}
           {/* Full language name for screen readers. */}

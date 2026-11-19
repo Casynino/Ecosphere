@@ -26,7 +26,7 @@ export function ServiceCard({ service, locale, heading: Heading = 'h3', brief = 
   return (
     <Link
       href={`/services/${service.slug}`}
-      className="group flex h-full items-center gap-4 p-4 transition-colors duration-150 sm:panel sm:flex-col sm:items-stretch sm:gap-0 sm:overflow-hidden sm:rounded-card sm:p-0 sm:hover:border-lime/30"
+      className="group flex h-full items-center gap-4 p-4 transition-colors duration-150 sm:panel sm:flex-col sm:items-stretch sm:gap-0 sm:overflow-hidden sm:rounded-card sm:p-0 sm:hover:border-accent/30"
     >
       <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl sm:h-44 sm:w-full sm:rounded-none">
         <Image
@@ -41,7 +41,7 @@ export function ServiceCard({ service, locale, heading: Heading = 'h3', brief = 
         />
       </div>
       <div className="min-w-0 flex-1 sm:p-6">
-        <Heading className="font-sans text-[1.0625rem] font-semibold leading-snug tracking-normal text-snow transition-colors duration-150 group-hover:text-lime sm:text-lg">
+        <Heading className="font-sans text-[1.0625rem] font-semibold leading-snug tracking-normal text-snow transition-colors duration-150 group-hover:text-accent sm:text-lg">
           {service.title[locale]}
         </Heading>
         {brief && wide ? (

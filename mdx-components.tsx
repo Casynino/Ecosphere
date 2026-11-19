@@ -7,9 +7,9 @@ const components: MDXComponents = {
   p: (props) => <p className="mt-5 text-lg leading-relaxed text-mist" {...props} />,
   ul: (props) => <ul className="mt-5 list-disc space-y-2 pl-6 text-lg text-mist" {...props} />,
   ol: (props) => <ol className="mt-5 list-decimal space-y-2 pl-6 text-lg text-mist" {...props} />,
-  a: (props) => <a className="font-semibold text-lime underline underline-offset-4 hover:text-white" {...props} />,
+  a: (props) => <a className="font-semibold text-accent underline underline-offset-4 hover:text-snow" {...props} />,
   blockquote: (props) => (
-    <blockquote className="mt-6 border-l-4 border-lime pl-5 text-lg italic text-snow" {...props} />
+    <blockquote className="mt-6 border-l-4 border-accent pl-5 text-lg italic text-snow" {...props} />
   ),
 };
 

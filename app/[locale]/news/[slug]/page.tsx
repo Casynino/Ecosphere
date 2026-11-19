@@ -61,7 +61,7 @@ export default async function ArticlePage({ params }: Props) {
         <div className="mt-6 flex flex-wrap items-center gap-3 text-white/85">
           <time dateTime={article.date}>{format.dateTime(new Date(article.date), { dateStyle: 'long' })}</time>
           {article.placeholder && (
-            <span className="rounded-full border border-dashed border-lime px-2.5 py-0.5 text-xs font-bold text-lime">
+            <span className="rounded-full border border-dashed border-accent px-2.5 py-0.5 text-xs font-bold text-accent">
               {t('common.placeholder')}
             </span>
           )}
@@ -79,7 +79,7 @@ export default async function ArticlePage({ params }: Props) {
           <Content />
           <Link
             href="/news"
-            className="group mt-14 inline-flex items-center gap-2 font-bold text-lime hover:text-white"
+            className="group mt-14 inline-flex items-center gap-2 font-bold text-accent hover:text-snow"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
             {t('news.back')}

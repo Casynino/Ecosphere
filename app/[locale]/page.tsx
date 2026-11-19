@@ -4,7 +4,7 @@ import type { CSSProperties } from 'react';
 import { LeaderPreviewCard } from '@/components/cards/LeaderCard';
 import { AboutScene } from '@/components/sections/AboutScene';
 import { CtaBanner } from '@/components/sections/CtaBanner';
-import { FieldRows } from '@/components/sections/FieldRows';
+import { FieldShowcase } from '@/components/sections/FieldShowcase';
 import { HomeHero } from '@/components/sections/HomeHero';
 import { ScrollStory } from '@/components/sections/ScrollStory';
 import { SectorsScene } from '@/components/sections/SectorsScene';
@@ -35,7 +35,7 @@ export default async function HomePage({ params }: LocaleParams) {
       <ServicesScene locale={locale} />
       <SectorsScene locale={locale} />
       <ScrollStory />
-      <FieldRows locale={locale} />
+      <FieldShowcase locale={locale} />
 
       {/* Leadership */}
       <section className="pb-20 lg:pb-32">

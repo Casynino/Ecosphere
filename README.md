@@ -67,7 +67,7 @@ Image sources are in `IMAGE_CREDITS.md`.
 ```
 app/[locale]/        Pages (one folder per page), layout, RSS feed
 app/sitemap.ts       sitemap.xml        app/robots.ts   robots.txt
-components/layout    Header, footer, language switcher, WhatsApp button, scroll effects, contour-map background
+components/layout    Header, footer, language and theme switches, WhatsApp button, scroll effects, moving background
 components/sections  Home page scenes (hero video, about, services, sectors, how we work), page banners, call to action
 components/cards     Service, sector and leadership cards
 components/contact   Contact form
@@ -78,16 +78,21 @@ messages/            Interface text: en.json, sw.json
 proxy.ts             Serves English at "/" and Swahili at "/sw"
 ```
 
-### Look and motion
-The site is dark and cinematic: photographs and film carry the colour, titles are large and light.
+### Look, themes and motion
+The site has a light theme (the default) and a dark theme, switched with the sun/moon button in the header
+(`components/layout/ThemeToggle.tsx`). The choice is remembered in the visitor's browser. The colours of both
+themes are at the top of `app/globals.css`. Anything placed on a photograph or film gets the class `on-dark`
+so its text stays light in both themes.
+
 All movement is in `app/globals.css` and three small scripts, with no animation library:
+- `components/layout/LivingBackground.tsx`: the scene behind every page, a flight over forest with mountains
+  and cloud, drawn with WebGL. It flies forward as the page is scrolled and follows the theme (daylight in the
+  light theme, the hour before sunrise in the dark theme).
 - `components/layout/ScrollEffects.tsx`: reveal on scroll, parallax, and the pinned "scenes" of the home page
   (About, Services, Sectors, How we work). A scene fills the screen and steps through its content as the
   visitor scrolls; see the "Scenes" section of `globals.css` for how to mark one up.
 - `components/sections/HeroVideo.tsx`: the looping drone video behind the home page headline. It loads after
   the still picture, is about 2.7 MB on computers and 0.9 MB on phones, and is skipped on data-saver or 2G connections.
-- `components/layout/LivingBackground.tsx`: the faint contour-map lines behind every page, drawn with WebGL.
-  They shift as the page is scrolled.
 
 Visitors who ask their device for reduced motion get a still page with every scene written out in full.
 Without JavaScript the page reads normally.

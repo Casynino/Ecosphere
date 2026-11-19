@@ -50,7 +50,7 @@ export default async function NewsPage({ params }: LocaleParams) {
       <section className="py-16 lg:py-24">
         <Container>
           {hasPlaceholders && (
-            <p className="mb-10 rounded-2xl border border-dashed border-lime/50 bg-lime/10 p-4 font-semibold text-lime">
+            <p className="mb-10 rounded-2xl border border-dashed border-accent/50 bg-accent/10 p-4 font-semibold text-accent">
               {t('news.placeholderNotice')}
             </p>
           )}
@@ -77,7 +77,7 @@ export default async function NewsPage({ params }: LocaleParams) {
 
           <a
             href={localePath(locale, '/news/feed.xml')}
-            className="mt-12 inline-flex items-center gap-2 font-bold text-lime hover:text-white"
+            className="mt-12 inline-flex items-center gap-2 font-bold text-accent hover:text-snow"
           >
             <Rss className="h-5 w-5" aria-hidden="true" />
             {t('news.rss')}

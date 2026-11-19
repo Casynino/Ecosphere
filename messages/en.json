@@ -29,7 +29,8 @@
     "switchTo": {
       "en": "English",
       "sw": "Kiswahili"
-    }
+    },
+    "theme": "Switch between light and dark mode"
   },
   "footer": {
     "description": "Environmental consultancy in Dar es Salaam, Tanzania, helping industry, government and communities protect the environment while their business grows.",

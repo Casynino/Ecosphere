@@ -122,7 +122,7 @@ export default async function ProjectsPage({ params }: LocaleParams) {
                       </div>
                       <div className="flex items-center gap-1.5">
                         <dt className="sr-only">{t('projects.locationLabel')}</dt>
-                        <MapPin className="h-4 w-4 text-lime" aria-hidden="true" />
+                        <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
                         <dd className="text-mist">{project.location[locale]}</dd>
                       </div>
                     </dl>

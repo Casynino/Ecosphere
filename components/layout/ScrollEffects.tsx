@@ -76,7 +76,7 @@ export function ScrollEffects() {
     };
     const scenes: Scene[] = [...document.querySelectorAll<HTMLElement>('[data-story]')].map((story) => ({
       story,
-      stage: story.firstElementChild as HTMLElement,
+      stage: story.querySelector<HTMLElement>('.scene-stage')!,
       steps: Number(story.dataset.steps) || 1,
       parts: [...story.querySelectorAll<HTMLElement>('[data-i]')].map((element) => ({
         element,

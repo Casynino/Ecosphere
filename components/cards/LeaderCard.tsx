@@ -54,7 +54,7 @@ export function LeaderCard({
       />
       <div className="p-5 sm:p-8">
         <Heading className="font-sans text-xl font-semibold leading-snug tracking-normal text-snow">{leader.name}</Heading>
-        <p className="mt-1 font-semibold text-lime">{leader.title}</p>
+        <p className="mt-1 font-semibold text-accent">{leader.title}</p>
         <p className="mt-4 text-mist">{leader.bio[locale]}</p>
         <p className="mt-5 text-sm font-semibold text-snow">{focusLabel}</p>
         <p className="mt-1 text-[0.9375rem] text-mist">{leader.focus[locale].join(' · ')}</p>

@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import logo from '@/public/brand/logo.png';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { ThemeToggle } from './ThemeToggle';
 import { DesktopNav, MobileMenu } from './SiteNav';
 
 export async function Header() {
@@ -18,6 +19,7 @@ export async function Header() {
         <DesktopNav />
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
+          <ThemeToggle />
           <LanguageSwitcher />
           <MobileMenu />
         </div>

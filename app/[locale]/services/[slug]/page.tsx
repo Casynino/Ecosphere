@@ -69,7 +69,7 @@ export default async function ServicePage({ params }: Props) {
           <div>
             <Link
               href="/services"
-              className="group inline-flex items-center gap-2 font-bold text-lime hover:text-white"
+              className="group inline-flex items-center gap-2 font-bold text-accent hover:text-snow"
             >
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
               {t('services.allServices')}
@@ -85,7 +85,7 @@ export default async function ServicePage({ params }: Props) {
               <ul className="mt-6 space-y-3">
                 {(included ?? [1, 2, 3].map((number) => t('services.includedPlaceholder', { number }))).map((item, index) => (
                   <li key={item} className="panel flex gap-4 rounded-2xl p-4">
-                    <span className="font-display text-lg text-lime" aria-hidden="true">
+                    <span className="font-display text-lg text-accent" aria-hidden="true">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className={included ? 'text-snow' : 'text-mist'}>{item}</span>
@@ -99,7 +99,7 @@ export default async function ServicePage({ params }: Props) {
               <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-lg">
                 {service.sectors.map((slug) => (
                   <li key={slug}>
-                    <Link href={`/sectors#${slug}`} className="font-semibold text-lime underline underline-offset-4 hover:text-white">
+                    <Link href={`/sectors#${slug}`} className="font-semibold text-accent underline underline-offset-4 hover:text-snow">
                       {getSector(slug).name[locale]}
                     </Link>
                   </li>

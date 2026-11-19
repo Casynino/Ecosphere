@@ -52,15 +52,15 @@ export default async function SectorsPage({ params }: LocaleParams) {
                   <h2 id={`${sector.slug}-title`} className="text-3xl sm:text-4xl">
                     {sector.name[locale]}
                   </h2>
-                  <h3 className="mt-6 font-sans text-sm font-bold text-lime">{t('challengeTitle')}</h3>
+                  <h3 className="mt-6 font-sans text-sm font-bold text-accent">{t('challengeTitle')}</h3>
                   <p className="mt-2 text-lg text-snow/85">{sector.challenge[locale]}</p>
-                  <h3 className="mt-7 font-sans text-sm font-bold text-lime">{t('servicesTitle')}</h3>
+                  <h3 className="mt-7 font-sans text-sm font-bold text-accent">{t('servicesTitle')}</h3>
                   <ul className="mt-2 flex flex-wrap gap-x-6 gap-y-1.5">
                     {applicable.map((service) => (
                       <li key={service.slug}>
                         <Link
                           href={`/services/${service.slug}`}
-                          className="font-semibold text-snow underline decoration-lime/40 underline-offset-4 hover:text-lime"
+                          className="font-semibold text-snow underline decoration-accent/40 underline-offset-4 hover:text-accent"
                         >
                           {service.title[locale]}
                         </Link>

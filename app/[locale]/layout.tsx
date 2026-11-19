@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 }
 
 export const viewport: Viewport = {
-  themeColor: '#021316',
+  themeColor: '#00323a',
 };
 
 export default async function LocaleLayout({ children, params }: LocaleParams & { children: ReactNode }) {
@@ -49,8 +49,14 @@ export default async function LocaleLayout({ children, params }: LocaleParams & 
   const t = await getTranslations();
 
   return (
-    <html lang={locale} className={`${manrope.variable} ${fraunces.variable}`}>
+    <html lang={locale} className={`${manrope.variable} ${fraunces.variable}`} suppressHydrationWarning>
       <body className="font-sans">
+        {/* Applies a remembered dark theme before anything is drawn, so the page never flashes. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "try{if(localStorage.getItem('theme')==='dark')document.documentElement.dataset.theme='dark'}catch(e){}",
+          }}
+        />
         {/* Only the header strings are sent to the browser; pages are rendered on the server. */}
         <NextIntlClientProvider messages={{ nav: messages.nav }}>
           <a href="#main" className="skip-link">

@@ -26,7 +26,7 @@ export async function ScrollStory() {
       data-story
       data-steps={steps.length}
       aria-labelledby="how-we-work"
-      className="scene text-white"
+      className="scene on-dark text-white"
       style={{ '--steps': steps.length } as CSSProperties}
     >
       <div className="scene-stage relative isolate flex flex-col overflow-hidden">

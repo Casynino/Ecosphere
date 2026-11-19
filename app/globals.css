@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-/* Brand tokens. These become Tailwind classes such as bg-night or text-mist. */
+/* Brand colours. These become Tailwind classes such as bg-teal or bg-lime. */
 @theme {
   --color-teal: #005e64;
   --color-teal-dark: #00444a;
@@ -9,11 +9,6 @@
   --color-lime-dark: #6fa52a;
   --color-sky: #5ec3d6;
   --color-blue: #3b79b8;
-
-  /* The site is dark, like a cinema screen, so photographs and film carry the colour. */
-  --color-night: #021316; /* page background */
-  --color-snow: #eef4f1; /* main text */
-  --color-mist: #a2b7b5; /* secondary text */
 
   --radius-card: 18px;
 
@@ -24,17 +19,67 @@
   --breakpoint-nav: 72rem;
 }
 
+/* Colours that change with the theme (light or dark). The classes are
+   bg-night (page), text-snow (main text), text-mist (secondary text),
+   text-accent (links and small highlights) and text-danger (form errors).
+   The values are set just below. */
 @theme inline {
+  --color-night: var(--page);
+  --color-snow: var(--text);
+  --color-mist: var(--text-2);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
 }
 
 @layer base {
+  /* Light theme: the default. */
   :root {
-    color-scheme: dark;
-    --focus-ring: var(--color-lime);
+    color-scheme: light;
+    --page: #f4f7f5;
+    --text: #10292c;
+    --text-2: #2f4547;
+    --text-dim: #93a6a6; /* words not yet "read" in a scroll-lit statement */
+    --accent: #005e64;
+    --danger: #b42318;
+    --surface: rgb(255 255 255 / 0.88); /* cards and panels */
+    --surface-line: rgb(16 41 44 / 0.1);
+    /* Veil over the moving background: light over the sky, stronger over the forest. */
+    --wash: linear-gradient(to bottom, rgb(244 247 245 / 0.08) 0%, rgb(244 247 245 / 0.42) 40%, rgb(244 247 245 / 0.72) 100%);
+
+    --focus-ring: var(--accent);
     /* Height of the header (see components/layout/Header.tsx). */
     --header-h: 4rem;
+  }
+
+  /* Dark theme: chosen with the sun/moon button in the header
+     (components/layout/ThemeToggle.tsx sets data-theme on <html>). */
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --page: #021316;
+    --text: #eef4f1;
+    --text-2: #a2b7b5;
+    --text-dim: #4d6264;
+    --accent: #8cc63f;
+    --danger: #fca5a5;
+    --surface: rgb(2 19 22 / 0.72);
+    --surface-line: rgb(238 244 241 / 0.12);
+    --wash: linear-gradient(to bottom, rgb(2 19 22 / 0.25) 0%, rgb(2 19 22 / 0.5) 100%);
+  }
+
+  /* Anything placed on a photograph, on film or on a dark panel keeps
+     light text in both themes: give its container the class "on-dark". */
+  .on-dark {
+    --text: #eef4f1;
+    --text-2: #a2b7b5;
+    --text-dim: #4d6264;
+    --accent: #8cc63f;
+    --danger: #fca5a5;
+    --surface: rgb(2 19 22 / 0.72);
+    --surface-line: rgb(238 244 241 / 0.12);
+    color: var(--text);
   }
 
   @media (min-width: 72rem) {
@@ -49,10 +94,13 @@
   }
 
   body {
-    background-color: var(--color-night);
-    color: var(--color-snow);
+    background-color: var(--page);
+    color: var(--text);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    transition:
+      background-color 0.4s var(--ease-glide),
+      color 0.4s var(--ease-glide);
   }
 
   /* Page and section titles use the display serif, light and large;
@@ -153,10 +201,13 @@
   letter-spacing: -0.02em;
 }
 
-/* Quiet raised surface for cards and panels on the dark page. */
+/* Slightly frosted surface for cards and panels, so their text stays
+   readable over the moving scene behind the page (white in the light
+   theme, dark in the dark theme). */
 @utility panel {
-  border: 1px solid rgb(238 244 241 / 0.1);
-  background-color: rgb(238 244 241 / 0.04);
+  border: 1px solid var(--surface-line);
+  background-color: var(--surface);
+  backdrop-filter: blur(12px);
 }
 
 /* ------------------------------------------------------------------
@@ -232,7 +283,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  box-shadow: 0 0 0 100vmax var(--color-night);
+  box-shadow: 0 0 0 100vmax var(--page);
   animation: hero-window 1.5s var(--ease-glide) both;
 }
 
@@ -275,16 +326,24 @@
 .scroll-words > span {
   color: color-mix(
     in srgb,
-    var(--color-snow) calc(clamp(0, calc((var(--p, 1) - 0.14) * 3.4 * var(--n) - var(--i)), 1) * 100%),
-    #4d6264
+    var(--text) calc(clamp(0, calc((var(--p, 1) - 0.14) * 3.4 * var(--n) - var(--i)), 1) * 100%),
+    var(--text-dim)
   );
   transition: color 0.3s linear;
 }
 
-/* Rows of photographs that slide in opposite directions as the page scrolls. */
-.field-row {
-  transform: translateX(calc((0.5 - var(--p, 0.5)) * 24vw * var(--dir, 1) - 16vw));
-  will-change: transform;
+/* Two pictures that drift gently against each other as the page scrolls
+   (wide screens only; see FieldShowcase.tsx). */
+@media (min-width: 64rem) {
+  .drift-a {
+    transform: translateY(calc((0.5 - var(--p, 0.5)) * 56px));
+    will-change: transform;
+  }
+
+  .drift-b {
+    transform: translateY(calc((var(--p, 0.5) - 0.5) * 56px));
+    will-change: transform;
+  }
 }
 
 /* Closing picture: a framed window that widens to fill the screen as it arrives. */
@@ -375,30 +434,30 @@
 }
 
 .scene-label {
-  color: rgb(255 255 255 / 0.5);
+  color: color-mix(in srgb, var(--text) 58%, transparent);
   transition: color 0.3s var(--ease-glide);
 }
 
 .scene-label:hover,
 .scene-label.is-active {
-  color: #fff;
+  color: var(--text);
 }
 
 /* Services scene: the list of names, with the current one lit. */
 .svc-name {
-  color: rgb(238 244 241 / 0.34);
+  color: color-mix(in srgb, var(--text) 52%, transparent);
   transition:
     color 0.3s var(--ease-glide),
     transform 0.5s var(--ease-glide);
 }
 
 .svc-name:hover {
-  color: rgb(238 244 241 / 0.75);
+  color: color-mix(in srgb, var(--text) 80%, transparent);
 }
 
 .scene:not(.is-pinned) .svc-name,
 .svc-name.is-active {
-  color: var(--color-snow);
+  color: var(--text);
 }
 
 .svc-name.is-active {
@@ -468,9 +527,5 @@
   .reveal-pending {
     opacity: 1 !important;
     transform: none !important;
-  }
-
-  .field-row {
-    transform: translateX(-16vw);
   }
 }

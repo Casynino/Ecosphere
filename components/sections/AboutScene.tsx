@@ -1,61 +1,54 @@
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import type { CSSProperties } from 'react';
 import { ArrowLink } from '@/components/ui/ArrowLink';
 import { Container } from '@/components/ui/Container';
 import { SceneTimeline } from '@/components/ui/SceneTimeline';
-import { stock } from '@/content/media';
-
-// One full-screen photograph per step: who we are, our mission, our vision.
-const layers = [stock.cloudForest, stock.handsSoil, stock.kilimanjaro];
 
 /**
- * "About" as a scene: the picture fills the screen and changes as the
- * visitor scrolls from the company statement to the mission and the vision.
+ * "About" as a scene with no picture of its own: a frosted panel of words
+ * stands over the moving forest behind the page, so scrolling through the
+ * company statement, the mission and the vision is a flight forward.
  */
 export async function AboutScene() {
   const t = await getTranslations();
-  const body = 'mt-6 max-w-2xl text-lg text-white/85 sm:text-xl';
+  const title = 'display-2 lg:text-[3.25rem]';
+  const body = 'mt-5 text-lg text-mist sm:text-xl';
 
   return (
     <section
       data-story
-      data-steps={layers.length}
+      data-steps={3}
       aria-labelledby="about-title"
-      className="scene text-white"
-      style={{ '--steps': layers.length } as CSSProperties}
+      className="scene relative"
+      style={{ '--steps': 3 } as CSSProperties}
     >
-      <div className="scene-stage relative isolate flex flex-col overflow-hidden">
-        <div className="absolute inset-0 -z-20" aria-hidden="true">
-          {layers.map((photo, index) => (
-            <div key={photo.src.src} data-i={index} className="scene-layer">
-              <Image src={photo.src} alt="" fill sizes="100vw" quality={60} className="object-cover" />
-            </div>
-          ))}
-        </div>
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(2_19_22/0.96)_0%,rgb(2_19_22/0.62)_48%,rgb(2_19_22/0.45)_76%,rgb(2_19_22)_100%)]" />
+      {/* The dark foot of the opening film lifts away as the page begins. */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[45svh] bg-[linear-gradient(to_bottom,#021316,rgb(2_19_22/0))]" aria-hidden="true" />
 
-        <Container className="flex flex-1 flex-col justify-end pb-8 pt-[calc(var(--header-h)+2rem)] [.scene:not(.is-pinned)_&]:py-24">
-          <div className="scene-stack">
-            <div data-i="0" className="scene-item">
-              <h2 id="about-title" className="display-2 max-w-4xl">
-                {t('home.about.title')}
-              </h2>
-              <p className={body}>{t('company.about')}</p>
+      <div className="scene-stage flex flex-col overflow-hidden">
+        <Container className="flex flex-1 flex-col justify-end pb-6 pt-[calc(var(--header-h)+2rem)] sm:pb-10 [.scene:not(.is-pinned)_&]:py-24">
+          <div className="panel max-w-3xl rounded-[24px] p-6 sm:p-10 lg:p-12">
+            <div className="scene-stack is-top">
+              <div data-i="0" className="scene-item">
+                <h2 id="about-title" className={title}>
+                  {t('home.about.title')}
+                </h2>
+                <p className={body}>{t('company.about')}</p>
+              </div>
+              <div data-i="1" className="scene-item">
+                <h3 className={title}>{t('company.missionTitle')}</h3>
+                <p className={body}>{t('company.mission')}</p>
+              </div>
+              <div data-i="2" className="scene-item">
+                <h3 className={title}>{t('company.visionTitle')}</h3>
+                <p className={body}>{t('company.vision')}</p>
+              </div>
             </div>
-            <div data-i="1" className="scene-item">
-              <h3 className="display-2">{t('company.missionTitle')}</h3>
-              <p className={body}>{t('company.mission')}</p>
-            </div>
-            <div data-i="2" className="scene-item">
-              <h3 className="display-2">{t('company.visionTitle')}</h3>
-              <p className={body}>{t('company.vision')}</p>
-            </div>
+            <ArrowLink href="/about" className="mt-6">
+              {t('home.about.link')}
+            </ArrowLink>
+            <SceneTimeline labels={[t('nav.about'), t('company.missionTitle'), t('company.visionTitle')]} />
           </div>
-          <ArrowLink href="/about" className="mt-6 self-start">
-            {t('home.about.link')}
-          </ArrowLink>
-          <SceneTimeline labels={[t('nav.about'), t('company.missionTitle'), t('company.visionTitle')]} />
         </Container>
       </div>
     </section>

@@ -14,7 +14,7 @@ export async function CtaBanner({ locale }: { locale: Locale }) {
 
   return (
     <section data-scroll>
-      <div className="closing-frame relative isolate flex min-h-[88svh] items-end overflow-hidden bg-teal-darkest text-white">
+      <div className="closing-frame on-dark relative isolate flex min-h-[88svh] items-end overflow-hidden bg-teal-darkest text-white">
         <div className="absolute inset-0 -z-20">
           <Image
             src={stock.riverAerial.src}

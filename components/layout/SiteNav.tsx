@@ -23,7 +23,7 @@ export function DesktopNav() {
             <Link
               href={item.href}
               aria-current={isActive(pathname, item.href) ? 'page' : undefined}
-              className="rounded-full px-3 py-2 text-[0.95rem] font-semibold text-white/85 transition-colors hover:bg-white/10 hover:text-white aria-[current=page]:text-lime"
+              className="rounded-full px-3 py-2 text-[0.95rem] font-semibold text-white/85 transition-colors hover:bg-white/10 hover:text-snow aria-[current=page]:text-accent"
             >
               {t(item.key)}
             </Link>
@@ -73,7 +73,7 @@ export function MobileMenu() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="absolute inset-x-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-night shadow-2xl"
+        className="absolute inset-x-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-[#021316] shadow-2xl"
       >
         <nav aria-label={t('mainNav')} className="mx-auto max-w-7xl px-5 pb-6 pt-3 sm:px-8">
           <ul>
@@ -83,7 +83,7 @@ export function MobileMenu() {
                   href={item.href}
                   aria-current={isActive(pathname, item.href) ? 'page' : undefined}
                   onClick={() => setOpenedOn(null)}
-                  className="block py-3.5 font-display text-xl text-white aria-[current=page]:text-lime"
+                  className="block py-3.5 font-display text-xl text-white aria-[current=page]:text-accent"
                 >
                   {t(item.key)}
                 </Link>
@@ -93,10 +93,10 @@ export function MobileMenu() {
           <Link
             href="/contact"
             onClick={() => setOpenedOn(null)}
-            className="mt-6 inline-flex items-center gap-2 text-lg font-semibold text-white underline decoration-lime decoration-2 underline-offset-8"
+            className="mt-6 inline-flex items-center gap-2 text-lg font-semibold text-white underline decoration-accent decoration-2 underline-offset-8"
           >
             {t('cta')}
-            <ArrowRight className="h-5 w-5 text-lime" strokeWidth={1.5} aria-hidden="true" />
+            <ArrowRight className="h-5 w-5 text-accent" strokeWidth={1.5} aria-hidden="true" />
           </Link>
         </nav>
       </div>

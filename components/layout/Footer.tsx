@@ -11,7 +11,7 @@ export async function Footer() {
   const { address } = site;
 
   return (
-    <footer className="relative border-t border-snow/10 bg-night/80 text-white">
+    <footer className="on-dark relative bg-[#021316] text-white">
       <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-14 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.3fr] lg:py-16">
         <div>
           <Image src={logo} alt="Ecosphere Solutions" sizes="190px" className="h-14 w-auto" />
@@ -24,7 +24,7 @@ export async function Footer() {
           <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1 md:grid-cols-1">
             {navItems.map((item) => (
               <li key={item.key}>
-                <Link href={item.href} className="inline-block py-1.5 text-white/85 transition-colors hover:text-lime">
+                <Link href={item.href} className="inline-block py-1.5 text-white/85 transition-colors hover:text-accent">
                   {t(`nav.${item.key}`)}
                 </Link>
               </li>
@@ -36,27 +36,27 @@ export async function Footer() {
           <h2 className="font-sans text-sm font-semibold tracking-normal text-white/60">{t('footer.contactTitle')}</h2>
           <ul className="mt-4 space-y-3.5 text-white/85">
             <li className="flex gap-3">
-              <MapPin className="mt-1 h-5 w-5 shrink-0 text-lime" aria-hidden="true" />
+              <MapPin className="mt-1 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
               <address className="not-italic">
                 {address.street}, {address.district},<br />
                 {address.city}, {address.country}
               </address>
             </li>
             <li className="flex gap-3">
-              <Phone className="mt-1 h-5 w-5 shrink-0 text-lime" aria-hidden="true" />
-              <a href={`tel:${site.phone.e164}`} className="transition-colors hover:text-lime">
+              <Phone className="mt-1 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+              <a href={`tel:${site.phone.e164}`} className="transition-colors hover:text-accent">
                 {site.phone.display}
               </a>
             </li>
             <li className="flex gap-3">
-              <Mail className="mt-1 h-5 w-5 shrink-0 text-lime" aria-hidden="true" />
-              <a href={`mailto:${site.email}`} className="break-all transition-colors hover:text-lime">
+              <Mail className="mt-1 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+              <a href={`mailto:${site.email}`} className="break-all transition-colors hover:text-accent">
                 {site.email}
               </a>
             </li>
             <li className="flex gap-3">
-              <WhatsAppIcon className="mt-1 h-5 w-5 shrink-0 text-lime" />
-              <a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-lime">
+              <WhatsAppIcon className="mt-1 h-5 w-5 shrink-0 text-accent" />
+              <a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
                 {t('contact.whatsappCta')}
               </a>
             </li>

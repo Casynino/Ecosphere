@@ -17,8 +17,8 @@ export async function HomeHero({ locale }: { locale: Locale }) {
   const t = await getTranslations('home.hero');
 
   return (
-    <section data-scroll className="relative isolate overflow-hidden text-white">
-      <div className="absolute inset-0 -z-10 overflow-hidden bg-night">
+    <section data-scroll className="on-dark relative isolate overflow-hidden text-white">
+      <div className="absolute inset-0 -z-10 overflow-hidden bg-[#021316]">
         <div className="parallax absolute inset-0">
           <HeroVideo poster={stock.heroSavanna.src} alt={stock.heroSavanna.alt[locale]} />
         </div>

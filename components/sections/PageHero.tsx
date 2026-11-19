@@ -20,11 +20,11 @@ export function PageHero({ title, intro, photo, locale, children }: Props) {
   return (
     <section
       data-scroll
-      className="relative isolate overflow-hidden text-white"
+      className="on-dark relative isolate overflow-hidden text-white"
     >
       {photo && (
         // The photo fades out at the bottom, so it dissolves into the misty page behind it.
-        <div className="absolute inset-0 -z-10 bg-teal-darkest [mask-image:linear-gradient(to_bottom,black_62%,transparent_100%)]">
+        <div className="absolute inset-0 -z-10 bg-[#021316] [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]">
           <div className="parallax absolute inset-0">
             <Image
               src={photo.src}
@@ -42,7 +42,7 @@ export function PageHero({ title, intro, photo, locale, children }: Props) {
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(0_36_42/0.84)_0%,rgb(0_36_42/0.66)_60%,rgb(0_36_42/0.2)_100%)] lg:bg-[linear-gradient(90deg,rgb(0_36_42/0.9)_0%,rgb(0_36_42/0.62)_45%,rgb(0_36_42/0.08)_82%)]" />
         </div>
       )}
-      <Container className={`flex flex-col pt-[calc(var(--header-h)+4rem)] ${photo ? 'min-h-[68svh] justify-end pb-[14svh]' : 'pb-10'}`}>
+      <Container className={`flex flex-col pt-[calc(var(--header-h)+4rem)] ${photo ? 'min-h-[68svh] justify-end pb-[17svh]' : 'pb-10'}`}>
         <h1 className="rise-solid display-2 max-w-4xl">{title}</h1>
         {intro && (
           <p className="rise mt-5 max-w-xl text-lg text-white/85 sm:text-xl" style={delay(200)}>
