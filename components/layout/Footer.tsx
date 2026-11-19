@@ -1,7 +1,6 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { Swirl } from '@/components/graphics/Swirl';
 import { navItems, site } from '@/content/site';
 import { Link } from '@/i18n/navigation';
 import logo from '@/public/brand/logo.png';
@@ -12,8 +11,7 @@ export async function Footer() {
   const { address } = site;
 
   return (
-    <footer className="on-dark relative overflow-hidden bg-teal-darkest text-white">
-      <Swirl className="pointer-events-none absolute -bottom-40 -right-32 w-[30rem] opacity-[0.07]" />
+    <footer className="on-dark relative bg-teal-darkest text-white">
       <div className="brand-bar h-1" />
       <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-14 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.3fr] lg:py-16">
         <div>

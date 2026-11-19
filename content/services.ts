@@ -1,9 +1,8 @@
 import { photos, stock, type Photo } from './media';
-import type { IconName, Localized, SectorSlug } from './types';
+import type { Localized, SectorSlug } from './types';
 
 export type Service = {
   slug: string;
-  icon: IconName;
   image: Photo;
   /** A few words, shown on small cards. */
   tagline: Localized;
@@ -27,7 +26,6 @@ const allSectors: SectorSlug[] = ['mining', 'oil-gas', 'agriculture', 'transport
 export const services: Service[] = [
   {
     slug: 'environmental-conservation',
-    icon: 'leaf',
     image: stock.forestCanopy,
     tagline: { en: 'Mitigating environmental pollution', sw: 'Kupunguza uchafuzi wa mazingira' },
     title: { en: 'Environmental Conservation', sw: 'Uhifadhi wa Mazingira' },
@@ -44,7 +42,6 @@ export const services: Service[] = [
   },
   {
     slug: 'natural-resource-protection',
-    icon: 'trees',
     image: stock.mangroveAerial,
     tagline: { en: 'Responsible use of natural resources', sw: 'Matumizi ya maliasili kwa uwajibikaji' },
     title: { en: 'Natural Resource Protection', sw: 'Ulinzi wa Maliasili' },
@@ -61,7 +58,6 @@ export const services: Service[] = [
   },
   {
     slug: 'community-engagement',
-    icon: 'users',
     image: stock.plantingSeedling,
     tagline: { en: 'Awareness, health, education and livelihoods', sw: 'Uelewa, afya, elimu na kipato' },
     title: { en: 'Community Engagement', sw: 'Ushirikishwaji wa Jamii' },
@@ -78,7 +74,6 @@ export const services: Service[] = [
   },
   {
     slug: 'research-innovation',
-    icon: 'flask',
     image: stock.riverForest,
     tagline: { en: 'Technology for pollution control', sw: 'Teknolojia za kudhibiti uchafuzi' },
     title: { en: 'Research & Innovation', sw: 'Utafiti na Ubunifu' },
@@ -95,7 +90,6 @@ export const services: Service[] = [
   },
   {
     slug: 'compliance-advocacy',
-    icon: 'scale',
     image: photos.drawingsReview,
     tagline: { en: 'Meeting environmental regulations', sw: 'Kutimiza sheria za mazingira' },
     title: { en: 'Compliance & Advocacy', sw: 'Uzingatiaji wa Sheria na Utetezi' },
@@ -112,7 +106,6 @@ export const services: Service[] = [
   },
   {
     slug: 'capacity-building',
-    icon: 'graduation',
     image: photos.teamOnWharf,
     tagline: { en: 'Mentoring young professionals', sw: 'Kuwalea wataalamu vijana' },
     title: { en: 'Capacity Building', sw: 'Kujenga Uwezo' },
@@ -129,7 +122,6 @@ export const services: Service[] = [
   },
   {
     slug: 'partnerships-collaboration',
-    icon: 'handshake',
     image: photos.siteBriefing,
     tagline: { en: 'Working with government and industry', sw: 'Kushirikiana na serikali na viwanda' },
     title: { en: 'Partnerships & Collaboration', sw: 'Ubia na Ushirikiano' },

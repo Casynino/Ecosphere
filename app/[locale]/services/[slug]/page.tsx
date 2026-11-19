@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -7,7 +7,6 @@ import { PageHero } from '@/components/sections/PageHero';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Container } from '@/components/ui/Container';
-import { Icon } from '@/components/ui/Icon';
 import { PlaceholderBadge } from '@/components/ui/Placeholder';
 import { getSector } from '@/content/sectors';
 import { getService, services } from '@/content/services';
@@ -85,10 +84,10 @@ export default async function ServicePage({ params }: Props) {
                 {!included && <PlaceholderBadge label={t('common.placeholder')} />}
               </div>
               <ul className="mt-6 space-y-3">
-                {(included ?? [1, 2, 3].map((number) => t('services.includedPlaceholder', { number }))).map((item) => (
-                  <li key={item} className="flex gap-3 rounded-2xl border border-line bg-white p-4">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal text-white">
-                      <Check className="h-4 w-4" aria-hidden="true" />
+                {(included ?? [1, 2, 3].map((number) => t('services.includedPlaceholder', { number }))).map((item, index) => (
+                  <li key={item} className="panel flex gap-4 rounded-2xl p-4">
+                    <span className="font-display text-lg text-teal" aria-hidden="true">
+                      {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className={included ? 'text-ink' : 'text-muted'}>{item}</span>
                   </li>
@@ -105,9 +104,8 @@ export default async function ServicePage({ params }: Props) {
                     <li key={slug}>
                       <Link
                         href={`/sectors#${slug}`}
-                        className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2.5 font-semibold text-ink transition-colors hover:border-teal hover:text-teal"
+                        className="panel inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold text-ink transition-colors hover:text-teal"
                       >
-                        <Icon name={sector.icon} className="h-5 w-5 text-teal" />
                         {sector.name[locale]}
                       </Link>
                     </li>
@@ -121,10 +119,7 @@ export default async function ServicePage({ params }: Props) {
             <div className="on-dark bg-hero overflow-hidden rounded-card text-white">
               <div className="brand-bar h-1.5" />
               <div className="p-7 sm:p-8">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-teal">
-                  <Icon name={service.icon} className="h-6 w-6" />
-                </span>
-                <h2 className="mt-5 text-2xl">{t('services.requestTitle', { service: title })}</h2>
+                <h2 className="text-2xl">{t('services.requestTitle', { service: title })}</h2>
                 <p className="mt-3 text-white/85">{t('services.requestBody')}</p>
                 <ButtonLink
                   href={{ pathname: '/contact', query: { service: service.slug } }}
@@ -144,7 +139,7 @@ export default async function ServicePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="border-t border-line bg-white py-16 sm:py-24">
+      <section className="pb-16 sm:pb-24">
         <Container>
           <h2 className="text-2xl sm:text-3xl">{t('services.otherServices')}</h2>
           <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

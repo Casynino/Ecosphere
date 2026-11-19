@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 
 function Detail({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
   return (
-    <li className="flex gap-4 rounded-card border border-line bg-white p-5">
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-teal text-white">{icon}</span>
+    <li className="panel flex gap-4 rounded-card p-5">
+      <span className="mt-1 shrink-0 text-teal">{icon}</span>
       <div>
         <p className="text-sm font-bold text-teal">{label}</p>
         <div className="mt-0.5 text-ink">{children}</div>
@@ -75,7 +75,7 @@ export default async function ContactPage({ params }: LocaleParams) {
             </ul>
           </div>
 
-          <div className="rounded-card border border-line bg-white p-6 shadow-[0_30px_60px_-40px_rgb(0_68_74/0.5)] sm:p-10">
+          <div className="panel rounded-[28px] p-6 sm:p-10">
             <h2 className="text-2xl sm:text-3xl">{t('formTitle')}</h2>
             <div className="mt-7">
               {/* The form runs in the browser, so it gets its own strings. */}
@@ -87,7 +87,7 @@ export default async function ContactPage({ params }: LocaleParams) {
         </Container>
       </section>
 
-      <section className="border-t border-line bg-white py-16 sm:py-24">
+      <section className="pb-16 sm:pb-24">
         <Container>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="text-2xl sm:text-3xl">{t('mapTitle')}</h2>
@@ -106,7 +106,7 @@ export default async function ContactPage({ params }: LocaleParams) {
             title={t('mapFrameTitle')}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="mt-8 h-[26rem] w-full rounded-card border border-line"
+            className="mt-8 h-[26rem] w-full rounded-[28px] border border-white shadow-[0_24px_60px_-36px_rgb(0_68_74/0.45)]"
           />
         </Container>
       </section>

@@ -1,9 +1,8 @@
 import { stock, type Photo } from './media';
-import type { IconName, Localized, SectorSlug } from './types';
+import type { Localized, SectorSlug } from './types';
 
 export type Sector = {
   slug: SectorSlug;
-  icon: IconName;
   image: Photo;
   name: Localized;
   /** One line for cards on the home page. */
@@ -15,7 +14,6 @@ export type Sector = {
 export const sectors: Sector[] = [
   {
     slug: 'mining',
-    icon: 'pickaxe',
     image: stock.openPitMine,
     name: { en: 'Mining', sw: 'Madini' },
     short: {
@@ -29,7 +27,6 @@ export const sectors: Sector[] = [
   },
   {
     slug: 'oil-gas',
-    icon: 'flame',
     image: stock.offshorePlatform,
     name: { en: 'Oil & Gas', sw: 'Mafuta na Gesi' },
     short: {
@@ -43,7 +40,6 @@ export const sectors: Sector[] = [
   },
   {
     slug: 'agriculture',
-    icon: 'sprout',
     image: stock.cropRows,
     name: { en: 'Agriculture', sw: 'Kilimo' },
     short: {
@@ -57,7 +53,6 @@ export const sectors: Sector[] = [
   },
   {
     slug: 'transport',
-    icon: 'truck',
     image: stock.darBrt,
     name: { en: 'Transport', sw: 'Uchukuzi' },
     short: {

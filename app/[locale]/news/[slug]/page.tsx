@@ -69,7 +69,8 @@ export default async function ArticlePage({ params }: Props) {
       </PageHero>
 
       <article className="py-16 sm:py-24">
-        <Container className="max-w-3xl">
+        <Container className="max-w-4xl">
+          <div className="panel rounded-[28px] p-6 sm:p-12">
           {article.placeholder && (
             <div className="mb-2">
               <PlaceholderBadge label={t('common.placeholder')} />
@@ -83,6 +84,7 @@ export default async function ArticlePage({ params }: Props) {
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
             {t('news.back')}
           </Link>
+          </div>
         </Container>
       </article>
     </>

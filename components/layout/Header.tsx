@@ -29,7 +29,7 @@ export async function Header() {
         </div>
       </div>
       {/* Fills from left to right as the visitor scrolls down the page. */}
-      <span aria-hidden="true" className="scroll-meter brand-bar absolute inset-x-0 bottom-0 h-[3px]" />
+      <span aria-hidden="true" data-page-progress className="scroll-meter brand-bar absolute inset-x-0 bottom-0 h-[3px]" />
     </header>
   );
 }

@@ -26,18 +26,18 @@ export default async function ServicesPage({ params }: LocaleParams) {
     <>
       <PageHero
         locale={locale}
-        photo={stock.forestCanopy}
+        photo={stock.rainforestMist}
         eyebrow={t('services.eyebrow')}
         title={t('services.title')}
         intro={t('services.intro')}
       />
 
-      <section className="py-20 sm:py-28">
+      <section className="py-16 sm:py-24">
         <Container>
           <ul className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <li key={service.slug} data-reveal style={{ '--reveal-delay': `${(index % 3) * 90}ms` } as CSSProperties}>
-                <ServiceCard service={service} locale={locale} learnMore={t('common.learnMore')} withPhoto heading="h2" />
+                <ServiceCard service={service} locale={locale} learnMore={t('common.learnMore')} heading="h2" />
               </li>
             ))}
             <li data-reveal className="sm:col-span-2 lg:col-span-2">

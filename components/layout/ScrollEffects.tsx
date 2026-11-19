@@ -14,7 +14,9 @@ const clamp = (value: number) => Math.min(1, Math.max(0, value));
  *    (0 to 1) that the stylesheet uses for parallax and similar effects.
  * 3. Story: a `[data-story]` section is pinned to the screen and stepped
  *    through its stages as the visitor scrolls.
- * 4. The thin progress bar under the header.
+ * 4. Page progress: `[data-page-progress]` elements get `--page` (0 at the top
+ *    of the page, 1 at the bottom). The living background and the thin bar
+ *    under the header use it.
  *
  * Nothing runs for visitors who prefer reduced motion, and the page reads
  * normally without JavaScript.
@@ -47,7 +49,7 @@ export function ScrollEffects() {
     // 2-4. Scroll progress. Only blocks near the screen are measured.
     const stories = [...document.querySelectorAll<HTMLElement>('[data-story]')];
     stories.forEach((story) => story.classList.add('is-pinned'));
-    const meter = document.querySelector<HTMLElement>('.scroll-meter');
+    const pageTargets = [...document.querySelectorAll<HTMLElement>('[data-page-progress]')];
     const active = new Set<HTMLElement>();
     const watcher = new IntersectionObserver(
       (entries) => {
@@ -78,7 +80,8 @@ export function ScrollEffects() {
         const distance = rect.height - stage.offsetHeight;
         return { story, progress: distance > 0 ? clamp((top - rect.top) / distance) : 0 };
       });
-      const page = document.documentElement.scrollHeight - viewport;
+      const scrollable = document.documentElement.scrollHeight - viewport;
+      const page = scrollable > 0 ? clamp(window.scrollY / scrollable).toFixed(4) : '0';
 
       for (const { element, progress } of blocks) element.style.setProperty('--p', progress.toFixed(4));
       for (const { story, progress } of scenes) {
@@ -86,7 +89,7 @@ export function ScrollEffects() {
         story.style.setProperty('--p', progress.toFixed(4));
         story.dataset.step = String(Math.min(steps - 1, Math.floor(progress * steps)));
       }
-      if (meter) meter.style.transform = `scaleX(${page > 0 ? clamp(window.scrollY / page) : 0})`;
+      for (const target of pageTargets) target.style.setProperty('--page', page);
     };
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(update);

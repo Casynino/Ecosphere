@@ -7,6 +7,8 @@ import siteWalk from '@/public/images/field/site-walk.jpg';
 import teamAtHarbour from '@/public/images/field/team-at-harbour.jpg';
 import teamOnWharf from '@/public/images/field/team-on-wharf.jpg';
 import teamSiteOffice from '@/public/images/field/team-site-office.jpg';
+import cloudForest from '@/public/images/stock/cloud-forest.jpg';
+import craterGreen from '@/public/images/stock/crater-green.jpg';
 import cropRows from '@/public/images/stock/crop-rows.jpg';
 import darAerial from '@/public/images/stock/dar-aerial.jpg';
 import darBrt from '@/public/images/stock/dar-brt.jpg';
@@ -15,10 +17,14 @@ import greenHills from '@/public/images/stock/green-hills.jpg';
 import handsSoil from '@/public/images/stock/hands-soil.jpg';
 import kilimanjaro from '@/public/images/stock/kilimanjaro.jpg';
 import mangroveAerial from '@/public/images/stock/mangrove-aerial.jpg';
+import mistyCanopy from '@/public/images/stock/misty-canopy.jpg';
 import offshorePlatform from '@/public/images/stock/offshore-platform.jpg';
 import openPitMine from '@/public/images/stock/open-pit-mine.jpg';
 import plantingSeedling from '@/public/images/stock/planting-seedling.jpg';
+import rainforestMist from '@/public/images/stock/rainforest-mist.jpg';
+import riverAerial from '@/public/images/stock/river-aerial.jpg';
 import riverForest from '@/public/images/stock/river-forest.jpg';
+import sunriseMist from '@/public/images/stock/sunrise-mist.jpg';
 import type { Localized } from './types';
 
 // `photos`: the client's own site-visit photos (made by scripts/prepare-media.mjs).
@@ -104,6 +110,54 @@ export const photos = {
 } satisfies Record<string, Photo>;
 
 export const stock = {
+  sunriseMist: {
+    src: sunriseMist,
+    shape: 'landscape',
+    alt: {
+      en: 'Sunrise over a green landscape covered in morning mist, with a red earth road in the foreground',
+      sw: 'Macheo juu ya mandhari ya kijani iliyofunikwa na ukungu wa asubuhi, barabara ya udongo mwekundu ikiwa mbele',
+    },
+  },
+  mistyCanopy: {
+    src: mistyCanopy,
+    shape: 'landscape',
+    alt: {
+      en: 'Morning mist lying over a forest canopy',
+      sw: 'Ukungu wa asubuhi ukiwa umetanda juu ya msitu',
+    },
+  },
+  riverAerial: {
+    src: riverAerial,
+    shape: 'landscape',
+    alt: {
+      en: 'Aerial view of a river bending through thick green forest beside a small settlement',
+      sw: 'Picha ya juu ya mto unaopinda katikati ya msitu mnene wa kijani kando ya makazi madogo',
+    },
+  },
+  craterGreen: {
+    src: craterGreen,
+    shape: 'landscape',
+    alt: {
+      en: 'Wide green valley floor with a lake, surrounded by steep hills',
+      sw: 'Bonde pana la kijani lenye ziwa, likizungukwa na vilima vyenye miteremko mikali',
+    },
+  },
+  cloudForest: {
+    src: cloudForest,
+    shape: 'landscape',
+    alt: {
+      en: 'Low cloud drifting over forested hills',
+      sw: 'Mawingu ya chini yakipita juu ya vilima vyenye misitu',
+    },
+  },
+  rainforestMist: {
+    src: rainforestMist,
+    shape: 'landscape',
+    alt: {
+      en: 'Mist rising through the canopy of a tropical forest',
+      sw: 'Ukungu ukipanda katikati ya miti ya msitu wa kitropiki',
+    },
+  },
   greenHills: {
     src: greenHills,
     shape: 'landscape',

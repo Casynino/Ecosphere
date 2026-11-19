@@ -16,9 +16,11 @@ export function WordMarquee({ items, label }: { items: string[]; label: string }
   const track = (copy: boolean) => (
     <ul className="marquee-track" style={style} aria-hidden={copy || undefined}>
       {items.map((item) => (
-        <li key={item} className="flex items-center gap-9 whitespace-nowrap font-display text-2xl text-white/90 sm:text-[1.7rem]">
+        <li key={item} className="flex items-center gap-9 whitespace-nowrap font-display text-2xl text-teal-dark sm:text-[1.9rem]">
           {item}
-          <span className="h-2 w-2 rounded-full bg-lime" aria-hidden="true" />
+          <span className="text-teal/40" aria-hidden="true">
+            /
+          </span>
         </li>
       ))}
     </ul>

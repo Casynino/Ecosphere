@@ -6,7 +6,7 @@ function Avatar({ leader, alt, size }: { leader: Leader; alt: string; size: 'md'
   const box = size === 'lg' ? 'h-32 w-32 text-4xl' : 'h-24 w-24 text-3xl';
 
   return (
-    <div className={`relative shrink-0 overflow-hidden rounded-full bg-[linear-gradient(140deg,#00444a,#005e64)] ring-4 ring-lime/70 ${box}`}>
+    <div className={`relative shrink-0 overflow-hidden rounded-full bg-[linear-gradient(140deg,#00444a,#005e64)] ring-4 ring-white ${box}`}>
       {leader.photo ? (
         <Image src={leader.photo} alt={alt} fill sizes="128px" placeholder="blur" className="object-cover object-top" />
       ) : (
@@ -22,7 +22,7 @@ function Avatar({ leader, alt, size }: { leader: Leader; alt: string; size: 'md'
 /** Short card for the Home page preview. */
 export function LeaderPreviewCard({ leader, photoAlt }: { leader: Leader; photoAlt: string }) {
   return (
-    <article className="flex h-full flex-col items-center rounded-card border border-line bg-white p-6 text-center">
+    <article className="panel flex h-full flex-col items-center rounded-card p-7 text-center">
       <Avatar leader={leader} alt={photoAlt} size="md" />
       <h3 className="mt-5 text-xl text-ink">{leader.name}</h3>
       <p className="mt-1.5 text-[0.95rem] leading-snug text-muted">{leader.title}</p>
@@ -46,7 +46,7 @@ export function LeaderCard({
   heading?: 'h2' | 'h3';
 }) {
   return (
-    <article id={leader.slug} className="flex h-full flex-col gap-6 rounded-card border border-line bg-white p-7 sm:flex-row sm:p-8">
+    <article id={leader.slug} className="panel flex h-full flex-col gap-6 rounded-card p-7 sm:flex-row sm:p-8">
       <Avatar leader={leader} alt={photoAlt} size="lg" />
       <div>
         <Heading className="text-2xl text-ink">{leader.name}</Heading>

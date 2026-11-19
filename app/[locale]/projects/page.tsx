@@ -34,11 +34,9 @@ export default async function ProjectsPage({ params }: LocaleParams) {
       />
 
       {/* Photo gallery */}
-      <section className="py-20 sm:py-28">
+      <section className="py-16 sm:py-24">
         <Container>
-          <div data-reveal>
-            <SectionHeading title={t('projects.galleryTitle')} intro={t('projects.galleryIntro')} />
-          </div>
+          <SectionHeading title={t('projects.galleryTitle')} intro={t('projects.galleryIntro')} />
           <ul className="mt-12 grid grid-flow-dense grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
             {fieldGallery.map((photo, index) => (
               <li
@@ -67,9 +65,7 @@ export default async function ProjectsPage({ params }: LocaleParams) {
       {/* Video clips: nothing downloads until the visitor presses play */}
       <section className="on-dark bg-hero py-20 text-white sm:py-28">
         <Container>
-          <div data-reveal>
-            <SectionHeading tone="dark" title={t('projects.videosTitle')} intro={t('projects.videosIntro')} />
-          </div>
+          <SectionHeading tone="dark" title={t('projects.videosTitle')} intro={t('projects.videosIntro')} />
           <ul className="mt-12 grid gap-6 sm:grid-cols-3">
             {fieldVideos.map((video, index) => (
               <li key={video.src} data-reveal style={{ '--reveal-delay': `${index * 110}ms` } as CSSProperties}>
@@ -95,15 +91,13 @@ export default async function ProjectsPage({ params }: LocaleParams) {
       </section>
 
       {/* Case studies (placeholders until real projects are supplied) */}
-      <section className="py-20 sm:py-28">
+      <section className="py-16 sm:py-24">
         <Container>
-          <div data-reveal>
-            <SectionHeading title={t('projects.caseStudiesTitle')} intro={t('projects.caseStudiesIntro')} />
-          </div>
+          <SectionHeading title={t('projects.caseStudiesTitle')} intro={t('projects.caseStudiesIntro')} />
           <ul className="mt-12 grid gap-6 md:grid-cols-3">
             {projects.map((project, index) => (
               <li key={project.slug} data-reveal style={{ '--reveal-delay': `${index * 100}ms` } as CSSProperties}>
-                <article className="flex h-full flex-col overflow-hidden rounded-card border border-line bg-white">
+                <article className="panel flex h-full flex-col overflow-hidden rounded-card">
                   {project.image ? (
                     <div className="relative aspect-[16/10]">
                       <Image

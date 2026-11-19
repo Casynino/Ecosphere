@@ -42,13 +42,13 @@ export default async function NewsPage({ params }: LocaleParams) {
     <>
       <PageHero
         locale={locale}
-        photo={stock.riverForest}
+        photo={stock.cloudForest}
         eyebrow={t('news.eyebrow')}
         title={t('news.title')}
         intro={t('news.intro')}
       />
 
-      <section className="py-20 sm:py-28">
+      <section className="py-16 sm:py-24">
         <Container>
           {hasPlaceholders && (
             <p className="mb-10 rounded-2xl border border-dashed border-teal/50 bg-teal/5 p-4 font-semibold text-teal">
@@ -61,7 +61,7 @@ export default async function NewsPage({ params }: LocaleParams) {
               <li key={article.slug} data-reveal style={{ '--reveal-delay': `${(index % 2) * 100}ms` } as CSSProperties}>
                 <Link
                   href={`/news/${article.slug}`}
-                  className="group flex h-full flex-col rounded-card border border-line bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-teal/40 hover:shadow-[0_22px_40px_-24px_rgb(0_68_74/0.55)] sm:p-8"
+                  className="panel group flex h-full flex-col rounded-card p-7 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-30px_rgb(0_68_74/0.6)] sm:p-8"
                 >
                   <div className="flex flex-wrap items-center gap-3 text-sm">
                     <time dateTime={article.date} className="font-semibold text-muted">

@@ -6,6 +6,7 @@ import type { ReactNode } from 'react';
 import { Analytics } from '@/components/Analytics';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LivingBackground } from '@/components/layout/LivingBackground';
 import { ScrollEffects } from '@/components/layout/ScrollEffects';
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -54,6 +55,7 @@ export default async function LocaleLayout({ children, params }: LocaleParams & 
           <a href="#main" className="skip-link">
             {t('common.skipToContent')}
           </a>
+          <LivingBackground />
           <Header />
           <main id="main" tabIndex={-1} className="outline-none">
             {children}

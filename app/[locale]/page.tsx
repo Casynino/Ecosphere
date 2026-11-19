@@ -10,6 +10,7 @@ import { CtaBanner } from '@/components/sections/CtaBanner';
 import { HomeHero } from '@/components/sections/HomeHero';
 import { MissionVision } from '@/components/sections/MissionVision';
 import { ScrollStory } from '@/components/sections/ScrollStory';
+import { ArrowLink } from '@/components/ui/ArrowLink';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Container } from '@/components/ui/Container';
 import { PhotoMarquee, WordMarquee } from '@/components/ui/Marquee';
@@ -19,7 +20,6 @@ import { leaders } from '@/content/leadership';
 import { fieldGallery, photos, stock } from '@/content/media';
 import { sectors } from '@/content/sectors';
 import { services } from '@/content/services';
-import { Link } from '@/i18n/navigation';
 import { getPageLocale, type LocaleParams } from '@/lib/locale';
 import { pageMetadata } from '@/lib/seo';
 
@@ -39,74 +39,83 @@ export default async function HomePage({ params }: LocaleParams) {
     <>
       <HomeHero locale={locale} />
 
-      {/* Moving strip of service names */}
-      <div className="on-dark border-y border-white/10 bg-teal-darkest py-5">
+      {/* Moving strip of service names, riding on the mist under the hero */}
+      <div className="relative -mt-[6svh] py-3">
         <WordMarquee items={services.map((service) => service.title[locale])} label={t('nav.services')} />
       </div>
 
       {/* About */}
-      <section className="py-20 sm:py-28">
+      <section className="py-16 sm:py-24">
         <Container>
-          <SectionHeading eyebrow={t('home.about.eyebrow')} title={t('home.about.title')} />
-          <div className="mt-12 grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-            <div data-scroll className="relative pb-12 pr-8 sm:pr-14">
-              <div data-reveal="left" className="relative aspect-[4/3] overflow-hidden rounded-card">
-                <Image
-                  src={photos.teamOnWharf.src}
-                  alt={photos.teamOnWharf.alt[locale]}
-                  fill
-                  sizes="(min-width: 1024px) 560px, 90vw"
-                  placeholder="blur"
-                  className="object-cover"
-                />
+          <div className="panel rounded-[28px] p-6 sm:p-10 lg:p-14">
+            <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+              <div>
+                <SectionHeading eyebrow={t('home.about.eyebrow')} title={t('home.about.title')} />
+                <ScrollWords text={t('company.about')} className="mt-7 font-display text-xl leading-snug sm:text-2xl" />
+                <ArrowLink href="/about" className="mt-8">
+                  {t('home.about.link')}
+                </ArrowLink>
               </div>
-              <div className="drift absolute bottom-0 right-0 w-[42%] overflow-hidden rounded-card border-[6px] border-background shadow-[0_24px_50px_-24px_rgb(0_68_74/0.6)]">
-                <div className="relative aspect-[4/5]">
+              <div className="grid grid-cols-2 gap-4">
+                <div data-reveal className="relative row-span-2 min-h-72 overflow-hidden rounded-card">
+                  <Image
+                    src={photos.drawingsReview.src}
+                    alt={photos.drawingsReview.alt[locale]}
+                    fill
+                    sizes="(min-width: 1024px) 280px, 46vw"
+                    placeholder="blur"
+                    className="object-cover"
+                    style={{ objectPosition: photos.drawingsReview.position }}
+                  />
+                </div>
+                <div data-reveal style={stagger(1, 120)} className="relative aspect-[4/3] overflow-hidden rounded-card">
+                  <Image
+                    src={photos.teamOnWharf.src}
+                    alt={photos.teamOnWharf.alt[locale]}
+                    fill
+                    sizes="(min-width: 1024px) 280px, 46vw"
+                    placeholder="blur"
+                    className="object-cover"
+                  />
+                </div>
+                <div data-reveal style={stagger(2, 120)} className="relative aspect-[4/3] overflow-hidden rounded-card">
                   <Image
                     src={stock.handsSoil.src}
                     alt={stock.handsSoil.alt[locale]}
                     fill
-                    sizes="(min-width: 1024px) 240px, 40vw"
+                    sizes="(min-width: 1024px) 280px, 46vw"
                     placeholder="blur"
                     className="object-cover"
                   />
                 </div>
               </div>
             </div>
-            <div>
-              <ScrollWords text={t('company.about')} className="font-display text-2xl leading-snug sm:text-[1.9rem]" />
-              <ButtonLink href="/about" variant="outlineDark" className="mt-8">
-                {t('home.about.link')}
-                <ArrowRight className="h-5 w-5" aria-hidden="true" />
-              </ButtonLink>
-            </div>
           </div>
-          <div className="mt-16 sm:mt-20">
+          <div className="mt-6">
             <MissionVision />
           </div>
         </Container>
       </section>
 
       {/* Services */}
-      <section className="border-y border-line bg-white py-20 sm:py-28">
+      <section className="py-16 sm:py-24">
         <Container>
-          <div data-reveal>
-            <SectionHeading
-              eyebrow={t('home.services.eyebrow')}
-              title={t('home.services.title')}
-              intro={t('home.services.intro')}
-            />
-          </div>
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <SectionHeading
+            eyebrow={t('home.services.eyebrow')}
+            title={t('home.services.title')}
+            intro={t('home.services.intro')}
+            action={<ArrowLink href="/services">{t('services.allServices')}</ArrowLink>}
+          />
+          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service, index) => (
-              <li key={service.slug} data-reveal style={stagger(index % 3)}>
+              <li key={service.slug} data-reveal style={stagger(index % 4)}>
                 <ServiceCard service={service} locale={locale} learnMore={t('common.learnMore')} />
               </li>
             ))}
-            <li data-reveal style={stagger(1)} className="sm:col-span-2 lg:col-span-2">
-              <div className="on-dark bg-hero relative flex h-full flex-col justify-center overflow-hidden rounded-card p-7 text-white sm:p-9">
-                <h3 className="text-2xl sm:text-3xl">{t('home.services.helpTitle')}</h3>
-                <p className="mt-3 max-w-lg text-white/85">{t('home.services.helpBody')}</p>
+            <li data-reveal style={stagger(3)}>
+              <div className="on-dark bg-hero flex h-full flex-col justify-end rounded-card p-7 text-white">
+                <h3 className="text-2xl">{t('home.services.helpTitle')}</h3>
+                <p className="mt-3 text-white/85">{t('home.services.helpBody')}</p>
                 <div className="mt-6">
                   <ButtonLink href="/contact">
                     {t('home.services.helpCta')}
@@ -119,46 +128,39 @@ export default async function HomePage({ params }: LocaleParams) {
         </Container>
       </section>
 
-      {/* Sectors */}
-      <section className="py-20 sm:py-28">
+      {/* Sectors: tall photo cards, swiped sideways on phones */}
+      <section className="py-16 sm:py-24">
         <Container>
-          <div data-reveal>
-            <SectionHeading
-              eyebrow={t('home.sectors.eyebrow')}
-              title={t('home.sectors.title')}
-              intro={t('home.sectors.intro')}
-            />
-          </div>
-          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <SectionHeading
+            eyebrow={t('home.sectors.eyebrow')}
+            title={t('home.sectors.title')}
+            intro={t('home.sectors.intro')}
+            action={<ArrowLink href="/sectors">{t('home.sectors.link')}</ArrowLink>}
+          />
+        </Container>
+        <div className="mx-auto mt-12 max-w-7xl">
+          <ul className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-8 lg:grid-cols-4">
             {sectors.map((sector, index) => (
-              <li key={sector.slug} data-reveal="zoom" style={stagger(index, 110)}>
+              <li key={sector.slug} data-reveal="zoom" style={stagger(index, 110)} className="w-[78vw] shrink-0 snap-center sm:w-auto">
                 <SectorCard sector={sector} locale={locale} />
               </li>
             ))}
           </ul>
-        </Container>
+        </div>
       </section>
 
       {/* How we work: pinned scroll story */}
       <ScrollStory />
 
       {/* In the field: moving strip of the team's own photos */}
-      <section className="overflow-hidden py-20 sm:py-28">
+      <section className="overflow-hidden py-16 sm:py-24">
         <Container>
-          <div data-reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <SectionHeading
-              eyebrow={t('home.field.eyebrow')}
-              title={t('home.field.title')}
-              intro={t('home.field.body')}
-            />
-            <Link
-              href="/projects"
-              className="group inline-flex shrink-0 items-center gap-2 font-bold text-teal hover:text-teal-dark"
-            >
-              {t('home.field.link')}
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1.5" aria-hidden="true" />
-            </Link>
-          </div>
+          <SectionHeading
+            eyebrow={t('home.field.eyebrow')}
+            title={t('home.field.title')}
+            intro={t('home.field.body')}
+            action={<ArrowLink href="/projects">{t('home.field.link')}</ArrowLink>}
+          />
         </Container>
         <div className="mt-12">
           <PhotoMarquee photos={fieldGallery} locale={locale} />
@@ -166,18 +168,13 @@ export default async function HomePage({ params }: LocaleParams) {
       </section>
 
       {/* Leadership preview */}
-      <section className="border-t border-line bg-white py-20 sm:py-28">
+      <section className="py-16 sm:py-24">
         <Container>
-          <div data-reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <SectionHeading eyebrow={t('home.leadership.eyebrow')} title={t('home.leadership.title')} />
-            <Link
-              href="/leadership"
-              className="group inline-flex shrink-0 items-center gap-2 font-bold text-teal hover:text-teal-dark"
-            >
-              {t('home.leadership.link')}
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1.5" aria-hidden="true" />
-            </Link>
-          </div>
+          <SectionHeading
+            eyebrow={t('home.leadership.eyebrow')}
+            title={t('home.leadership.title')}
+            action={<ArrowLink href="/leadership">{t('home.leadership.link')}</ArrowLink>}
+          />
           <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {leaders.map((leader, index) => (
               <li key={leader.slug} data-reveal style={stagger(index)}>

@@ -71,7 +71,8 @@
     "sectors": {
       "eyebrow": "Who we work with",
       "title": "Sectors we support",
-      "intro": "We work with companies in mining, oil and gas, agriculture and transport, alongside government bodies, NGOs and international partners."
+      "intro": "We work with companies in mining, oil and gas, agriculture and transport, alongside government bodies, NGOs and international partners.",
+      "link": "All sectors"
     },
     "how": {
       "eyebrow": "How we work",

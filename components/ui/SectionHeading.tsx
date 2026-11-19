@@ -1,26 +1,36 @@
+import type { ReactNode } from 'react';
+
 type Props = {
   eyebrow?: string;
   title: string;
   intro?: string;
-  /** "dark" for headings placed on a dark teal background. */
+  /** "dark" for headings placed on a dark background. */
   tone?: 'light' | 'dark';
-  align?: 'left' | 'center';
+  /** Optional link shown to the right of the heading on wide screens. */
+  action?: ReactNode;
   id?: string;
 };
 
-export function SectionHeading({ eyebrow, title, intro, tone = 'light', align = 'left', id }: Props) {
+/** Section title that rises into place as it scrolls into view. */
+export function SectionHeading({ eyebrow, title, intro, tone = 'light', action, id }: Props) {
   const dark = tone === 'dark';
-  const centred = align === 'center';
 
   return (
-    <div className={centred ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'}>
-      {eyebrow && (
-        <p className={`eyebrow ${dark ? 'text-lime' : 'text-teal'} ${centred ? 'justify-center' : ''}`}>{eyebrow}</p>
-      )}
-      <h2 id={id} className={`mt-3 text-3xl sm:text-4xl ${dark ? 'text-white' : 'text-ink'}`}>
-        {title}
-      </h2>
-      {intro && <p className={`mt-4 text-lg ${dark ? 'text-white/80' : 'text-muted'}`}>{intro}</p>}
+    <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div className="max-w-3xl">
+        {eyebrow && <p className={`eyebrow ${dark ? 'text-lime' : 'text-teal'}`}>{eyebrow}</p>}
+        <div data-reveal="mask" className={eyebrow ? 'mt-2' : ''}>
+          <h2 id={id} className={`text-[2.1rem] sm:text-5xl ${dark ? 'text-white' : 'text-ink'}`}>
+            {title}
+          </h2>
+        </div>
+        {intro && (
+          <p data-reveal className={`mt-4 text-lg ${dark ? 'text-white/85' : 'text-ink/80'}`}>
+            {intro}
+          </p>
+        )}
+      </div>
+      {action && <div className="shrink-0">{action}</div>}
     </div>
   );
 }
