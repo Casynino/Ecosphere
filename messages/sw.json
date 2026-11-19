@@ -1,0 +1,238 @@
+{
+  "meta": {
+    "titleDefault": "Ecosphere Solutions | Ushauri wa mazingira Tanzania",
+    "description": "Ecosphere Solutions Limited ni kampuni ya ushauri wa mazingira iliyopo Dar es Salaam, Tanzania, inayosaidia viwanda, serikali na jamii katika uhifadhi, uzingatiaji wa sheria za mazingira, mkakati wa tabianchi na maendeleo endelevu.",
+    "ogAlt": "Nembo ya Ecosphere Solutions yenye kaulimbiu We Are The Solution"
+  },
+  "common": {
+    "tagline": "Sisi Ndio Suluhisho.",
+    "skipToContent": "Ruka hadi kwenye maudhui",
+    "learnMore": "Jifunze zaidi",
+    "placeholder": "Maudhui ya muda",
+    "photoPlaceholder": "Picha itaongezwa",
+    "requestConsultation": "Omba ushauri",
+    "whatsapp": "Wasiliana nasi kwa WhatsApp"
+  },
+  "nav": {
+    "home": "Ukurasa wa mwanzo wa Ecosphere Solutions",
+    "about": "Kuhusu Sisi",
+    "services": "Huduma",
+    "sectors": "Sekta",
+    "projects": "Miradi",
+    "leadership": "Uongozi",
+    "news": "Habari",
+    "contact": "Mawasiliano",
+    "cta": "Omba ushauri",
+    "openMenu": "Fungua menyu",
+    "closeMenu": "Funga menyu",
+    "mainNav": "Menyu kuu",
+    "language": "Lugha",
+    "switchTo": {
+      "en": "English",
+      "sw": "Kiswahili"
+    }
+  },
+  "footer": {
+    "description": "Kampuni ya ushauri wa mazingira iliyopo Dar es Salaam, Tanzania, inayosaidia viwanda, serikali na jamii kulinda mazingira huku biashara zao zikikua.",
+    "quickLinks": "Viungo vya haraka",
+    "contactTitle": "Mawasiliano",
+    "footerNav": "Menyu ya chini",
+    "rights": "© {year} Ecosphere Solutions Limited. Haki zote zimehifadhiwa."
+  },
+  "company": {
+    "about": "Ecosphere Solutions inasimamia uendelevu wa mazingira kupitia mbinu bunifu zinazotanguliza ulinzi wa ikolojia huku zikiunga mkono ukuaji wa biashara. Tukiongozwa na mwanzilishi na mkurugenzi mtendaji wetu, tunajumuisha suluhisho endelevu katika kila sehemu ya shughuli zetu.",
+    "missionTitle": "Dhamira yetu",
+    "mission": "Kuwawezesha watu binafsi, jamii na biashara kwa maarifa na teknolojia za kukabiliana na changamoto za mazingira, tukitumia elimu na utetezi kuchochea hatua za pamoja katika usimamizi wa maliasili na mabadiliko ya tabianchi.",
+    "visionTitle": "Dira yetu",
+    "vision": "Kuwa kinara wa kimataifa katika ushauri wa mazingira, uhifadhi na maendeleo, tukiwa mstari wa mbele kubuni suluhisho zinazounganisha uendelevu, ubunifu na uwajibikaji kwa jamii kwa ajili ya vizazi vijavyo."
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Ushauri wa mazingira · Dar es Salaam, Tanzania",
+      "title": "Sisi ndio suluhisho kwa sayari yenye afya bora.",
+      "sub": "Ecosphere Solutions husaidia viwanda, serikali na jamii kulinda mazingira huku biashara zao zikikua: uhifadhi, uzingatiaji wa sheria, mkakati wa tabianchi na maendeleo endelevu.",
+      "primaryCta": "Omba ushauri",
+      "secondaryCta": "Angalia huduma zetu",
+      "tagsLabel": "Sekta tunazofanya nazo kazi"
+    },
+    "about": {
+      "eyebrow": "Kuhusu sisi",
+      "title": "Kampuni ya ushauri wa mazingira Tanzania inayotanguliza ulinzi wa ikolojia",
+      "link": "Soma zaidi kuhusu sisi"
+    },
+    "services": {
+      "eyebrow": "Tunachofanya",
+      "title": "Huduma za ushauri wa mazingira",
+      "intro": "Maeneo saba ya huduma yanayoshirikiana, kuanzia uhifadhi na ulinzi wa maliasili hadi uzingatiaji wa sheria za mazingira na ushauri wa tabianchi na uendelevu.",
+      "helpTitle": "Huna uhakika unahitaji huduma ipi?",
+      "helpBody": "Tueleze kuhusu mradi wako nasi tutakuelekeza kwenye msaada unaofaa.",
+      "helpCta": "Zungumza na timu yetu"
+    },
+    "sectors": {
+      "eyebrow": "Tunaofanya nao kazi",
+      "title": "Sekta tunazozihudumia",
+      "intro": "Tunafanya kazi na kampuni za madini, mafuta na gesi, kilimo na uchukuzi, pamoja na taasisi za serikali, mashirika yasiyo ya kiserikali na wadau wa kimataifa."
+    },
+    "how": {
+      "eyebrow": "Jinsi tunavyofanya kazi",
+      "title": "Njia iliyo wazi kuanzia tathmini ya kwanza hadi uzingatiaji wa kudumu",
+      "steps": {
+        "assess": {
+          "title": "Tathmini",
+          "body": "Tunachunguza eneo lako, shughuli zako na wajibu wako wa kisheria ili kuelewa hatari za kimazingira."
+        },
+        "advise": {
+          "title": "Ushauri",
+          "body": "Tunapendekeza hatua zinazotekelezeka zinazolinda mazingira na kuendana na biashara yako."
+        },
+        "implement": {
+          "title": "Utekelezaji",
+          "body": "Tunafanya kazi bega kwa bega na timu yako kutekeleza hatua zilizokubaliwa."
+        },
+        "sustain": {
+          "title": "Uzingatiaji na Uendelevu",
+          "body": "Tunakusaidia kuendelea kuzingatia sheria na kanuni za mazingira na kuboresha zaidi kadiri muda unavyokwenda."
+        }
+      }
+    },
+    "field": {
+      "eyebrow": "Kazini",
+      "title": "Timu yetu ikiwa kazini",
+      "body": "Ushauri mzuri huanzia eneo la kazi. Picha hizi ni za ziara zetu katika maeneo ya miradi jijini Dar es Salaam.",
+      "link": "Tazama zaidi kazi zetu za uwandani"
+    },
+    "leadership": {
+      "eyebrow": "Uongozi",
+      "title": "Tunaongozwa na wataalamu wa mazingira, uhandisi, tabianchi na sheria",
+      "link": "Ifahamu timu ya uongozi"
+    },
+    "cta": {
+      "title": "Unahitaji kutimiza matakwa ya sheria za mazingira au kupunguza athari za mradi wako?",
+      "body": "Zungumza na timu yetu jijini Dar es Salaam kuhusu uzingatiaji wa sheria za mazingira, tathmini ya athari kwa mazingira na msaada wa uendelevu kwa mradi wako."
+    }
+  },
+  "about": {
+    "metaTitle": "Kuhusu sisi",
+    "metaDescription": "Ecosphere Solutions ni kampuni ya ushauri wa mazingira iliyopo Dar es Salaam, Tanzania. Soma kuhusu kampuni yetu, dhamira na dira yetu, na uifahamu timu ya uongozi.",
+    "eyebrow": "Kuhusu sisi",
+    "title": "Kuhusu Ecosphere Solutions",
+    "intro": "Kampuni ya ushauri wa mazingira yenye makao yake Dar es Salaam, inayofanya kazi kwa ajili ya sayari yenye afya bora na biashara imara.",
+    "companyTitle": "Kampuni yetu",
+    "leadershipEyebrow": "Uongozi",
+    "leadershipTitle": "Wanaoongoza kazi zetu",
+    "leadershipIntro": "Wakurugenzi wetu wanaunganisha utaalamu katika utawala wa mazingira, uhandisi, tabianchi na nishati, pamoja na uzingatiaji wa sheria na kanuni."
+  },
+  "services": {
+    "metaTitle": "Huduma za ushauri wa mazingira Tanzania",
+    "metaDescription": "Huduma za ushauri wa mazingira za Ecosphere Solutions nchini Tanzania: uhifadhi, ulinzi wa maliasili, ushirikishwaji wa jamii, utafiti, uzingatiaji wa sheria za mazingira, kujenga uwezo na ubia.",
+    "eyebrow": "Huduma",
+    "title": "Huduma za ushauri wa mazingira Tanzania",
+    "intro": "Ecosphere Solutions inasaidia miradi ya madini, mafuta na gesi, kilimo na uchukuzi kupitia maeneo saba ya huduma yanayoshirikiana, kuanzia uhifadhi wa mazingira hadi uzingatiaji wa sheria na kanuni.",
+    "detailEyebrow": "Huduma",
+    "includedTitle": "Kinachojumuishwa",
+    "includedPlaceholder": "Maudhui ya muda {number}: shughuli au matokeo ya huduma hii, yataongezwa.",
+    "sectorsTitle": "Sekta husika",
+    "requestService": "Omba huduma hii",
+    "requestTitle": "Zungumza nasi kuhusu {service}",
+    "requestBody": "Tutumie maelezo machache kuhusu mradi wako nasi tutawasiliana nawe kupanga kikao cha ushauri.",
+    "otherServices": "Huduma nyingine",
+    "allServices": "Huduma zote"
+  },
+  "sectors": {
+    "metaTitle": "Sekta tunazozihudumia",
+    "metaDescription": "Ushauri wa mazingira kwa sekta za madini, mafuta na gesi, kilimo na uchukuzi nchini Tanzania: changamoto za kimazingira za kila sekta na huduma za Ecosphere Solutions zinazohusika.",
+    "eyebrow": "Sekta",
+    "title": "Sekta tunazozihudumia",
+    "intro": "Kila sekta huathiri mazingira kwa namna yake. Hizi ni sekta tunazozilenga, changamoto zinazozikabili mara nyingi na huduma zinazohusika.",
+    "challengeTitle": "Changamoto ya kimazingira",
+    "servicesTitle": "Huduma zinazohusika"
+  },
+  "projects": {
+    "metaTitle": "Miradi na matokeo",
+    "metaDescription": "Kazi za uwandani na mifano ya miradi ya Ecosphere Solutions, kampuni ya ushauri wa mazingira iliyopo Dar es Salaam, Tanzania.",
+    "eyebrow": "Miradi na matokeo",
+    "title": "Miradi na matokeo",
+    "intro": "Mtazamo wa kazi zetu katika maeneo ya miradi. Maelezo ya kina ya miradi yatafuata.",
+    "galleryTitle": "Timu yetu ikiwa uwandani",
+    "galleryIntro": "Picha za ziara za maeneo ya miradi na vikao vya miradi jijini Dar es Salaam.",
+    "videosTitle": "Video fupi kutoka maeneo ya miradi",
+    "videosIntro": "Video hizi hazina sauti na hupakuliwa pale tu unapobonyeza kitufe cha kucheza, hivyo hazitumii data yako hadi utakapoamua kutazama.",
+    "videoLabel": "Video: {title}",
+    "caseStudiesTitle": "Mifano ya miradi",
+    "caseStudiesIntro": "Maelezo ya kina ya miradi yanaandaliwa. Maingizo yaliyo hapa chini ni maudhui ya muda na yatabadilishwa na miradi halisi.",
+    "sectorLabel": "Sekta",
+    "locationLabel": "Mahali"
+  },
+  "leadership": {
+    "metaTitle": "Uongozi",
+    "metaDescription": "Wafahamu wakurugenzi wa Ecosphere Solutions Limited: wataalamu wa utawala wa mazingira, uhandisi, tabianchi na nishati, na uzingatiaji wa sheria nchini Tanzania.",
+    "eyebrow": "Uongozi",
+    "title": "Timu ya uongozi",
+    "intro": "Wakurugenzi wanaoongoza Ecosphere Solutions wanaunganisha utaalamu katika utawala wa mazingira, uhandisi, tabianchi na nishati, pamoja na uzingatiaji wa sheria na kanuni.",
+    "focusLabel": "Maeneo ya utaalamu",
+    "photoAlt": "Picha ya {name}"
+  },
+  "news": {
+    "metaTitle": "Habari na uchambuzi",
+    "metaDescription": "Habari na uchambuzi kutoka Ecosphere Solutions kuhusu uzingatiaji wa sheria za mazingira, tabianchi na ushauri wa uendelevu nchini Tanzania.",
+    "eyebrow": "Habari na uchambuzi",
+    "title": "Habari na uchambuzi",
+    "intro": "Taarifa na mitazamo kuhusu uzingatiaji wa sheria za mazingira, tabianchi na uendelevu nchini Tanzania.",
+    "placeholderNotice": "Makala zilizo hapa chini ni rasimu za muda. Zitabadilishwa makala halisi za kwanza zitakapokuwa tayari.",
+    "rss": "Jiunge kupitia RSS",
+    "back": "Habari zote",
+    "feedTitle": "Ecosphere Solutions: Habari na uchambuzi"
+  },
+  "contact": {
+    "metaTitle": "Wasiliana nasi",
+    "metaDescription": "Omba ushauri kutoka Ecosphere Solutions, Masaki, Dar es Salaam. Tupigie simu, tuandikie barua pepe au WhatsApp, au tutumie maelezo ya mradi wako.",
+    "eyebrow": "Mawasiliano",
+    "title": "Omba ushauri",
+    "intro": "Tueleze kuhusu mradi wako na msaada unaohitaji. Tutawasiliana nawe ili kupanga mazungumzo.",
+    "detailsTitle": "Maelezo ya mawasiliano",
+    "address": "Anwani",
+    "phone": "Simu",
+    "email": "Barua pepe",
+    "whatsapp": "WhatsApp",
+    "whatsappCta": "Tuandikie kwa WhatsApp",
+    "formTitle": "Tutumie maelezo ya mradi wako",
+    "mapTitle": "Tunapatikana Masaki",
+    "mapFrameTitle": "Ramani inayoonyesha Haile Selassie Road, Masaki, Dar es Salaam",
+    "openMap": "Fungua kwenye Google Maps"
+  },
+  "contactForm": {
+    "name": "Jina kamili",
+    "organisation": "Taasisi au kampuni",
+    "email": "Barua pepe",
+    "phone": "Simu",
+    "service": "Huduma unayohitaji",
+    "servicePlaceholder": "Chagua huduma",
+    "notSure": "Bado sina uhakika",
+    "message": "Maelezo ya mradi",
+    "messageHint": "Mistari michache kuhusu mradi, mahali ulipo na msaada unaohitaji.",
+    "optional": "si lazima",
+    "honeypot": "Acha sehemu hii wazi",
+    "submit": "Tuma ombi",
+    "sending": "Inatuma…",
+    "successTitle": "Asante. Ombi lako limetumwa.",
+    "successBody": "Tumepokea maelezo yako na tutawasiliana nawe hivi karibuni. Kwa jambo la haraka, tupigie simu au tuandikie kwa WhatsApp.",
+    "sendAnother": "Tuma ombi jingine",
+    "errors": {
+      "nameRequired": "Tafadhali andika jina lako kamili.",
+      "emailInvalid": "Tafadhali andika anwani sahihi ya barua pepe.",
+      "phoneInvalid": "Tafadhali andika namba sahihi ya simu, au acha sehemu hii wazi.",
+      "serviceRequired": "Tafadhali chagua huduma, au chagua “Bado sina uhakika”.",
+      "messageShort": "Tafadhali tueleze zaidi kidogo kuhusu mradi wako (angalau herufi 20).",
+      "tooLong": "Maandishi ni marefu mno. Tafadhali yafupishe.",
+      "validation": "Tafadhali kagua sehemu zilizoonyeshwa kisha ujaribu tena.",
+      "rate": "Umetuma maombi kadhaa ndani ya muda mfupi. Tafadhali subiri dakika chache kisha ujaribu tena.",
+      "config": "Fomu haipatikani kwa sasa. Tafadhali tuandikie barua pepe, tupigie simu au tuandikie kwa WhatsApp.",
+      "send": "Samahani, ombi lako halikutumwa. Tafadhali jaribu tena, au tuandikie barua pepe, tupigie simu au tuandikie kwa WhatsApp."
+    }
+  },
+  "notFound": {
+    "title": "Ukurasa haujapatikana",
+    "body": "Ukurasa unaoutafuta haupo au umehamishwa.",
+    "home": "Rudi kwenye ukurasa wa mwanzo"
+  }
+}

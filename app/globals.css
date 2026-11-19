@@ -1,0 +1,385 @@
+@import 'tailwindcss';
+
+/* Brand tokens. These become Tailwind classes such as bg-teal or text-muted. */
+@theme {
+  --color-teal: #005e64;
+  --color-teal-dark: #00444a;
+  --color-teal-darkest: #00323a;
+  --color-lime: #8cc63f;
+  --color-lime-dark: #6fa52a;
+  --color-sky: #5ec3d6;
+  --color-blue: #3b79b8;
+  --color-ink: #10292c;
+  --color-muted: #506567;
+  --color-background: #f6f9f7;
+  --color-line: #dde7e4;
+
+  --radius-card: 18px;
+
+  /* Width at which the full desktop navigation fits in the header. */
+  --breakpoint-nav: 72rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+}
+
+@layer base {
+  :root {
+    --focus-ring: var(--color-teal);
+    --brand-gradient: linear-gradient(90deg, var(--color-lime), var(--color-blue) 55%, var(--color-sky));
+    /* Height of the sticky header (see components/layout/Header.tsx). */
+    --header-h: 4rem;
+  }
+
+  @media (min-width: 72rem) {
+    :root {
+      --header-h: 4.5rem;
+    }
+  }
+
+  html {
+    /* Keeps anchor targets clear of the sticky header. */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+
+  /* Dark sections switch the focus ring to lime so it stays visible. */
+  .on-dark {
+    --focus-ring: var(--color-lime);
+  }
+
+  ::selection {
+    background-color: var(--color-lime);
+    color: var(--color-teal-darkest);
+  }
+}
+
+@layer components {
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -5rem;
+    z-index: 60;
+    border-radius: 999px;
+    background-color: var(--color-lime);
+    padding: 0.75rem 1.25rem;
+    font-weight: 700;
+    color: var(--color-teal-darkest);
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* Small label above a heading, led by a short bar in the logo colours. */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .eyebrow::before {
+    content: '';
+    flex: none;
+    width: 2rem;
+    height: 3px;
+    border-radius: 999px;
+    background-image: var(--brand-gradient);
+  }
+
+  .brand-bar {
+    background-image: var(--brand-gradient);
+  }
+
+  .bg-hero {
+    background-color: var(--color-teal-darkest);
+    background-image:
+      radial-gradient(90% 80% at 88% 8%, rgb(0 94 100 / 0.9) 0%, transparent 60%),
+      linear-gradient(165deg, var(--color-teal-dark) 0%, var(--color-teal-darkest) 72%);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Motion. Everything here is switched off for people who ask their
+   device for reduced motion (see the last block).
+------------------------------------------------------------------ */
+
+/* Reveal on scroll. components/layout/RevealObserver.tsx adds
+   .reveal-pending to [data-reveal] elements that are still below the
+   screen, then removes it when they scroll into view. Without
+   JavaScript nothing is ever hidden. */
+[data-reveal]:not(.reveal-pending) {
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.65, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.65, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.reveal-pending[data-reveal='left'] {
+  transform: translateX(-36px);
+}
+
+.reveal-pending[data-reveal='right'] {
+  transform: translateX(36px);
+}
+
+.reveal-pending[data-reveal='zoom'] {
+  transform: scale(0.94);
+}
+
+/* Entrance of the hero text when the page loads. */
+.rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.65, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* The main heading only slides (no fade) so it paints immediately. */
+.rise-solid {
+  animation: rise-solid 0.9s cubic-bezier(0.2, 0.65, 0.2, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+
+@keyframes rise-solid {
+  from {
+    transform: translateY(18px);
+  }
+}
+
+/* Slow settle of the hero photograph. */
+.hero-zoom {
+  animation: hero-zoom 16s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.14);
+  }
+}
+
+.spin-slow {
+  animation: spin 90s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.float {
+  animation: float 7s ease-in-out infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Endless moving strip: two identical tracks side by side. */
+.marquee {
+  display: flex;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  flex: none;
+  align-items: center;
+  min-width: 100%;
+  gap: var(--marquee-gap, 2.5rem);
+  padding-right: var(--marquee-gap, 2.5rem);
+  animation: marquee var(--marquee-duration, 45s) linear infinite;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Scroll-linked effects. components/layout/ScrollEffects.tsx measures how
+   far each [data-scroll] block has travelled through the screen and
+   stores it in --p (0 = entering at the bottom, 1 = leaving at the top).
+   Every rule has a fallback value, so without JavaScript, or with
+   reduced motion, the page is simply still. */
+
+/* Photograph that moves slower than the page around it. */
+.parallax {
+  transform: translateY(calc((var(--p, 0.5) - 0.5) * 16%)) scale(1.18);
+  will-change: transform;
+}
+
+/* Small photo that slides against the larger one behind it. */
+.drift {
+  transform: translateY(calc((0.5 - var(--p, 0.5)) * 90px));
+  will-change: transform;
+}
+
+/* Large statement whose words turn from grey to ink as you scroll.
+   Each word carries its position in --i; --n is the word count. */
+.scroll-words > span {
+  color: color-mix(
+    in srgb,
+    var(--color-ink) calc(clamp(0, calc((var(--p, 1) - 0.14) * 3.4 * var(--n) - var(--i)), 1) * 100%),
+    #7a8c8d
+  );
+  transition: color 0.3s linear;
+}
+
+/* Bar under the header that fills as you move down the page. */
+.scroll-meter {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* ---- Scroll story ("How we work") ----
+   Plain layout first: a dark section with the steps side by side.
+   When ScrollEffects adds .is-pinned the scene stays fixed on screen
+   while scrolling steps through the stages and their photographs. */
+.story-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.1);
+  transition:
+    opacity 0.9s ease,
+    transform 1.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.story-layer:first-child {
+  opacity: 1;
+  transform: none;
+}
+
+.story-bar {
+  transform: scaleX(var(--p, 0));
+  transform-origin: left;
+}
+
+.story.is-pinned {
+  height: calc(var(--steps) * 85svh + 15svh);
+}
+
+.story.is-pinned .story-stage {
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100svh - var(--header-h));
+}
+
+.story.is-pinned .story-steps {
+  display: block;
+  position: relative;
+  height: 17rem;
+}
+
+.story.is-pinned .story-step {
+  position: absolute;
+  inset: auto 0 0 0;
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.7s cubic-bezier(0.2, 0.65, 0.2, 1);
+}
+
+.story.is-pinned[data-step='0'] .story-step:nth-child(1),
+.story.is-pinned[data-step='1'] .story-step:nth-child(2),
+.story.is-pinned[data-step='2'] .story-step:nth-child(3),
+.story.is-pinned[data-step='3'] .story-step:nth-child(4) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.15s;
+}
+
+.story[data-step='1'] .story-layer:nth-child(-n + 2),
+.story[data-step='2'] .story-layer:nth-child(-n + 3),
+.story[data-step='3'] .story-layer:nth-child(-n + 4) {
+  opacity: 1;
+  transform: none;
+}
+
+.story-dot {
+  transition:
+    background-color 0.4s ease,
+    height 0.4s ease;
+}
+
+.story[data-step='0'] .story-dot:nth-child(1),
+.story[data-step='1'] .story-dot:nth-child(2),
+.story[data-step='2'] .story-dot:nth-child(3),
+.story[data-step='3'] .story-dot:nth-child(4) {
+  height: 2.5rem;
+  background-color: var(--color-lime);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal-pending {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* The moving strips become ordinary rows you can swipe. */
+  .marquee {
+    overflow-x: auto;
+  }
+
+  .marquee-track[aria-hidden='true'] {
+    display: none;
+  }
+}
