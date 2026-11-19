@@ -1,9 +1,8 @@
 'use client';
 
-import { Menu, X } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
-import { buttonClass } from '@/components/ui/ButtonLink';
 import { navItems } from '@/content/site';
 import { Link, usePathname } from '@/i18n/navigation';
 
@@ -91,8 +90,13 @@ export function MobileMenu() {
               </li>
             ))}
           </ul>
-          <Link href="/contact" onClick={() => setOpenedOn(null)} className={buttonClass('lime', 'mt-5 w-full')}>
+          <Link
+            href="/contact"
+            onClick={() => setOpenedOn(null)}
+            className="mt-6 inline-flex items-center gap-2 text-lg font-semibold text-white underline decoration-lime decoration-2 underline-offset-8"
+          >
             {t('cta')}
+            <ArrowRight className="h-5 w-5 text-lime" strokeWidth={1.5} aria-hidden="true" />
           </Link>
         </nav>
       </div>

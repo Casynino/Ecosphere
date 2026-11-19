@@ -129,5 +129,5 @@ Each push to the main branch triggers a new Vercel build, so push finished work 
 npm run lint && npm run check:i18n && npm run build
 ```
 
-Lighthouse (mobile, production build, nine main pages, 19 November 2026): Performance 93 to 100
-(home page 100), Accessibility 100, Best Practices 100, SEO 100.
+Lighthouse (mobile, production build, 19 November 2026): Performance 92 to 100 (home page 100),
+Accessibility 100, Best Practices 100, SEO 100.

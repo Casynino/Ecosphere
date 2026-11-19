@@ -15,7 +15,8 @@ type NetworkInfo = { saveData?: boolean; effectiveType?: string };
  * Moving background for the home page: drone footage that loops silently.
  *
  * The still picture is on screen straight away. The video is only fetched
- * afterwards, fades in once it is playing, and pauses when scrolled away.
+ * after the page has loaded, fades in once it is playing, and pauses when
+ * scrolled away.
  * It is skipped entirely (the still picture stays) for visitors on a data
  * saver or 2G connection and for those who prefer reduced motion.
  * Phones get a smaller, upright cut of the same footage.
@@ -39,19 +40,26 @@ export function HeroVideo({ poster, alt }: Props) {
     };
     const onPlaying = () => setPlaying(true);
 
-    video.src = window.innerWidth < 768 ? '/videos/hero-mobile.mp4' : '/videos/hero.mp4';
     video.addEventListener('playing', onPlaying);
-    start();
 
-    const watcher = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) start();
-      else video.pause();
-    });
-    watcher.observe(video);
+    // The film is fetched only once the page itself has finished loading,
+    // so it never slows down the first view. It then plays while on screen.
+    let watcher: IntersectionObserver | undefined;
+    const begin = () => {
+      video.src = window.innerWidth < 768 ? '/videos/hero-mobile.mp4' : '/videos/hero.mp4';
+      watcher = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) start();
+        else video.pause();
+      });
+      watcher.observe(video);
+    };
+    if (document.readyState === 'complete') begin();
+    else window.addEventListener('load', begin, { once: true });
 
     return () => {
+      window.removeEventListener('load', begin);
       video.removeEventListener('playing', onPlaying);
-      watcher.disconnect();
+      watcher?.disconnect();
     };
   }, []);
 

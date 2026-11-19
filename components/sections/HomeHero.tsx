@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import type { CSSProperties } from 'react';
-import { ButtonLink } from '@/components/ui/ButtonLink';
+import { CtaLink } from '@/components/ui/CtaLink';
 import { Container } from '@/components/ui/Container';
 import { stock } from '@/content/media';
 import type { Locale } from '@/content/types';
@@ -10,20 +10,21 @@ const delay = (ms: number) => ({ '--delay': `${ms}ms` }) as CSSProperties;
 
 /**
  * Opening scene of the home page: drone footage over green East African
- * savanna fills the screen. It opens like a window growing to full size,
- * then the headline rises in at the foot of the picture.
+ * savanna fills the screen. It opens like a window growing to full size
+ * (globals.css, .hero-window) while the headline rises in at the foot.
  */
 export async function HomeHero({ locale }: { locale: Locale }) {
   const t = await getTranslations('home.hero');
 
   return (
     <section data-scroll className="relative isolate overflow-hidden text-white">
-      <div className="hero-open absolute inset-0 -z-10 overflow-hidden bg-night">
+      <div className="absolute inset-0 -z-10 overflow-hidden bg-night">
         <div className="parallax absolute inset-0">
           <HeroVideo poster={stock.heroSavanna.src} alt={stock.heroSavanna.alt[locale]} />
         </div>
         {/* Shade under the header and behind the words; the foot of the picture sinks into the dark page. */}
         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgb(2_19_22)_0%,rgb(2_19_22/0.72)_22%,rgb(2_19_22/0.12)_58%,rgb(2_19_22/0.4)_100%)]" />
+        <div className="hero-window" aria-hidden="true" />
       </div>
 
       <Container className="flex min-h-svh flex-col justify-end pb-10 pt-[calc(var(--header-h)+2rem)] sm:pb-14">
@@ -33,9 +34,9 @@ export async function HomeHero({ locale }: { locale: Locale }) {
           style={delay(350)}
         >
           <p className="hidden max-w-md text-lg text-white/85 sm:block">{t('sub')}</p>
-          <ButtonLink href="/contact" className="self-start sm:self-auto">
+          <CtaLink href="/contact" className="self-start sm:self-auto">
             {t('primaryCta')}
-          </ButtonLink>
+          </CtaLink>
         </div>
       </Container>
     </section>

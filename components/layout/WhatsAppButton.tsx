@@ -19,9 +19,9 @@ export async function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t('whatsapp')}
-      className="fixed bottom-5 right-5 z-30 flex h-14 w-14 items-center justify-center rounded-full bg-[#128c7e] text-white shadow-[0_10px_30px_-8px_rgb(0_50_58/0.6)] transition-transform hover:scale-105"
+      className="fixed bottom-4 right-4 z-30 flex h-12 w-12 items-center justify-center rounded-full sm:bottom-5 sm:right-5 sm:h-14 sm:w-14 bg-[#128c7e] text-white shadow-[0_10px_30px_-8px_rgb(0_50_58/0.6)] transition-transform hover:scale-105"
     >
-      <WhatsAppIcon className="h-7 w-7" />
+      <WhatsAppIcon className="h-6 w-6 sm:h-7 sm:w-7" />
     </a>
   );
 }

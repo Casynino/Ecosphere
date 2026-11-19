@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { ButtonLink } from '@/components/ui/ButtonLink';
+import { CtaLink } from '@/components/ui/CtaLink';
 import { Container } from '@/components/ui/Container';
 import { stock } from '@/content/media';
 import type { Locale } from '@/content/types';
@@ -30,9 +30,9 @@ export async function CtaBanner({ locale }: { locale: Locale }) {
         <Container className="pb-14 pt-32 sm:pb-20">
           <h2 className="display-2 max-w-4xl">{t('home.cta.title')}</h2>
           <p className="mt-6 hidden max-w-xl text-lg text-white/85 sm:block">{t('home.cta.body')}</p>
-          <ButtonLink href="/contact" className="mt-8">
+          <CtaLink href="/contact" className="mt-8">
             {t('common.requestConsultation')}
-          </ButtonLink>
+          </CtaLink>
         </Container>
       </div>
     </section>

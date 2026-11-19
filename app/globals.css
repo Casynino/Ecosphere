@@ -224,17 +224,26 @@
   }
 }
 
-/* The home page film opens like a window growing to fill the screen. */
-.hero-open {
-  animation: hero-open 1.5s var(--ease-glide) both;
+/* The home page film opens like a window growing to fill the screen.
+   The picture underneath is complete from the first moment (which keeps the
+   page quick to show); what moves is a dark frame around a clear "window".
+   The frame is one very large shadow, so only a transform is animated. */
+.hero-window {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: 0 0 0 100vmax var(--color-night);
+  animation: hero-window 1.5s var(--ease-glide) both;
 }
 
-@keyframes hero-open {
+@keyframes hero-window {
   from {
-    clip-path: inset(14% 12% 14% 12% round 24px);
+    transform: scale(0.8);
+    border-radius: 28px;
   }
   to {
-    clip-path: inset(0 0 0 0 round 0px);
+    transform: scale(1);
+    border-radius: 0;
   }
 }
 
