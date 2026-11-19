@@ -74,7 +74,7 @@ export function MobileMenu() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="absolute inset-x-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-teal-darkest shadow-2xl"
+        className="absolute inset-x-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-night shadow-2xl"
       >
         <nav aria-label={t('mainNav')} className="mx-auto max-w-7xl px-5 pb-6 pt-3 sm:px-8">
           <ul>

@@ -18,7 +18,8 @@ import { organizationJsonLd } from '@/lib/structured-data';
 import '../globals.css';
 
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', display: 'swap' });
-const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces', display: 'swap' });
+// The optical-size axis makes the serif finer and more elegant at large sizes.
+const fraunces = Fraunces({ subsets: ['latin'], axes: ['opsz'], variable: '--font-fraunces', display: 'swap' });
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 }
 
 export const viewport: Viewport = {
-  themeColor: '#00444a',
+  themeColor: '#021316',
 };
 
 export default async function LocaleLayout({ children, params }: LocaleParams & { children: ReactNode }) {
@@ -57,7 +58,7 @@ export default async function LocaleLayout({ children, params }: LocaleParams & 
           </a>
           {/* Without JavaScript the header cannot react to scrolling, so keep it solid. */}
           <noscript>
-            <style>{'.site-header{background:#00444a}'}</style>
+            <style>{'.site-header{background:#021316}'}</style>
           </noscript>
           <LivingBackground />
           <Header />

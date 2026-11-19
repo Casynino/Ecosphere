@@ -50,7 +50,7 @@ export default async function NewsPage({ params }: LocaleParams) {
       <section className="py-16 lg:py-24">
         <Container>
           {hasPlaceholders && (
-            <p className="mb-10 rounded-2xl border border-dashed border-teal/50 bg-teal/5 p-4 font-semibold text-teal">
+            <p className="mb-10 rounded-2xl border border-dashed border-lime/50 bg-lime/10 p-4 font-semibold text-lime">
               {t('news.placeholderNotice')}
             </p>
           )}
@@ -63,13 +63,13 @@ export default async function NewsPage({ params }: LocaleParams) {
                   className="panel group flex h-full flex-col rounded-card p-7 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-30px_rgb(0_68_74/0.6)] sm:p-8"
                 >
                   <div className="flex flex-wrap items-center gap-3 text-sm">
-                    <time dateTime={article.date} className="font-semibold text-muted">
+                    <time dateTime={article.date} className="font-semibold text-mist">
                       {format.dateTime(new Date(article.date), { dateStyle: 'long' })}
                     </time>
                     {article.placeholder && <PlaceholderBadge label={t('common.placeholder')} />}
                   </div>
-                  <h2 className="mt-3 text-2xl text-ink">{article.title}</h2>
-                  <p className="mt-3 flex-1 text-muted">{article.excerpt}</p>
+                  <h2 className="mt-3 text-2xl text-snow">{article.title}</h2>
+                  <p className="mt-3 flex-1 text-mist">{article.excerpt}</p>
                 </Link>
               </li>
             ))}
@@ -77,7 +77,7 @@ export default async function NewsPage({ params }: LocaleParams) {
 
           <a
             href={localePath(locale, '/news/feed.xml')}
-            className="mt-12 inline-flex items-center gap-2 font-bold text-teal hover:text-teal-dark"
+            className="mt-12 inline-flex items-center gap-2 font-bold text-lime hover:text-white"
           >
             <Rss className="h-5 w-5" aria-hidden="true" />
             {t('news.rss')}

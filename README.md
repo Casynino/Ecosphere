@@ -67,8 +67,8 @@ Image sources are in `IMAGE_CREDITS.md`.
 ```
 app/[locale]/        Pages (one folder per page), layout, RSS feed
 app/sitemap.ts       sitemap.xml        app/robots.ts   robots.txt
-components/layout    Header, footer, language switcher, WhatsApp button, scroll effects, misty background
-components/sections  Home hero (drone video), page banners, scroll story, call to action
+components/layout    Header, footer, language switcher, WhatsApp button, scroll effects, contour-map background
+components/sections  Home page scenes (hero video, about, services, sectors, how we work), page banners, call to action
 components/cards     Service, sector and leadership cards
 components/contact   Contact form
 content/             All editable content, typed, in both languages
@@ -78,15 +78,19 @@ messages/            Interface text: en.json, sw.json
 proxy.ts             Serves English at "/" and Swahili at "/sw"
 ```
 
-### Motion
+### Look and motion
+The site is dark and cinematic: photographs and film carry the colour, titles are large and light.
 All movement is in `app/globals.css` and three small scripts, with no animation library:
-- `components/layout/ScrollEffects.tsx`: reveal on scroll, parallax, the pinned "How we work" story.
+- `components/layout/ScrollEffects.tsx`: reveal on scroll, parallax, and the pinned "scenes" of the home page
+  (About, Services, Sectors, How we work). A scene fills the screen and steps through its content as the
+  visitor scrolls; see the "Scenes" section of `globals.css` for how to mark one up.
 - `components/sections/HeroVideo.tsx`: the looping drone video behind the home page headline. It loads after
   the still picture, is about 2.7 MB on computers and 0.9 MB on phones, and is skipped on data-saver or 2G connections.
-- `components/layout/LivingBackground.tsx`: the scene behind every page, a quiet flight over misty forest drawn
-  with WebGL. It moves forward as the page is scrolled.
+- `components/layout/LivingBackground.tsx`: the faint contour-map lines behind every page, drawn with WebGL.
+  They shift as the page is scrolled.
 
-Visitors who ask their device for reduced motion get a still page. Without JavaScript the page reads normally.
+Visitors who ask their device for reduced motion get a still page with every scene written out in full.
+Without JavaScript the page reads normally.
 
 ### Contact form
 `lib/contact/` holds the validation rules (shared by browser and server), the server action, a basic

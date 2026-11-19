@@ -27,7 +27,7 @@ no attribution required). Trimmed to a 14-second seamless loop, resized and expo
 | green-hills.jpg | https://unsplash.com/photos/oQq2KYU_SAs | @evans_dimsphoto |
 | kilimanjaro.jpg | https://unsplash.com/photos/mfX814jtyro | @sickle |
 | river-forest.jpg | https://unsplash.com/photos/vkQgb1lZZPQ | @ivoprod |
-| forest-canopy.jpg (also the source of `public/images/textures/canopy.jpg`, the forest in the moving background) | https://unsplash.com/photos/fqooKAlynf0 | @andrikyrychok_art |
+| forest-canopy.jpg | https://unsplash.com/photos/fqooKAlynf0 | @andrikyrychok_art |
 | mangrove-aerial.jpg | https://unsplash.com/photos/jSgCHNQqEQ4 | @nazyhu___ |
 | planting-seedling.jpg | https://unsplash.com/photos/EkEdHarUPTs | @vitormonthay |
 | hands-soil.jpg | https://unsplash.com/photos/bYZn_C-RswQ | @greenforce_staffing |

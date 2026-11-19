@@ -69,13 +69,13 @@ export default async function ServicePage({ params }: Props) {
           <div>
             <Link
               href="/services"
-              className="group inline-flex items-center gap-2 font-bold text-teal hover:text-teal-dark"
+              className="group inline-flex items-center gap-2 font-bold text-lime hover:text-white"
             >
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
               {t('services.allServices')}
             </Link>
 
-            <p className="mt-8 font-display text-2xl leading-snug text-ink sm:text-[1.75rem]">{service.intro[locale]}</p>
+            <p className="mt-8 font-display text-2xl leading-snug text-snow sm:text-[1.75rem]">{service.intro[locale]}</p>
 
             <div className="mt-12" data-reveal>
               <div className="flex flex-wrap items-center gap-3">
@@ -85,10 +85,10 @@ export default async function ServicePage({ params }: Props) {
               <ul className="mt-6 space-y-3">
                 {(included ?? [1, 2, 3].map((number) => t('services.includedPlaceholder', { number }))).map((item, index) => (
                   <li key={item} className="panel flex gap-4 rounded-2xl p-4">
-                    <span className="font-display text-lg text-teal" aria-hidden="true">
+                    <span className="font-display text-lg text-lime" aria-hidden="true">
                       {String(index + 1).padStart(2, '0')}
                     </span>
-                    <span className={included ? 'text-ink' : 'text-muted'}>{item}</span>
+                    <span className={included ? 'text-snow' : 'text-mist'}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -99,7 +99,7 @@ export default async function ServicePage({ params }: Props) {
               <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-lg">
                 {service.sectors.map((slug) => (
                   <li key={slug}>
-                    <Link href={`/sectors#${slug}`} className="font-semibold text-teal underline underline-offset-4 hover:text-teal-dark">
+                    <Link href={`/sectors#${slug}`} className="font-semibold text-lime underline underline-offset-4 hover:text-white">
                       {getSector(slug).name[locale]}
                     </Link>
                   </li>
@@ -130,7 +130,7 @@ export default async function ServicePage({ params }: Props) {
       <section className="pb-16 lg:pb-24">
         <Container>
           <h2 className="text-2xl sm:text-3xl">{t('services.otherServices')}</h2>
-          <ul className="panel mt-8 divide-y divide-ink/8 overflow-hidden rounded-card sm:grid sm:grid-cols-3 sm:gap-6 sm:divide-y-0 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:shadow-none">
+          <ul className="panel mt-8 divide-y divide-snow/8 overflow-hidden rounded-card sm:grid sm:grid-cols-3 sm:gap-6 sm:divide-y-0 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:shadow-none">
             {others.map((item) => (
               <li key={item.slug}>
                 <ServiceCard service={item} locale={locale} brief />

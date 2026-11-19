@@ -11,7 +11,7 @@ export async function Footer() {
   const { address } = site;
 
   return (
-    <footer className="on-dark relative bg-teal-darkest text-white">
+    <footer className="relative border-t border-snow/10 bg-night/80 text-white">
       <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-14 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.3fr] lg:py-16">
         <div>
           <Image src={logo} alt="Ecosphere Solutions" sizes="190px" className="h-14 w-auto" />

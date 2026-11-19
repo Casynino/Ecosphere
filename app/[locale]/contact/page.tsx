@@ -22,10 +22,10 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 function Detail({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
   return (
     <li className="panel flex gap-4 rounded-card p-5">
-      <span className="mt-1 shrink-0 text-teal">{icon}</span>
+      <span className="mt-1 shrink-0 text-lime">{icon}</span>
       <div>
-        <p className="text-sm font-bold text-teal">{label}</p>
-        <div className="mt-0.5 text-ink">{children}</div>
+        <p className="text-sm font-bold text-lime">{label}</p>
+        <div className="mt-0.5 text-snow">{children}</div>
       </div>
     </li>
   );
@@ -53,12 +53,12 @@ export default async function ContactPage({ params }: LocaleParams) {
                 </address>
               </Detail>
               <Detail icon={<Phone className="h-5 w-5" aria-hidden="true" />} label={t('phone')}>
-                <a href={`tel:${site.phone.e164}`} className="font-semibold hover:text-teal">
+                <a href={`tel:${site.phone.e164}`} className="font-semibold hover:text-lime">
                   {site.phone.display}
                 </a>
               </Detail>
               <Detail icon={<Mail className="h-5 w-5" aria-hidden="true" />} label={t('email')}>
-                <a href={`mailto:${site.email}`} className="break-all font-semibold hover:text-teal">
+                <a href={`mailto:${site.email}`} className="break-all font-semibold hover:text-lime">
                   {site.email}
                 </a>
               </Detail>
@@ -67,7 +67,7 @@ export default async function ContactPage({ params }: LocaleParams) {
                   href={site.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold hover:text-teal"
+                  className="font-semibold hover:text-lime"
                 >
                   {t('whatsappCta')}
                 </a>
@@ -95,7 +95,7 @@ export default async function ContactPage({ params }: LocaleParams) {
               href={site.mapLinkUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-bold text-teal hover:text-teal-dark"
+              className="inline-flex items-center gap-2 font-bold text-lime hover:text-white"
             >
               {t('openMap')}
               <ExternalLink className="h-4 w-4" aria-hidden="true" />

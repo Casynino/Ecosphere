@@ -6,7 +6,7 @@ import { Link } from '@/i18n/navigation';
 export function ArrowLink({ children, className = '', ...props }: ComponentProps<typeof Link>) {
   return (
     <Link
-      className={`group inline-flex items-center gap-1.5 font-semibold text-teal transition-colors duration-150 hover:text-teal-dark ${className}`}
+      className={`group inline-flex items-center gap-1.5 font-semibold text-lime transition-colors duration-150 hover:text-white ${className}`}
       {...props}
     >
       {children}

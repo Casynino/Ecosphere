@@ -21,12 +21,12 @@ type Props = {
  * card with the photo on top. See ServiceList for the wrapper.
  */
 export function ServiceCard({ service, locale, heading: Heading = 'h3', brief = false, wide = false }: Props) {
-  const text = 'mt-0.5 text-[0.9375rem] leading-snug text-muted sm:mt-2 sm:leading-normal';
+  const text = 'mt-0.5 text-[0.9375rem] leading-snug text-mist sm:mt-2 sm:leading-normal';
 
   return (
     <Link
       href={`/services/${service.slug}`}
-      className="group flex h-full items-center gap-4 p-4 transition-colors duration-150 sm:panel sm:flex-col sm:items-stretch sm:gap-0 sm:overflow-hidden sm:rounded-card sm:p-0 sm:hover:border-teal/30"
+      className="group flex h-full items-center gap-4 p-4 transition-colors duration-150 sm:panel sm:flex-col sm:items-stretch sm:gap-0 sm:overflow-hidden sm:rounded-card sm:p-0 sm:hover:border-lime/30"
     >
       <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl sm:h-44 sm:w-full sm:rounded-none">
         <Image
@@ -41,7 +41,7 @@ export function ServiceCard({ service, locale, heading: Heading = 'h3', brief = 
         />
       </div>
       <div className="min-w-0 flex-1 sm:p-6">
-        <Heading className="font-sans text-[1.0625rem] font-semibold leading-snug tracking-normal text-ink transition-colors duration-150 group-hover:text-teal sm:text-lg">
+        <Heading className="font-sans text-[1.0625rem] font-semibold leading-snug tracking-normal text-snow transition-colors duration-150 group-hover:text-lime sm:text-lg">
           {service.title[locale]}
         </Heading>
         {brief && wide ? (
@@ -53,7 +53,7 @@ export function ServiceCard({ service, locale, heading: Heading = 'h3', brief = 
           <p className={text}>{brief ? service.tagline[locale] : service.summary[locale]}</p>
         )}
       </div>
-      <ChevronRight className="h-[18px] w-[18px] shrink-0 text-muted sm:hidden" strokeWidth={1.5} aria-hidden="true" />
+      <ChevronRight className="h-[18px] w-[18px] shrink-0 text-mist sm:hidden" strokeWidth={1.5} aria-hidden="true" />
     </Link>
   );
 }
@@ -65,7 +65,7 @@ export function ServiceCard({ service, locale, heading: Heading = 'h3', brief = 
  */
 export function ServiceList({ services, locale, heading, brief }: Omit<Props, 'service' | 'wide'> & { services: Service[] }) {
   return (
-    <ul className="panel divide-y divide-ink/8 overflow-hidden rounded-card sm:grid sm:grid-cols-2 sm:gap-6 sm:divide-y-0 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:shadow-none lg:grid-cols-4">
+    <ul className="panel divide-y divide-snow/8 overflow-hidden rounded-card sm:grid sm:grid-cols-2 sm:gap-6 sm:divide-y-0 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:shadow-none lg:grid-cols-4">
       {services.map((service, index) => (
         <li key={service.slug} className={index === 0 ? 'sm:col-span-2' : ''}>
           <ServiceCard service={service} locale={locale} heading={heading} brief={brief} wide={index === 0} />

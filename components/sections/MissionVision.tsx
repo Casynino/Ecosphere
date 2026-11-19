@@ -1,25 +1,25 @@
 import { getTranslations } from 'next-intl/server';
 import type { CSSProperties } from 'react';
 
-/** The Mission and Vision cards, shared by the Home and About pages. */
+/** Mission and Vision side by side, each under a thin rule. Used on the About page. */
 export async function MissionVision() {
   const t = await getTranslations('company');
-  const cards = [
+  const items = [
     { title: t('missionTitle'), body: t('mission') },
     { title: t('visionTitle'), body: t('vision') },
   ];
 
   return (
-    <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
-      {cards.map((card, index) => (
+    <div className="grid gap-10 md:grid-cols-2 md:gap-16">
+      {items.map((item, index) => (
         <article
-          key={card.title}
+          key={item.title}
           data-reveal
           style={{ '--reveal-delay': `${index * 60}ms` } as CSSProperties}
-          className="panel rounded-card p-6 sm:p-8"
+          className="border-t border-snow/20 pt-6"
         >
-          <h3 className="text-lg text-teal sm:text-xl">{card.title}</h3>
-          <p className="mt-3 text-muted">{card.body}</p>
+          <h3 className="display-3">{item.title}</h3>
+          <p className="mt-4 text-lg text-mist">{item.body}</p>
         </article>
       ))}
     </div>

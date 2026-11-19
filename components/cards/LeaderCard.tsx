@@ -18,15 +18,13 @@ function Portrait({ leader, alt, className, sizes }: { leader: Leader; alt: stri
   );
 }
 
-/** Portrait card for the Home page preview. */
+/** Portrait with the name beneath it, for the Home page. */
 export function LeaderPreviewCard({ leader, photoAlt }: { leader: Leader; photoAlt: string }) {
   return (
-    <article className="panel h-full overflow-hidden rounded-card">
-      <Portrait leader={leader} alt={photoAlt} className="aspect-[4/5]" sizes="(min-width: 1024px) 300px, 50vw" />
-      <div className="p-3 sm:p-5">
-        <h3 className="text-[0.9375rem] leading-snug text-ink sm:text-lg">{leader.name}</h3>
-        <p className="mt-1 text-[0.8125rem] leading-snug text-muted sm:text-[0.9375rem]">{leader.title}</p>
-      </div>
+    <article>
+      <Portrait leader={leader} alt={photoAlt} className="aspect-[4/5] rounded-card" sizes="(min-width: 1024px) 300px, 50vw" />
+      <h3 className="mt-4 text-base leading-snug text-snow sm:text-lg">{leader.name}</h3>
+      <p className="mt-1 text-sm leading-snug text-mist sm:text-[0.9375rem]">{leader.title}</p>
     </article>
   );
 }
@@ -55,11 +53,11 @@ export function LeaderCard({
         sizes="(min-width: 640px) 208px, 92vw"
       />
       <div className="p-5 sm:p-8">
-        <Heading className="font-sans text-xl font-semibold leading-snug tracking-normal text-ink">{leader.name}</Heading>
-        <p className="mt-1 font-semibold text-teal">{leader.title}</p>
-        <p className="mt-4 text-muted">{leader.bio[locale]}</p>
-        <p className="mt-5 text-sm font-semibold text-ink">{focusLabel}</p>
-        <p className="mt-1 text-[0.9375rem] text-muted">{leader.focus[locale].join(' · ')}</p>
+        <Heading className="font-sans text-xl font-semibold leading-snug tracking-normal text-snow">{leader.name}</Heading>
+        <p className="mt-1 font-semibold text-lime">{leader.title}</p>
+        <p className="mt-4 text-mist">{leader.bio[locale]}</p>
+        <p className="mt-5 text-sm font-semibold text-snow">{focusLabel}</p>
+        <p className="mt-1 text-[0.9375rem] text-mist">{leader.focus[locale].join(' · ')}</p>
       </div>
     </article>
   );

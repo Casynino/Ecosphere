@@ -66,7 +66,7 @@ export default async function ProjectsPage({ params }: LocaleParams) {
       {/* Video clips: the video file is only fetched when the visitor presses play */}
       <section className="on-dark bg-hero py-20 text-white sm:py-28">
         <Container>
-          <SectionHeading tone="dark" title={t('projects.videosTitle')} intro={t('projects.videosIntro')} />
+          <SectionHeading title={t('projects.videosTitle')} intro={t('projects.videosIntro')} />
           <ul className="mt-12 grid gap-6 sm:grid-cols-3">
             {fieldVideos.map((video, index) => (
               <li key={video.src} data-reveal style={{ '--reveal-delay': `${index * 110}ms` } as CSSProperties}>
@@ -114,19 +114,19 @@ export default async function ProjectsPage({ params }: LocaleParams) {
                         <PlaceholderBadge label={t('common.placeholder')} />
                       </div>
                     )}
-                    <h3 className="mt-3 text-xl text-ink">{project.title[locale]}</h3>
+                    <h3 className="mt-3 text-xl text-snow">{project.title[locale]}</h3>
                     <dl className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
                       <div className="flex gap-1.5">
-                        <dt className="font-bold text-ink">{t('projects.sectorLabel')}:</dt>
-                        <dd className="text-muted">{project.sector[locale]}</dd>
+                        <dt className="font-bold text-snow">{t('projects.sectorLabel')}:</dt>
+                        <dd className="text-mist">{project.sector[locale]}</dd>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <dt className="sr-only">{t('projects.locationLabel')}</dt>
-                        <MapPin className="h-4 w-4 text-teal" aria-hidden="true" />
-                        <dd className="text-muted">{project.location[locale]}</dd>
+                        <MapPin className="h-4 w-4 text-lime" aria-hidden="true" />
+                        <dd className="text-mist">{project.location[locale]}</dd>
                       </div>
                     </dl>
-                    <p className="mt-4 text-muted">{project.summary[locale]}</p>
+                    <p className="mt-4 text-mist">{project.summary[locale]}</p>
                   </div>
                 </article>
               </li>

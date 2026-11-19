@@ -10,10 +10,8 @@ const sizes = {
 } as const;
 
 const variants = {
-  lime: 'bg-lime text-teal-darkest hover:bg-lime-dark',
-  teal: 'bg-teal text-white hover:bg-teal-dark',
-  outlineLight: 'border border-white/40 text-white hover:bg-white/10',
-  outlineDark: 'border border-ink/15 bg-white text-ink hover:border-teal hover:text-teal',
+  lime: 'bg-lime text-teal-darkest hover:bg-white',
+  outline: 'border border-snow/30 text-snow hover:border-snow hover:bg-snow/10',
 } as const;
 
 export type ButtonVariant = keyof typeof variants;

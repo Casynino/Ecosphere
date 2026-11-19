@@ -17,7 +17,7 @@ import {
 type Option = { value: string; label: string };
 
 const inputClass =
-  'mt-2 block w-full rounded-xl border border-line bg-background px-4 py-3 text-base text-ink transition-colors placeholder:text-muted/70 hover:border-teal/50 focus:border-teal focus:bg-white aria-[invalid=true]:border-red-600';
+  'mt-2 block w-full rounded-xl border border-snow/15 bg-snow/5 px-4 py-3 text-base text-snow transition-colors placeholder:text-mist/60 hover:border-snow/35 focus:border-lime focus:bg-snow/10 aria-[invalid=true]:border-red-400';
 
 /** Consultation request form. Remounting it (new key) gives a fresh, empty form. */
 export function ContactForm({ services }: { services: Option[] }) {
@@ -70,10 +70,10 @@ function Form({ services, onReset }: { services: Option[]; onReset: () => void }
   if (state.status === 'success') {
     return (
       <div ref={statusRef} tabIndex={-1} role="status" className="py-6 text-center outline-none sm:py-10">
-        <CircleCheck className="mx-auto h-14 w-14 text-teal" strokeWidth={1.5} aria-hidden="true" />
-        <h2 className="mt-5 text-2xl text-ink sm:text-3xl">{t('successTitle')}</h2>
-        <p className="mx-auto mt-3 max-w-md text-muted">{t('successBody')}</p>
-        <button type="button" onClick={onReset} className={buttonClass('outlineDark', 'mt-7')}>
+        <CircleCheck className="mx-auto h-14 w-14 text-lime" strokeWidth={1.5} aria-hidden="true" />
+        <h2 className="mt-5 text-2xl text-snow sm:text-3xl">{t('successTitle')}</h2>
+        <p className="mx-auto mt-3 max-w-md text-mist">{t('successBody')}</p>
+        <button type="button" onClick={onReset} className={buttonClass('outline', 'mt-7')}>
           {t('sendAnother')}
         </button>
       </div>
@@ -84,9 +84,9 @@ function Form({ services, onReset }: { services: Option[]; onReset: () => void }
     const error = errors[name];
     return (
       <div>
-        <label htmlFor={name} className="block font-bold text-ink">
+        <label htmlFor={name} className="block font-semibold text-snow">
           {label}
-          {optional && <span className="ml-1.5 font-normal text-muted">({t('optional')})</span>}
+          {optional && <span className="ml-1.5 font-normal text-mist">({t('optional')})</span>}
         </label>
         {control({
           id: name,
@@ -97,7 +97,7 @@ function Form({ services, onReset }: { services: Option[]; onReset: () => void }
           className: inputClass,
         })}
         {error && (
-          <p id={`${name}-error`} className="mt-1.5 text-sm font-semibold text-red-700">
+          <p id={`${name}-error`} className="mt-1.5 text-sm font-semibold text-red-300">
             {t(`errors.${error}`)}
           </p>
         )}
@@ -145,7 +145,7 @@ function Form({ services, onReset }: { services: Option[]; onReset: () => void }
             ref={statusRef}
             tabIndex={-1}
             role="alert"
-            className="mb-5 flex gap-3 rounded-xl border border-red-200 bg-red-50 p-4 font-semibold text-red-800 outline-none"
+            className="mb-5 flex gap-3 rounded-xl border border-red-400/40 bg-red-500/10 p-4 font-semibold text-red-200 outline-none"
           >
             <CircleAlert className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
             {t(`errors.${state.error}`)}

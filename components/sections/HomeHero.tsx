@@ -9,34 +9,33 @@ import { HeroVideo } from './HeroVideo';
 const delay = (ms: number) => ({ '--delay': `${ms}ms` }) as CSSProperties;
 
 /**
- * Opening scene: drone footage flying over green East African savanna
- * towards a cloud-wrapped volcano, filling the screen behind the headline.
- * The scene fades out at the bottom into the misty landscape that runs
- * behind every page.
+ * Opening scene of the home page: drone footage over green East African
+ * savanna fills the screen. It opens like a window growing to full size,
+ * then the headline rises in at the foot of the picture.
  */
 export async function HomeHero({ locale }: { locale: Locale }) {
   const t = await getTranslations('home.hero');
 
   return (
-    <section data-scroll className="on-dark relative isolate overflow-hidden text-white">
-      <div className="absolute inset-0 -z-10 bg-teal-darkest [mask-image:linear-gradient(to_bottom,black_72%,transparent_100%)]">
+    <section data-scroll className="relative isolate overflow-hidden text-white">
+      <div className="hero-open absolute inset-0 -z-10 overflow-hidden bg-night">
         <div className="parallax absolute inset-0">
           <HeroVideo poster={stock.heroSavanna.src} alt={stock.heroSavanna.alt[locale]} />
         </div>
-        {/* Shade behind the words: from the top on phones, from the left on wide screens. */}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(0_36_42/0.78)_0%,rgb(0_36_42/0.4)_48%,rgb(0_36_42/0)_100%)] lg:bg-[linear-gradient(90deg,rgb(0_36_42/0.82)_0%,rgb(0_36_42/0.45)_40%,rgb(0_36_42/0)_70%),linear-gradient(180deg,rgb(0_36_42/0.5)_0%,rgb(0_36_42/0)_30%)]" />
+        {/* Shade under the header and behind the words; the foot of the picture sinks into the dark page. */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgb(2_19_22)_0%,rgb(2_19_22/0.72)_22%,rgb(2_19_22/0.12)_58%,rgb(2_19_22/0.4)_100%)]" />
       </div>
 
-      {/* Phones show only the headline and the button; larger screens add one supporting line. */}
-      <Container className="flex min-h-svh flex-col justify-start pb-[26svh] pt-[calc(var(--header-h)+2.25rem)] lg:justify-center lg:pt-[calc(var(--header-h)+3rem)]">
-        <div className="max-w-3xl">
-          <h1 className="rise-solid text-[2.5rem] leading-[1.05] sm:text-[4rem] lg:text-[5rem] lg:tracking-[-0.03em]">{t('title')}</h1>
-          <p className="rise mt-6 hidden max-w-lg text-xl text-white/85 sm:block" style={delay(120)}>
-            {t('sub')}
-          </p>
-          <div className="rise mt-6 sm:mt-8" style={delay(200)}>
-            <ButtonLink href="/contact">{t('primaryCta')}</ButtonLink>
-          </div>
+      <Container className="flex min-h-svh flex-col justify-end pb-10 pt-[calc(var(--header-h)+2rem)] sm:pb-14">
+        <h1 className="rise-solid display-1 max-w-[17ch]">{t('title')}</h1>
+        <div
+          className="rise mt-6 flex flex-col gap-6 border-t border-white/25 pt-6 sm:mt-8 sm:flex-row sm:items-center sm:justify-between"
+          style={delay(350)}
+        >
+          <p className="hidden max-w-md text-lg text-white/85 sm:block">{t('sub')}</p>
+          <ButtonLink href="/contact" className="self-start sm:self-auto">
+            {t('primaryCta')}
+          </ButtonLink>
         </div>
       </Container>
     </section>

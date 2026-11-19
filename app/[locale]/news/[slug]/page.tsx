@@ -79,7 +79,7 @@ export default async function ArticlePage({ params }: Props) {
           <Content />
           <Link
             href="/news"
-            className="group mt-14 inline-flex items-center gap-2 font-bold text-teal hover:text-teal-dark"
+            className="group mt-14 inline-flex items-center gap-2 font-bold text-lime hover:text-white"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
             {t('news.back')}
