@@ -44,20 +44,32 @@ export function LeaderCard({
   /** Heading level, so the page outline stays in order. */
   heading?: 'h2' | 'h3';
 }) {
+  // Phones: a small portrait beside the name, then the text underneath.
+  // Wider screens: the portrait fills the left side of the card.
   return (
-    <article id={leader.slug} className="panel grid h-full overflow-hidden rounded-card sm:grid-cols-[13rem_1fr]">
+    <article
+      id={leader.slug}
+      className="panel grid h-full grid-cols-[5.5rem_minmax(0,1fr)] gap-x-4 overflow-hidden rounded-card p-5 sm:grid-cols-[13rem_minmax(0,1fr)] sm:grid-rows-[auto_1fr] sm:gap-x-0 sm:p-0"
+    >
       <Portrait
         leader={leader}
         alt={photoAlt}
-        className="aspect-[4/3] sm:aspect-auto sm:min-h-full"
-        sizes="(min-width: 640px) 208px, 92vw"
+        className="aspect-[4/5] self-start rounded-xl sm:row-span-2 sm:aspect-auto sm:h-full sm:self-stretch sm:rounded-none"
+        sizes="(min-width: 640px) 208px, 88px"
       />
-      <div className="p-5 sm:p-8">
-        <Heading className="font-sans text-xl font-semibold leading-snug tracking-normal text-snow">{leader.name}</Heading>
-        <p className="mt-1 font-semibold text-accent">{leader.title}</p>
-        <p className="mt-4 text-mist">{leader.bio[locale]}</p>
+      <div className="self-center sm:self-auto sm:px-8 sm:pt-8">
+        <Heading className="font-sans text-lg font-semibold leading-snug tracking-normal text-snow sm:text-xl">{leader.name}</Heading>
+        <p className="mt-1 text-[0.9375rem] font-semibold leading-snug text-accent sm:text-base">{leader.title}</p>
+      </div>
+      <div className="col-span-2 mt-4 break-words sm:col-span-1 sm:col-start-2 sm:px-8 sm:pb-8">
+        <p className="text-mist">{leader.bio[locale]}</p>
         <p className="mt-5 text-sm font-semibold text-snow">{focusLabel}</p>
-        <p className="mt-1 text-[0.9375rem] text-mist">{leader.focus[locale].join(' · ')}</p>
+        {/* One per line, so nothing is squeezed or cut on a narrow screen. */}
+        <ul className="mt-1 space-y-0.5 text-[0.9375rem] text-mist">
+          {leader.focus[locale].map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
       </div>
     </article>
   );
