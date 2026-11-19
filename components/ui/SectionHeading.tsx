@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 type Props = {
   eyebrow?: string;
   title: string;
+  /** Supporting line. Hidden on phones to keep small screens uncluttered. */
   intro?: string;
   /** "dark" for headings placed on a dark background. */
   tone?: 'light' | 'dark';
@@ -25,7 +26,7 @@ export function SectionHeading({ eyebrow, title, intro, tone = 'light', action, 
           </h2>
         </div>
         {intro && (
-          <p data-reveal className={`mt-4 text-lg ${dark ? 'text-white/85' : 'text-ink/80'}`}>
+          <p data-reveal className={`mt-4 hidden text-lg sm:block ${dark ? 'text-white/85' : 'text-ink/80'}`}>
             {intro}
           </p>
         )}

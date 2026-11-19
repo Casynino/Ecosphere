@@ -32,7 +32,9 @@ export function PageHero({ eyebrow, title, intro, photo, locale, children }: Pro
               alt={photo.alt[locale]}
               fill
               preload
-              sizes="100vw"
+              // The banner sits under a dark shade, so phones can take a smaller, lighter file.
+              sizes="(max-width: 768px) 80vw, 100vw"
+              quality={45}
               placeholder="blur"
               className="hero-zoom object-cover"
               style={{ objectPosition: photo.position }}
@@ -41,7 +43,7 @@ export function PageHero({ eyebrow, title, intro, photo, locale, children }: Pro
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(0_36_42/0.84)_0%,rgb(0_36_42/0.66)_60%,rgb(0_36_42/0.2)_100%)] lg:bg-[linear-gradient(90deg,rgb(0_36_42/0.9)_0%,rgb(0_36_42/0.62)_45%,rgb(0_36_42/0.08)_82%)]" />
         </div>
       )}
-      <Container className={`flex flex-col justify-center pt-16 sm:pt-20 ${photo ? 'min-h-[58svh] pb-[20svh]' : 'pb-16 sm:pb-20'}`}>
+      <Container className={`flex flex-col justify-center pt-[calc(var(--header-h)+4rem)] ${photo ? 'min-h-[66svh] pb-[20svh]' : 'pb-16 sm:pb-20'}`}>
         {eyebrow && (
           <p className="eyebrow rise text-lime" style={delay(60)}>
             {eyebrow}

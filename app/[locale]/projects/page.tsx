@@ -6,6 +6,7 @@ import type { CSSProperties } from 'react';
 import { CtaBanner } from '@/components/sections/CtaBanner';
 import { PageHero } from '@/components/sections/PageHero';
 import { Container } from '@/components/ui/Container';
+import { LazyVideo } from '@/components/ui/LazyVideo';
 import { ImagePlaceholder, PlaceholderBadge } from '@/components/ui/Placeholder';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { fieldGallery, fieldVideos, photos } from '@/content/media';
@@ -27,7 +28,7 @@ export default async function ProjectsPage({ params }: LocaleParams) {
     <>
       <PageHero
         locale={locale}
-        photo={photos.cranesAndSkyline}
+        photo={photos.teamAtHarbour}
         eyebrow={t('projects.eyebrow')}
         title={t('projects.title')}
         intro={t('projects.intro')}
@@ -51,7 +52,8 @@ export default async function ProjectsPage({ params }: LocaleParams) {
                   src={photo.src}
                   alt={photo.alt[locale]}
                   fill
-                  sizes={photo.shape === 'landscape' ? '(min-width: 1024px) 620px, 100vw' : '(min-width: 1024px) 300px, 50vw'}
+                  sizes={photo.shape === 'landscape' ? '(min-width: 1024px) 620px, 85vw' : '(min-width: 1024px) 300px, 45vw'}
+                  quality={60}
                   placeholder="blur"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                   style={{ objectPosition: photo.position }}
@@ -62,7 +64,7 @@ export default async function ProjectsPage({ params }: LocaleParams) {
         </Container>
       </section>
 
-      {/* Video clips: nothing downloads until the visitor presses play */}
+      {/* Video clips: the video file is only fetched when the visitor presses play */}
       <section className="on-dark bg-hero py-20 text-white sm:py-28">
         <Container>
           <SectionHeading tone="dark" title={t('projects.videosTitle')} intro={t('projects.videosIntro')} />
@@ -70,18 +72,11 @@ export default async function ProjectsPage({ params }: LocaleParams) {
             {fieldVideos.map((video, index) => (
               <li key={video.src} data-reveal style={{ '--reveal-delay': `${index * 110}ms` } as CSSProperties}>
                 <figure className="mx-auto max-w-[19rem]">
-                  <video
-                    controls
-                    muted
-                    loop
-                    playsInline
-                    preload="none"
+                  <LazyVideo
+                    src={video.src}
                     poster={video.poster}
-                    aria-label={t('projects.videoLabel', { title: video.title[locale] })}
-                    className="aspect-[9/16] w-full rounded-card bg-teal-darkest object-cover"
-                  >
-                    <source src={video.src} type="video/mp4" />
-                  </video>
+                    label={t('projects.videoLabel', { title: video.title[locale] })}
+                  />
                   <figcaption className="mt-3 text-center font-semibold">{video.title[locale]}</figcaption>
                 </figure>
               </li>

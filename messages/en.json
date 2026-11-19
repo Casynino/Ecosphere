@@ -50,11 +50,10 @@
     "hero": {
       "eyebrow": "Environmental consultancy · Dar es Salaam, Tanzania",
       "title": "We are the solution for a healthier planet.",
-      "sub": "Ecosphere Solutions helps industry, government and communities protect the environment while their business grows: conservation, compliance, climate strategy and sustainable development.",
+      "sub": "We help industry, government and communities protect the environment while their business grows.",
       "primaryCta": "Request a consultation",
       "secondaryCta": "Explore our services",
-      "tagsLabel": "Sectors we work in",
-      "marker": "Dar es Salaam, Tanzania"
+      "marker": "Dar es Salaam"
     },
     "about": {
       "eyebrow": "About us",
@@ -64,7 +63,7 @@
     "services": {
       "eyebrow": "What we do",
       "title": "Environmental consulting services",
-      "intro": "Seven connected service areas, from conservation and natural resource protection to environmental compliance and climate and sustainability consulting.",
+      "intro": "Seven service areas, from conservation to environmental compliance and climate and sustainability consulting.",
       "helpTitle": "Not sure which service you need?",
       "helpBody": "Tell us about your project and we will point you to the right support.",
       "helpCta": "Talk to our team"
@@ -72,7 +71,7 @@
     "sectors": {
       "eyebrow": "Who we work with",
       "title": "Sectors we support",
-      "intro": "We work with companies in mining, oil and gas, agriculture and transport, alongside government bodies, NGOs and international partners.",
+      "intro": "Mining, oil and gas, agriculture and transport, alongside government bodies, NGOs and international partners.",
       "link": "All sectors"
     },
     "how": {

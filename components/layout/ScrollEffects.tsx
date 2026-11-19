@@ -24,6 +24,16 @@ const clamp = (value: number) => Math.min(1, Math.max(0, value));
 export function ScrollEffects() {
   const pathname = usePathname();
 
+  // The header turns solid once the page is scrolled. This is not motion,
+  // so it runs for everyone.
+  useEffect(() => {
+    const header = document.querySelector('.site-header');
+    const update = () => header?.toggleAttribute('data-scrolled', window.scrollY > 24);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, [pathname]);
+
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 

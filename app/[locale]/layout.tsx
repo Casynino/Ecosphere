@@ -55,6 +55,10 @@ export default async function LocaleLayout({ children, params }: LocaleParams & 
           <a href="#main" className="skip-link">
             {t('common.skipToContent')}
           </a>
+          {/* Without JavaScript the header cannot react to scrolling, so keep it solid. */}
+          <noscript>
+            <style>{'.site-header{background:#00444a}'}</style>
+          </noscript>
           <LivingBackground />
           <Header />
           <main id="main" tabIndex={-1} className="outline-none">

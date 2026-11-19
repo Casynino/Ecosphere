@@ -37,7 +37,7 @@ export default async function HomePage({ params }: LocaleParams) {
 
   return (
     <>
-      <HomeHero locale={locale} />
+      <HomeHero />
 
       {/* Moving strip of service names, riding on the mist under the hero */}
       <div className="relative -mt-[6svh] py-3">
@@ -109,7 +109,7 @@ export default async function HomePage({ params }: LocaleParams) {
           <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service, index) => (
               <li key={service.slug} data-reveal style={stagger(index % 4)}>
-                <ServiceCard service={service} locale={locale} learnMore={t('common.learnMore')} />
+                <ServiceCard service={service} locale={locale} learnMore={t('common.learnMore')} brief />
               </li>
             ))}
             <li data-reveal style={stagger(3)}>
@@ -128,7 +128,7 @@ export default async function HomePage({ params }: LocaleParams) {
         </Container>
       </section>
 
-      {/* Sectors: tall photo cards, swiped sideways on phones */}
+      {/* Sectors: photo panels that open wider under the pointer */}
       <section className="py-16 sm:py-24">
         <Container>
           <SectionHeading
@@ -137,16 +137,14 @@ export default async function HomePage({ params }: LocaleParams) {
             intro={t('home.sectors.intro')}
             action={<ArrowLink href="/sectors">{t('home.sectors.link')}</ArrowLink>}
           />
-        </Container>
-        <div className="mx-auto mt-12 max-w-7xl">
-          <ul className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-8 lg:grid-cols-4">
+          <ul className="sector-panels mt-12 flex flex-col gap-4 lg:h-[34rem] lg:flex-row">
             {sectors.map((sector, index) => (
-              <li key={sector.slug} data-reveal="zoom" style={stagger(index, 110)} className="w-[78vw] shrink-0 snap-center sm:w-auto">
+              <li key={sector.slug} data-reveal="zoom" style={stagger(index, 110)} className="min-h-60 min-w-0">
                 <SectorCard sector={sector} locale={locale} />
               </li>
             ))}
           </ul>
-        </div>
+        </Container>
       </section>
 
       {/* How we work: pinned scroll story */}

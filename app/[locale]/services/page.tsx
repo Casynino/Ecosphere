@@ -26,7 +26,7 @@ export default async function ServicesPage({ params }: LocaleParams) {
     <>
       <PageHero
         locale={locale}
-        photo={stock.rainforestMist}
+        photo={stock.cloudForest}
         eyebrow={t('services.eyebrow')}
         title={t('services.title')}
         intro={t('services.intro')}

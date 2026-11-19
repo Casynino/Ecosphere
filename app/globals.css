@@ -99,6 +99,23 @@
     top: 1rem;
   }
 
+  /* The header floats over the photo at the top of each page and turns
+     solid dark teal as soon as the page is scrolled (ScrollEffects.tsx
+     sets data-scrolled). It is also solid while the phone menu is open. */
+  .site-header {
+    background-image: linear-gradient(to bottom, rgb(0 30 36 / 0.6), rgb(0 30 36 / 0));
+    transition:
+      background-color 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+
+  .site-header[data-scrolled],
+  .site-header:has(#mobile-menu:not([hidden])) {
+    background-color: var(--color-teal-dark);
+    background-image: none;
+    box-shadow: 0 1px 0 rgb(255 255 255 / 0.08);
+  }
+
   /* Small label above a heading. */
   .eyebrow {
     font-size: 0.95rem;
@@ -196,6 +213,13 @@
 .rise {
   animation: rise 0.9s cubic-bezier(0.2, 0.65, 0.2, 1) both;
   animation-delay: var(--delay, 0ms);
+}
+
+/* On the home page the text waits for the opening dive (HomeHero.tsx sets
+   the delays). Once the planet has landed, or on a later visit in the same
+   tab, nothing waits. */
+[data-intro='done'] .rise {
+  animation-delay: 0ms !important;
 }
 
 /* The main heading only slides (no fade) so it paints immediately. */
@@ -311,6 +335,38 @@
   transform-origin: left;
 }
 
+/* ---- Sector panels on the home page ----
+   On wide screens the four photographs sit side by side; the one under
+   the pointer (or the first, when none is) opens wider and shows its text. */
+@media (min-width: 64rem) {
+  .sector-panels > li {
+    flex: 1 1 0%;
+    transition: flex-grow 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .sector-panels .sector-text {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.5s ease;
+  }
+
+  .sector-panels > li:hover,
+  .sector-panels > li:focus-within,
+  .sector-panels:not(:hover):not(:focus-within) > li:first-child {
+    flex-grow: 2.8;
+  }
+
+  .sector-panels > li:hover .sector-text,
+  .sector-panels > li:focus-within .sector-text,
+  .sector-panels:not(:hover):not(:focus-within) > li:first-child .sector-text {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.18s;
+  }
+}
+
 /* ---- Night sky behind the planet in the home page hero ---- */
 .space {
   background-color: #010f13;
@@ -350,7 +406,7 @@
 
 /* The planet sinks a little more slowly than the page as you scroll. */
 .globe-drift {
-  transform: translateY(calc((var(--p, 0.45) - 0.45) * 26%));
+  transform: translateY(calc((var(--p, 0.45) - 0.45) * 14%));
   will-change: transform;
 }
 
@@ -438,7 +494,7 @@
 .story.is-pinned .story-steps {
   display: block;
   position: relative;
-  height: 17rem;
+  height: 13rem;
 }
 
 .story.is-pinned .story-step {
@@ -467,18 +523,16 @@
   transform: none;
 }
 
-.story-dot {
-  transition:
-    background-color 0.4s ease,
-    height 0.4s ease;
+/* The name of the current step is lit on the timeline. */
+.story-label {
+  transition: color 0.4s ease;
 }
 
-.story[data-step='0'] .story-dot:nth-child(1),
-.story[data-step='1'] .story-dot:nth-child(2),
-.story[data-step='2'] .story-dot:nth-child(3),
-.story[data-step='3'] .story-dot:nth-child(4) {
-  height: 2.5rem;
-  background-color: var(--color-lime);
+.story[data-step='0'] .story-label:nth-child(1),
+.story[data-step='1'] .story-label:nth-child(2),
+.story[data-step='2'] .story-label:nth-child(3),
+.story[data-step='3'] .story-label:nth-child(4) {
+  color: #fff;
 }
 
 @media (prefers-reduced-motion: reduce) {

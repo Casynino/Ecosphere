@@ -50,11 +50,10 @@
     "hero": {
       "eyebrow": "Ushauri wa mazingira · Dar es Salaam, Tanzania",
       "title": "Sisi ndio suluhisho kwa sayari yenye afya bora.",
-      "sub": "Ecosphere Solutions husaidia viwanda, serikali na jamii kulinda mazingira huku biashara zao zikikua: uhifadhi, uzingatiaji wa sheria, mkakati wa tabianchi na maendeleo endelevu.",
+      "sub": "Tunasaidia viwanda, serikali na jamii kulinda mazingira huku biashara zao zikikua.",
       "primaryCta": "Omba ushauri",
       "secondaryCta": "Angalia huduma zetu",
-      "tagsLabel": "Sekta tunazofanya nazo kazi",
-      "marker": "Dar es Salaam, Tanzania"
+      "marker": "Dar es Salaam"
     },
     "about": {
       "eyebrow": "Kuhusu sisi",
@@ -64,7 +63,7 @@
     "services": {
       "eyebrow": "Tunachofanya",
       "title": "Huduma za ushauri wa mazingira",
-      "intro": "Maeneo saba ya huduma yanayoshirikiana, kuanzia uhifadhi na ulinzi wa maliasili hadi uzingatiaji wa sheria za mazingira na ushauri wa tabianchi na uendelevu.",
+      "intro": "Maeneo saba ya huduma, kuanzia uhifadhi hadi uzingatiaji wa sheria za mazingira na ushauri wa tabianchi na uendelevu.",
       "helpTitle": "Huna uhakika unahitaji huduma ipi?",
       "helpBody": "Tueleze kuhusu mradi wako nasi tutakuelekeza kwenye msaada unaofaa.",
       "helpCta": "Zungumza na timu yetu"
@@ -72,7 +71,7 @@
     "sectors": {
       "eyebrow": "Tunaofanya nao kazi",
       "title": "Sekta tunazozihudumia",
-      "intro": "Tunafanya kazi na kampuni za madini, mafuta na gesi, kilimo na uchukuzi, pamoja na taasisi za serikali, mashirika yasiyo ya kiserikali na wadau wa kimataifa.",
+      "intro": "Madini, mafuta na gesi, kilimo na uchukuzi, pamoja na taasisi za serikali, mashirika yasiyo ya kiserikali na wadau wa kimataifa.",
       "link": "Sekta zote"
     },
     "how": {

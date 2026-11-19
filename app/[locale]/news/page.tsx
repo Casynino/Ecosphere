@@ -42,7 +42,7 @@ export default async function NewsPage({ params }: LocaleParams) {
     <>
       <PageHero
         locale={locale}
-        photo={stock.cloudForest}
+        photo={stock.rainforestMist}
         eyebrow={t('news.eyebrow')}
         title={t('news.title')}
         intro={t('news.intro')}

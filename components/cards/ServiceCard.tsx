@@ -10,10 +10,12 @@ type Props = {
   learnMore: string;
   /** Heading level, so the page outline stays in order. */
   heading?: 'h2' | 'h3';
+  /** Show the few-word tagline instead of the full summary. */
+  brief?: boolean;
 };
 
 /** Photo card linking to a service page. */
-export function ServiceCard({ service, locale, learnMore, heading: Heading = 'h3' }: Props) {
+export function ServiceCard({ service, locale, learnMore, heading: Heading = 'h3', brief = false }: Props) {
   const number = String(services.indexOf(service) + 1).padStart(2, '0');
 
   return (
@@ -26,7 +28,8 @@ export function ServiceCard({ service, locale, learnMore, heading: Heading = 'h3
           src={service.image.src}
           alt={service.image.alt[locale]}
           fill
-          sizes="(min-width: 1280px) 300px, (min-width: 640px) 50vw, 100vw"
+          sizes="(min-width: 1280px) 300px, (min-width: 640px) 50vw, 85vw"
+          quality={60}
           placeholder="blur"
           className="object-cover transition-transform duration-700 group-hover:scale-[1.07]"
           style={{ objectPosition: service.image.position }}
@@ -37,7 +40,7 @@ export function ServiceCard({ service, locale, learnMore, heading: Heading = 'h3
           {number}
         </p>
         <Heading className="mt-1 text-[1.35rem] text-ink">{service.title[locale]}</Heading>
-        <p className="mt-2 flex-1 text-muted">{service.summary[locale]}</p>
+        <p className="mt-2 flex-1 text-muted">{brief ? service.tagline[locale] : service.summary[locale]}</p>
         <span className="mt-5 inline-flex items-center gap-1.5 font-bold text-teal">
           {learnMore}
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true" />

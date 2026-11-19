@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     // Photo backgrounds sit under a colour wash, so they can be compressed harder.
-    qualities: [60, 75],
+    qualities: [45, 60, 75],
   },
   async headers() {
     return [
