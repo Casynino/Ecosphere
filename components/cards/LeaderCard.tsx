@@ -61,13 +61,7 @@ export function LeaderCard({
         <p className="mt-1 font-bold text-teal">{leader.title}</p>
         <p className="mt-4 text-muted">{leader.bio[locale]}</p>
         <p className="mt-5 text-sm font-bold text-ink">{focusLabel}</p>
-        <ul className="mt-2 flex flex-wrap gap-2">
-          {leader.focus[locale].map((item) => (
-            <li key={item} className="rounded-full bg-background px-3 py-1 text-sm font-semibold text-teal ring-1 ring-line">
-              {item}
-            </li>
-          ))}
-        </ul>
+        <p className="mt-1 text-[0.95rem] text-teal">{leader.focus[locale].join(' · ')}</p>
       </div>
     </article>
   );

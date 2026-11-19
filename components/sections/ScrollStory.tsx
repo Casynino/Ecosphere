@@ -42,8 +42,7 @@ export async function ScrollStory() {
 
         <Container className="flex flex-1 flex-col justify-between gap-12 pb-8 pt-12 sm:pt-16">
           <div className="max-w-xl">
-            <p className="eyebrow text-lime">{t('eyebrow')}</p>
-            <h2 id="how-we-work" className="mt-2 text-2xl sm:text-3xl">
+            <h2 id="how-we-work" className="text-2xl sm:text-3xl">
               {t('title')}
             </h2>
           </div>

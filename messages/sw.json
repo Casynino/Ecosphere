@@ -7,7 +7,6 @@
   "common": {
     "tagline": "Sisi Ndio Suluhisho.",
     "skipToContent": "Ruka hadi kwenye maudhui",
-    "learnMore": "Jifunze zaidi",
     "placeholder": "Maudhui ya muda",
     "photoPlaceholder": "Picha itaongezwa",
     "requestConsultation": "Omba ushauri",
@@ -48,20 +47,15 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Ushauri wa mazingira · Dar es Salaam, Tanzania",
       "title": "Sisi ndio suluhisho kwa sayari yenye afya bora.",
       "sub": "Tunasaidia viwanda, serikali na jamii kulinda mazingira huku biashara zao zikikua.",
-      "primaryCta": "Omba ushauri",
-      "secondaryCta": "Angalia huduma zetu",
-      "marker": "Dar es Salaam"
+      "primaryCta": "Omba ushauri"
     },
     "about": {
-      "eyebrow": "Kuhusu sisi",
       "title": "Kampuni ya ushauri wa mazingira Tanzania inayotanguliza ulinzi wa ikolojia",
       "link": "Soma zaidi kuhusu sisi"
     },
     "services": {
-      "eyebrow": "Tunachofanya",
       "title": "Huduma za ushauri wa mazingira",
       "intro": "Maeneo saba ya huduma, kuanzia uhifadhi hadi uzingatiaji wa sheria za mazingira na ushauri wa tabianchi na uendelevu.",
       "helpTitle": "Huna uhakika unahitaji huduma ipi?",
@@ -69,13 +63,11 @@
       "helpCta": "Zungumza na timu yetu"
     },
     "sectors": {
-      "eyebrow": "Tunaofanya nao kazi",
       "title": "Sekta tunazozihudumia",
       "intro": "Madini, mafuta na gesi, kilimo na uchukuzi, pamoja na taasisi za serikali, mashirika yasiyo ya kiserikali na wadau wa kimataifa.",
       "link": "Sekta zote"
     },
     "how": {
-      "eyebrow": "Jinsi tunavyofanya kazi",
       "title": "Njia iliyo wazi kuanzia tathmini ya kwanza hadi uzingatiaji wa kudumu",
       "steps": {
         "assess": {
@@ -97,13 +89,11 @@
       }
     },
     "field": {
-      "eyebrow": "Kazini",
       "title": "Timu yetu ikiwa kazini",
       "body": "Ushauri mzuri huanzia eneo la kazi. Picha hizi ni za ziara zetu katika maeneo ya miradi jijini Dar es Salaam.",
       "link": "Tazama zaidi kazi zetu za uwandani"
     },
     "leadership": {
-      "eyebrow": "Uongozi",
       "title": "Tunaongozwa na wataalamu wa mazingira, uhandisi, tabianchi na sheria",
       "link": "Ifahamu timu ya uongozi"
     },
@@ -115,21 +105,16 @@
   "about": {
     "metaTitle": "Kuhusu sisi",
     "metaDescription": "Ecosphere Solutions ni kampuni ya ushauri wa mazingira iliyopo Dar es Salaam, Tanzania. Soma kuhusu kampuni yetu, dhamira na dira yetu, na uifahamu timu ya uongozi.",
-    "eyebrow": "Kuhusu sisi",
     "title": "Kuhusu Ecosphere Solutions",
     "intro": "Kampuni ya ushauri wa mazingira yenye makao yake Dar es Salaam, inayofanya kazi kwa ajili ya sayari yenye afya bora na biashara imara.",
-    "companyTitle": "Kampuni yetu",
-    "leadershipEyebrow": "Uongozi",
     "leadershipTitle": "Wanaoongoza kazi zetu",
     "leadershipIntro": "Wakurugenzi wetu wanaunganisha utaalamu katika utawala wa mazingira, uhandisi, tabianchi na nishati, pamoja na uzingatiaji wa sheria na kanuni."
   },
   "services": {
     "metaTitle": "Huduma za ushauri wa mazingira Tanzania",
     "metaDescription": "Huduma za ushauri wa mazingira za Ecosphere Solutions nchini Tanzania: uhifadhi, ulinzi wa maliasili, ushirikishwaji wa jamii, utafiti, uzingatiaji wa sheria za mazingira, kujenga uwezo na ubia.",
-    "eyebrow": "Huduma",
     "title": "Huduma za ushauri wa mazingira Tanzania",
     "intro": "Ecosphere Solutions inasaidia miradi ya madini, mafuta na gesi, kilimo na uchukuzi kupitia maeneo saba ya huduma yanayoshirikiana, kuanzia uhifadhi wa mazingira hadi uzingatiaji wa sheria na kanuni.",
-    "detailEyebrow": "Huduma",
     "includedTitle": "Kinachojumuishwa",
     "includedPlaceholder": "Maudhui ya muda {number}: shughuli au matokeo ya huduma hii, yataongezwa.",
     "sectorsTitle": "Sekta husika",
@@ -142,7 +127,6 @@
   "sectors": {
     "metaTitle": "Sekta tunazozihudumia",
     "metaDescription": "Ushauri wa mazingira kwa sekta za madini, mafuta na gesi, kilimo na uchukuzi nchini Tanzania: changamoto za kimazingira za kila sekta na huduma za Ecosphere Solutions zinazohusika.",
-    "eyebrow": "Sekta",
     "title": "Sekta tunazozihudumia",
     "intro": "Kila sekta huathiri mazingira kwa namna yake. Hizi ni sekta tunazozilenga, changamoto zinazozikabili mara nyingi na huduma zinazohusika.",
     "challengeTitle": "Changamoto ya kimazingira",
@@ -151,7 +135,6 @@
   "projects": {
     "metaTitle": "Miradi na matokeo",
     "metaDescription": "Kazi za uwandani na mifano ya miradi ya Ecosphere Solutions, kampuni ya ushauri wa mazingira iliyopo Dar es Salaam, Tanzania.",
-    "eyebrow": "Miradi na matokeo",
     "title": "Miradi na matokeo",
     "intro": "Mtazamo wa kazi zetu katika maeneo ya miradi. Maelezo ya kina ya miradi yatafuata.",
     "galleryTitle": "Timu yetu ikiwa uwandani",
@@ -167,7 +150,6 @@
   "leadership": {
     "metaTitle": "Uongozi",
     "metaDescription": "Wafahamu wakurugenzi wa Ecosphere Solutions Limited: wataalamu wa utawala wa mazingira, uhandisi, tabianchi na nishati, na uzingatiaji wa sheria nchini Tanzania.",
-    "eyebrow": "Uongozi",
     "title": "Timu ya uongozi",
     "intro": "Wakurugenzi wanaoongoza Ecosphere Solutions wanaunganisha utaalamu katika utawala wa mazingira, uhandisi, tabianchi na nishati, pamoja na uzingatiaji wa sheria na kanuni.",
     "focusLabel": "Maeneo ya utaalamu",
@@ -176,7 +158,6 @@
   "news": {
     "metaTitle": "Habari na uchambuzi",
     "metaDescription": "Habari na uchambuzi kutoka Ecosphere Solutions kuhusu uzingatiaji wa sheria za mazingira, tabianchi na ushauri wa uendelevu nchini Tanzania.",
-    "eyebrow": "Habari na uchambuzi",
     "title": "Habari na uchambuzi",
     "intro": "Taarifa na mitazamo kuhusu uzingatiaji wa sheria za mazingira, tabianchi na uendelevu nchini Tanzania.",
     "placeholderNotice": "Makala zilizo hapa chini ni rasimu za muda. Zitabadilishwa makala halisi za kwanza zitakapokuwa tayari.",
@@ -187,7 +168,6 @@
   "contact": {
     "metaTitle": "Wasiliana nasi",
     "metaDescription": "Omba ushauri kutoka Ecosphere Solutions, Masaki, Dar es Salaam. Tupigie simu, tuandikie barua pepe au WhatsApp, au tutumie maelezo ya mradi wako.",
-    "eyebrow": "Mawasiliano",
     "title": "Omba ushauri",
     "intro": "Tueleze kuhusu mradi wako na msaada unaohitaji. Tutawasiliana nawe ili kupanga mazungumzo.",
     "detailsTitle": "Maelezo ya mawasiliano",

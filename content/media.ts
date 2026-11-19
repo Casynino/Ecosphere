@@ -15,6 +15,7 @@ import darBrt from '@/public/images/stock/dar-brt.jpg';
 import forestCanopy from '@/public/images/stock/forest-canopy.jpg';
 import greenHills from '@/public/images/stock/green-hills.jpg';
 import handsSoil from '@/public/images/stock/hands-soil.jpg';
+import heroSavanna from '@/public/images/stock/hero-savanna.jpg';
 import kilimanjaro from '@/public/images/stock/kilimanjaro.jpg';
 import mangroveAerial from '@/public/images/stock/mangrove-aerial.jpg';
 import mistyCanopy from '@/public/images/stock/misty-canopy.jpg';
@@ -110,6 +111,15 @@ export const photos = {
 } satisfies Record<string, Photo>;
 
 export const stock = {
+  // First frame of the home page video (public/videos/hero.mp4).
+  heroSavanna: {
+    src: heroSavanna,
+    shape: 'landscape',
+    alt: {
+      en: 'Green savanna dotted with trees stretching towards a volcano wrapped in cloud',
+      sw: 'Savana ya kijani yenye miti ikielekea kwenye volkano iliyofunikwa na mawingu',
+    },
+  },
   sunriseMist: {
     src: sunriseMist,
     shape: 'landscape',

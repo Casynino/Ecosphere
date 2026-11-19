@@ -15,8 +15,7 @@ const clamp = (value: number) => Math.min(1, Math.max(0, value));
  * 3. Story: a `[data-story]` section is pinned to the screen and stepped
  *    through its stages as the visitor scrolls.
  * 4. Page progress: `[data-page-progress]` elements get `--page` (0 at the top
- *    of the page, 1 at the bottom). The living background and the thin bar
- *    under the header use it.
+ *    of the page, 1 at the bottom). The living background uses it.
  *
  * Nothing runs for visitors who prefer reduced motion, and the page reads
  * normally without JavaScript.

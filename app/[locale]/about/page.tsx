@@ -29,7 +29,6 @@ export default async function AboutPage({ params }: LocaleParams) {
       <PageHero
         locale={locale}
         photo={stock.craterGreen}
-        eyebrow={t('about.eyebrow')}
         title={t('about.title')}
         intro={t('about.intro')}
       />
@@ -39,7 +38,7 @@ export default async function AboutPage({ params }: LocaleParams) {
           <div className="panel rounded-[28px] p-6 sm:p-10 lg:p-14">
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <div>
-                <SectionHeading eyebrow={t('about.companyTitle')} title={t('home.about.title')} />
+                <SectionHeading title={t('home.about.title')} />
                 <ScrollWords text={t('company.about')} className="mt-7 font-display text-xl leading-snug sm:text-2xl" />
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -85,7 +84,6 @@ export default async function AboutPage({ params }: LocaleParams) {
       <section id="leadership" className="py-16 sm:py-24">
         <Container>
           <SectionHeading
-            eyebrow={t('about.leadershipEyebrow')}
             title={t('about.leadershipTitle')}
             intro={t('about.leadershipIntro')}
           />

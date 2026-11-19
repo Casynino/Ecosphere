@@ -57,7 +57,7 @@ export default async function ArticlePage({ params }: Props) {
         })}
       />
 
-      <PageHero locale={locale} eyebrow={t('news.eyebrow')} title={article.title}>
+      <PageHero locale={locale} title={article.title}>
         <div className="mt-6 flex flex-wrap items-center gap-3 text-white/85">
           <time dateTime={article.date}>{format.dateTime(new Date(article.date), { dateStyle: 'long' })}</time>
           {article.placeholder && (

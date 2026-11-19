@@ -7,7 +7,6 @@
   "common": {
     "tagline": "We Are The Solution.",
     "skipToContent": "Skip to content",
-    "learnMore": "Learn more",
     "placeholder": "Placeholder",
     "photoPlaceholder": "Photo to be added",
     "requestConsultation": "Request a consultation",
@@ -48,20 +47,15 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Environmental consultancy · Dar es Salaam, Tanzania",
       "title": "We are the solution for a healthier planet.",
       "sub": "We help industry, government and communities protect the environment while their business grows.",
-      "primaryCta": "Request a consultation",
-      "secondaryCta": "Explore our services",
-      "marker": "Dar es Salaam"
+      "primaryCta": "Request a consultation"
     },
     "about": {
-      "eyebrow": "About us",
       "title": "An environmental consultancy in Tanzania that puts ecological protection first",
       "link": "More about us"
     },
     "services": {
-      "eyebrow": "What we do",
       "title": "Environmental consulting services",
       "intro": "Seven service areas, from conservation to environmental compliance and climate and sustainability consulting.",
       "helpTitle": "Not sure which service you need?",
@@ -69,13 +63,11 @@
       "helpCta": "Talk to our team"
     },
     "sectors": {
-      "eyebrow": "Who we work with",
       "title": "Sectors we support",
       "intro": "Mining, oil and gas, agriculture and transport, alongside government bodies, NGOs and international partners.",
       "link": "All sectors"
     },
     "how": {
-      "eyebrow": "How we work",
       "title": "A clear path from first assessment to lasting compliance",
       "steps": {
         "assess": {
@@ -97,13 +89,11 @@
       }
     },
     "field": {
-      "eyebrow": "In the field",
       "title": "On site with our team",
       "body": "Good advice starts on the ground. These photos are from our site visits in Dar es Salaam.",
       "link": "See more of our field work"
     },
     "leadership": {
-      "eyebrow": "Leadership",
       "title": "Led by specialists in environment, engineering, climate and law",
       "link": "Meet the leadership team"
     },
@@ -115,21 +105,16 @@
   "about": {
     "metaTitle": "About us",
     "metaDescription": "Ecosphere Solutions is an environmental consultancy in Dar es Salaam, Tanzania. Read about our company, mission and vision, and meet the leadership team.",
-    "eyebrow": "About us",
     "title": "About Ecosphere Solutions",
     "intro": "An environmental consultancy based in Dar es Salaam, working for a healthier planet and stronger businesses.",
-    "companyTitle": "Our company",
-    "leadershipEyebrow": "Leadership",
     "leadershipTitle": "The people who lead our work",
     "leadershipIntro": "Our directors bring together expertise in environmental governance, engineering, climate and energy, and regulatory compliance."
   },
   "services": {
     "metaTitle": "Environmental consulting services in Tanzania",
     "metaDescription": "Environmental consulting services from Ecosphere Solutions in Tanzania: conservation, natural resource protection, community engagement, research, environmental compliance, capacity building and partnerships.",
-    "eyebrow": "Services",
     "title": "Environmental consulting services in Tanzania",
     "intro": "Ecosphere Solutions supports projects in mining, oil and gas, agriculture and transport with seven connected service areas, from environmental conservation to regulatory compliance.",
-    "detailEyebrow": "Service",
     "includedTitle": "What's included",
     "includedPlaceholder": "Placeholder {number}: an activity or deliverable for this service, to be supplied.",
     "sectorsTitle": "Relevant sectors",
@@ -142,7 +127,6 @@
   "sectors": {
     "metaTitle": "Sectors we support",
     "metaDescription": "Environmental consultancy for mining, oil and gas, agriculture and transport in Tanzania: the typical environmental challenges in each sector and the Ecosphere Solutions services that apply.",
-    "eyebrow": "Sectors",
     "title": "Sectors we support",
     "intro": "Every industry affects the environment in its own way. Here are the sectors we focus on, the challenges they typically face and the services that apply.",
     "challengeTitle": "The environmental challenge",
@@ -151,7 +135,6 @@
   "projects": {
     "metaTitle": "Projects & impact",
     "metaDescription": "Field work and project case studies from Ecosphere Solutions, an environmental consultancy in Dar es Salaam, Tanzania.",
-    "eyebrow": "Projects & impact",
     "title": "Projects & impact",
     "intro": "A look at our work on site, with project case studies to follow.",
     "galleryTitle": "Our team in the field",
@@ -167,7 +150,6 @@
   "leadership": {
     "metaTitle": "Leadership",
     "metaDescription": "Meet the directors of Ecosphere Solutions Limited: specialists in environmental governance, engineering, climate and energy, and regulatory compliance in Tanzania.",
-    "eyebrow": "Leadership",
     "title": "Leadership team",
     "intro": "The directors who lead Ecosphere Solutions bring together expertise in environmental governance, engineering, climate and energy, and regulatory compliance.",
     "focusLabel": "Focus areas",
@@ -176,7 +158,6 @@
   "news": {
     "metaTitle": "News & insights",
     "metaDescription": "News and insights from Ecosphere Solutions on environmental compliance, climate and sustainability consulting in Tanzania.",
-    "eyebrow": "News & insights",
     "title": "News & insights",
     "intro": "Updates and perspectives on environmental compliance, climate and sustainability in Tanzania.",
     "placeholderNotice": "The articles below are placeholder drafts. They will be replaced when the first real articles are ready.",
@@ -187,7 +168,6 @@
   "contact": {
     "metaTitle": "Contact us",
     "metaDescription": "Request a consultation with Ecosphere Solutions in Masaki, Dar es Salaam. Call, email, WhatsApp or send us your project details.",
-    "eyebrow": "Contact",
     "title": "Request a consultation",
     "intro": "Tell us about your project and the support you need. We will get back to you to arrange a conversation.",
     "detailsTitle": "Contact details",

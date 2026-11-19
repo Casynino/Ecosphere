@@ -6,35 +6,10 @@ import type { Locale } from '@/content/types';
 type TrackStyle = CSSProperties & { '--marquee-duration'?: string; '--marquee-gap'?: string };
 
 /**
- * A strip of words that moves sideways without stopping. The second copy
- * only exists to make the loop seamless, so it is hidden from screen readers.
- * It pauses on hover and stands still for reduced-motion users.
+ * A strip of photographs that moves sideways without stopping. The second
+ * copy only exists to make the loop seamless, so it is hidden from screen
+ * readers. It pauses on hover and stands still for reduced-motion users.
  */
-export function WordMarquee({ items, label }: { items: string[]; label: string }) {
-  const style: TrackStyle = { '--marquee-duration': '48s', '--marquee-gap': '2.25rem' };
-
-  const track = (copy: boolean) => (
-    <ul className="marquee-track" style={style} aria-hidden={copy || undefined}>
-      {items.map((item) => (
-        <li key={item} className="flex items-center gap-9 whitespace-nowrap font-display text-2xl text-teal-dark sm:text-[1.9rem]">
-          {item}
-          <span className="text-teal/40" aria-hidden="true">
-            /
-          </span>
-        </li>
-      ))}
-    </ul>
-  );
-
-  return (
-    <div className="marquee" role="group" aria-label={label}>
-      {track(false)}
-      {track(true)}
-    </div>
-  );
-}
-
-/** The same moving strip, made of photographs. */
 export function PhotoMarquee({ photos, locale }: { photos: Photo[]; locale: Locale }) {
   const style: TrackStyle = { '--marquee-duration': '70s', '--marquee-gap': '1.25rem' };
 

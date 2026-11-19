@@ -11,11 +11,7 @@ export function LanguageSwitcher() {
   const pathname = usePathname();
 
   return (
-    <div
-      role="group"
-      aria-label={t('language')}
-      className="flex items-center rounded-full border border-white/25 p-0.5 text-sm font-bold"
-    >
+    <div role="group" aria-label={t('language')} className="flex items-center gap-1 text-[0.95rem] font-bold">
       {routing.locales.map((code) => (
         <Link
           key={code}
@@ -24,7 +20,7 @@ export function LanguageSwitcher() {
           hrefLang={code}
           lang={code}
           aria-current={code === locale ? 'true' : undefined}
-          className="rounded-full px-2.5 py-1.5 text-white/80 transition-colors hover:text-white aria-[current=true]:bg-white aria-[current=true]:text-teal-darkest"
+          className="px-1.5 py-2 text-white/60 transition-colors hover:text-white aria-[current=true]:text-white"
         >
           {code.toUpperCase()}
           {/* Full language name for screen readers. */}

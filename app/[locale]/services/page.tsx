@@ -1,4 +1,3 @@
-import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import type { CSSProperties } from 'react';
@@ -27,7 +26,6 @@ export default async function ServicesPage({ params }: LocaleParams) {
       <PageHero
         locale={locale}
         photo={stock.cloudForest}
-        eyebrow={t('services.eyebrow')}
         title={t('services.title')}
         intro={t('services.intro')}
       />
@@ -37,7 +35,7 @@ export default async function ServicesPage({ params }: LocaleParams) {
           <ul className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <li key={service.slug} data-reveal style={{ '--reveal-delay': `${(index % 3) * 90}ms` } as CSSProperties}>
-                <ServiceCard service={service} locale={locale} learnMore={t('common.learnMore')} heading="h2" />
+                <ServiceCard service={service} locale={locale} heading="h2" />
               </li>
             ))}
             <li data-reveal className="sm:col-span-2 lg:col-span-2">
@@ -45,10 +43,7 @@ export default async function ServicesPage({ params }: LocaleParams) {
                 <h2 className="text-2xl sm:text-3xl">{t('home.services.helpTitle')}</h2>
                 <p className="mt-3 max-w-lg text-white/85">{t('home.services.helpBody')}</p>
                 <div className="mt-6">
-                  <ButtonLink href="/contact">
-                    {t('home.services.helpCta')}
-                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
-                  </ButtonLink>
+                  <ButtonLink href="/contact">{t('home.services.helpCta')}</ButtonLink>
                 </div>
               </div>
             </li>

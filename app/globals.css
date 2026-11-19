@@ -116,12 +116,6 @@
     box-shadow: 0 1px 0 rgb(255 255 255 / 0.08);
   }
 
-  /* Small label above a heading. */
-  .eyebrow {
-    font-size: 0.95rem;
-    font-weight: 700;
-  }
-
   /* Translucent white surface that lets the living background show through. */
   .panel {
     border: 1px solid rgb(255 255 255 / 0.9);
@@ -215,13 +209,6 @@
   animation-delay: var(--delay, 0ms);
 }
 
-/* On the home page the text waits for the opening dive (HomeHero.tsx sets
-   the delays). Once the planet has landed, or on a later visit in the same
-   tab, nothing waits. */
-[data-intro='done'] .rise {
-  animation-delay: 0ms !important;
-}
-
 /* The main heading only slides (no fade) so it paints immediately. */
 .rise-solid {
   animation: rise-solid 0.9s cubic-bezier(0.2, 0.65, 0.2, 1) both;
@@ -273,7 +260,7 @@
   }
 }
 
-/* Endless moving strip: two identical tracks side by side. */
+/* Endless moving strip of photographs: two identical tracks side by side. */
 .marquee {
   display: flex;
   overflow: hidden;
@@ -329,12 +316,6 @@
   transition: color 0.3s linear;
 }
 
-/* Bar under the header that fills as you move down the page. */
-.scroll-meter {
-  transform: scaleX(var(--page, 0));
-  transform-origin: left;
-}
-
 /* ---- Sector panels on the home page ----
    On wide screens the four photographs sit side by side; the one under
    the pointer (or the first, when none is) opens wider and shows its text. */
@@ -367,54 +348,10 @@
   }
 }
 
-/* ---- Night sky behind the planet in the home page hero ---- */
-.space {
-  background-color: #010f13;
-  background-image: radial-gradient(110% 80% at 76% 46%, #06404a 0%, #032a31 38%, #010f13 78%);
-}
-
-.stars {
-  background-image:
-    radial-gradient(1.4px 1.4px at 8% 12%, rgb(255 255 255 / 0.9), transparent 70%),
-    radial-gradient(1px 1px at 23% 64%, rgb(255 255 255 / 0.7), transparent 70%),
-    radial-gradient(1.2px 1.2px at 41% 31%, rgb(255 255 255 / 0.8), transparent 70%),
-    radial-gradient(1px 1px at 57% 83%, rgb(255 255 255 / 0.6), transparent 70%),
-    radial-gradient(1.6px 1.6px at 68% 22%, rgb(255 255 255 / 0.9), transparent 70%),
-    radial-gradient(1px 1px at 79% 55%, rgb(255 255 255 / 0.7), transparent 70%),
-    radial-gradient(1.2px 1.2px at 91% 9%, rgb(255 255 255 / 0.8), transparent 70%),
-    radial-gradient(1px 1px at 96% 77%, rgb(255 255 255 / 0.6), transparent 70%),
-    radial-gradient(1px 1px at 33% 92%, rgb(255 255 255 / 0.6), transparent 70%),
-    radial-gradient(1.2px 1.2px at 15% 41%, rgb(255 255 255 / 0.7), transparent 70%);
-  background-size: 460px 460px;
-  animation: twinkle 7s ease-in-out infinite alternate;
-}
-
-.stars-far {
-  background-size: 290px 290px;
-  background-position: 120px 60px;
-  animation-duration: 11s;
-}
-
-@keyframes twinkle {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 0.95;
-  }
-}
-
-/* The planet sinks a little more slowly than the page as you scroll. */
-.globe-drift {
-  transform: translateY(calc((var(--p, 0.45) - 0.45) * 14%));
-  will-change: transform;
-}
-
 /* ---- Living background ----
    One misty forest scene sits behind every page (LivingBackground.tsx).
    The photograph glides as the page scrolls (--page runs from 0 at the
-   top of the page to 1 at the bottom), bands of mist drift across it and
-   a small flock of birds crosses the screen on the way down. */
+   top of the page to 1 at the bottom) and bands of mist drift across it. */
 .living-photo {
   transform: translateY(calc(var(--page, 0) * -6%)) scale(1.14);
   will-change: transform;
@@ -439,21 +376,6 @@
 @keyframes mist-drift {
   to {
     transform: translateX(-50%);
-  }
-}
-
-.birds {
-  transform: translate(calc(var(--page, 0.12) * 118vw - 14vw), calc(var(--page, 0.12) * -30vh));
-  will-change: transform;
-}
-
-.birds > g {
-  animation: glide 5s ease-in-out infinite;
-}
-
-@keyframes glide {
-  50% {
-    transform: translateY(-7px);
   }
 }
 

@@ -5,7 +5,6 @@ import type { Photo } from '@/content/media';
 import type { Locale } from '@/content/types';
 
 type Props = {
-  eyebrow?: string;
   title: string;
   intro?: string;
   /** Photograph behind the heading. Without one the banner is plain dark teal. */
@@ -17,7 +16,7 @@ type Props = {
 const delay = (ms: number) => ({ '--delay': `${ms}ms` }) as CSSProperties;
 
 /** Photo banner with the page's single H1. Used on every inner page. */
-export function PageHero({ eyebrow, title, intro, photo, locale, children }: Props) {
+export function PageHero({ title, intro, photo, locale, children }: Props) {
   return (
     <section
       data-scroll
@@ -44,12 +43,7 @@ export function PageHero({ eyebrow, title, intro, photo, locale, children }: Pro
         </div>
       )}
       <Container className={`flex flex-col justify-center pt-[calc(var(--header-h)+4rem)] ${photo ? 'min-h-[66svh] pb-[20svh]' : 'pb-16 sm:pb-20'}`}>
-        {eyebrow && (
-          <p className="eyebrow rise text-lime" style={delay(60)}>
-            {eyebrow}
-          </p>
-        )}
-        <h1 className="rise-solid mt-4 max-w-4xl text-[2.5rem] leading-[1.06] sm:text-6xl lg:text-7xl">{title}</h1>
+        <h1 className="rise-solid max-w-4xl text-[2.5rem] leading-[1.06] sm:text-6xl lg:text-7xl">{title}</h1>
         {intro && (
           <p className="rise mt-5 max-w-2xl text-lg text-white/90 sm:text-xl" style={delay(160)}>
             {intro}

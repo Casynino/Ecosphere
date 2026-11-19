@@ -22,7 +22,7 @@ export default async function LeadershipPage({ params }: LocaleParams) {
 
   return (
     <>
-      <PageHero locale={locale} photo={stock.sunriseMist} eyebrow={t('eyebrow')} title={t('title')} intro={t('intro')} />
+      <PageHero locale={locale} photo={stock.sunriseMist} title={t('title')} intro={t('intro')} />
 
       <section className="py-16 sm:py-24">
         <Container>

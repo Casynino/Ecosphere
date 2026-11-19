@@ -1,13 +1,11 @@
-import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import { services, type Service } from '@/content/services';
+import type { Service } from '@/content/services';
 import type { Locale } from '@/content/types';
 import { Link } from '@/i18n/navigation';
 
 type Props = {
   service: Service;
   locale: Locale;
-  learnMore: string;
   /** Heading level, so the page outline stays in order. */
   heading?: 'h2' | 'h3';
   /** Show the few-word tagline instead of the full summary. */
@@ -15,9 +13,7 @@ type Props = {
 };
 
 /** Photo card linking to a service page. */
-export function ServiceCard({ service, locale, learnMore, heading: Heading = 'h3', brief = false }: Props) {
-  const number = String(services.indexOf(service) + 1).padStart(2, '0');
-
+export function ServiceCard({ service, locale, heading: Heading = 'h3', brief = false }: Props) {
   return (
     <Link
       href={`/services/${service.slug}`}
@@ -36,15 +32,8 @@ export function ServiceCard({ service, locale, learnMore, heading: Heading = 'h3
         />
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <p className="text-sm font-bold text-teal" aria-hidden="true">
-          {number}
-        </p>
-        <Heading className="mt-1 text-[1.35rem] text-ink">{service.title[locale]}</Heading>
+        <Heading className="text-[1.35rem] text-ink">{service.title[locale]}</Heading>
         <p className="mt-2 flex-1 text-muted">{brief ? service.tagline[locale] : service.summary[locale]}</p>
-        <span className="mt-5 inline-flex items-center gap-1.5 font-bold text-teal">
-          {learnMore}
-          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true" />
-        </span>
       </div>
     </Link>
   );

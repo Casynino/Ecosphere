@@ -66,9 +66,9 @@ export function MobileMenu() {
         aria-controls="mobile-menu"
         aria-label={open ? t('closeMenu') : t('openMenu')}
         onClick={() => setOpenedOn(open ? null : pathname)}
-        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:bg-white/10"
+        className="flex h-11 w-11 items-center justify-center text-white"
       >
-        {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+        {open ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
       </button>
 
       <div

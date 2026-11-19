@@ -39,7 +39,7 @@ export default async function ContactPage({ params }: LocaleParams) {
 
   return (
     <>
-      <PageHero locale={locale} photo={stock.darAerial} eyebrow={t('eyebrow')} title={t('title')} intro={t('intro')} />
+      <PageHero locale={locale} photo={stock.darAerial} title={t('title')} intro={t('intro')} />
 
       <section className="py-16 sm:py-24">
         <Container className="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-14">

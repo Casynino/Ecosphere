@@ -67,8 +67,8 @@ Image sources are in `IMAGE_CREDITS.md`.
 ```
 app/[locale]/        Pages (one folder per page), layout, RSS feed
 app/sitemap.ts       sitemap.xml        app/robots.ts   robots.txt
-components/layout    Header, footer, language switcher, WhatsApp button, scroll effects, living background
-components/sections  Home hero (live Earth), page banners, scroll story, call to action
+components/layout    Header, footer, language switcher, WhatsApp button, scroll effects, misty background
+components/sections  Home hero (drone video), page banners, scroll story, call to action
 components/cards     Service, sector and leadership cards
 components/contact   Contact form
 content/             All editable content, typed, in both languages
@@ -81,8 +81,9 @@ proxy.ts             Serves English at "/" and Swahili at "/sw"
 ### Motion
 All movement is in `app/globals.css` and three small scripts, with no animation library:
 - `components/layout/ScrollEffects.tsx`: reveal on scroll, parallax, the pinned "How we work" story.
-- `components/sections/EarthScene.tsx`: the live Earth in the home hero (WebGL, NASA maps).
-- `components/layout/LivingBackground.tsx`: the misty landscape, drifting mist and birds behind every page.
+- `components/sections/HeroVideo.tsx`: the looping drone video behind the home page headline. It loads after
+  the still picture, is about 2.7 MB on computers and 0.9 MB on phones, and is skipped on data-saver or 2G connections.
+- `components/layout/LivingBackground.tsx`: the misty landscape and drifting mist behind every page.
 
 Visitors who ask their device for reduced motion get a still page. Without JavaScript the page reads normally.
 
@@ -123,5 +124,5 @@ Each push to the main branch triggers a new Vercel build, so push finished work 
 npm run lint && npm run check:i18n && npm run build
 ```
 
-Lighthouse (mobile) on the production build at the time of writing: Performance 88 to 100 depending on the
-page, Accessibility 100, Best Practices 100, SEO 100.
+Lighthouse (mobile, production build, nine main pages, 19 November 2026): Performance 90 to 100
+(home page 100), Accessibility 100, Best Practices 100, SEO 100.

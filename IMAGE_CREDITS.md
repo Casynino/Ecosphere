@@ -6,10 +6,11 @@
   `scripts/prepare-media.mjs`. Photos were resized and stripped of metadata (including GPS). Video
   clips were trimmed to short sections and exported without sound.
 
-## Earth maps (home page hero)
-`public/images/earth/*`: NASA Blue Marble (day), Earth at Night (city lights) and cloud maps.
-NASA imagery is in the public domain. Files were taken from the examples of the open-source
-`three-globe` package (jsDelivr CDN) and resized.
+## Home page video
+`public/videos/hero.mp4`, `public/videos/hero-mobile.mp4` and `public/images/stock/hero-savanna.jpg` (its first frame):
+"View of a Volcano Surrounded with Clouds" by Mikhail Nilov on Pexels,
+https://www.pexels.com/video/8334109/ , used under the Pexels License (free for commercial use,
+no attribution required). Trimmed to a 14-second seamless loop, resized and exported without sound.
 
 ## Stock photographs
 `public/images/stock/*`: free photographs from Unsplash, used under the Unsplash License

@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -60,7 +60,6 @@ export default async function ServicePage({ params }: Props) {
       <PageHero
         locale={locale}
         photo={service.image}
-        eyebrow={t('services.detailEyebrow')}
         title={title}
         intro={service.summary[locale]}
       />
@@ -97,20 +96,14 @@ export default async function ServicePage({ params }: Props) {
 
             <div className="mt-12" data-reveal>
               <h2 className="text-2xl sm:text-3xl">{t('services.sectorsTitle')}</h2>
-              <ul className="mt-6 flex flex-wrap gap-3">
-                {service.sectors.map((slug) => {
-                  const sector = getSector(slug);
-                  return (
-                    <li key={slug}>
-                      <Link
-                        href={`/sectors#${slug}`}
-                        className="panel inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-semibold text-ink transition-colors hover:text-teal"
-                      >
-                        {sector.name[locale]}
-                      </Link>
-                    </li>
-                  );
-                })}
+              <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-lg">
+                {service.sectors.map((slug) => (
+                  <li key={slug}>
+                    <Link href={`/sectors#${slug}`} className="font-semibold text-teal underline underline-offset-4 hover:text-teal-dark">
+                      {getSector(slug).name[locale]}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -121,12 +114,8 @@ export default async function ServicePage({ params }: Props) {
               <div className="p-7 sm:p-8">
                 <h2 className="text-2xl">{t('services.requestTitle', { service: title })}</h2>
                 <p className="mt-3 text-white/85">{t('services.requestBody')}</p>
-                <ButtonLink
-                  href={{ pathname: '/contact', query: { service: service.slug } }}
-                  className="mt-6 w-full"
-                >
+                <ButtonLink href={{ pathname: '/contact', query: { service: service.slug } }} className="mt-6 w-full">
                   {t('services.requestService')}
-                  <ArrowRight className="h-5 w-5" aria-hidden="true" />
                 </ButtonLink>
                 <p className="mt-5 text-center text-white/85">
                   <a href={`tel:${site.phone.e164}`} className="font-bold underline-offset-4 hover:underline">
@@ -145,7 +134,7 @@ export default async function ServicePage({ params }: Props) {
           <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {others.map((item) => (
               <li key={item.slug} data-reveal>
-                <ServiceCard service={item} locale={locale} learnMore={t('common.learnMore')} />
+                <ServiceCard service={item} locale={locale} />
               </li>
             ))}
           </ul>

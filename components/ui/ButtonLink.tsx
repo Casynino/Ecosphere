@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 import { Link } from '@/i18n/navigation';
 
-const base = 'inline-flex items-center justify-center gap-2 rounded-full text-center font-bold leading-tight transition-colors';
+const base = 'inline-flex items-center justify-center gap-2 rounded-lg text-center font-bold leading-tight transition-colors';
 
 const sizes = {
   md: 'min-h-12 px-6 py-3 text-base',

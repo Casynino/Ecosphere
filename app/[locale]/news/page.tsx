@@ -1,4 +1,4 @@
-import { ArrowRight, Rss } from 'lucide-react';
+import { Rss } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getFormatter, getTranslations } from 'next-intl/server';
 import type { CSSProperties } from 'react';
@@ -43,7 +43,6 @@ export default async function NewsPage({ params }: LocaleParams) {
       <PageHero
         locale={locale}
         photo={stock.rainforestMist}
-        eyebrow={t('news.eyebrow')}
         title={t('news.title')}
         intro={t('news.intro')}
       />
@@ -71,10 +70,6 @@ export default async function NewsPage({ params }: LocaleParams) {
                   </div>
                   <h2 className="mt-3 text-2xl text-ink">{article.title}</h2>
                   <p className="mt-3 flex-1 text-muted">{article.excerpt}</p>
-                  <span className="mt-6 inline-flex items-center gap-1.5 font-bold text-teal">
-                    {t('common.learnMore')}
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" aria-hidden="true" />
-                  </span>
                 </Link>
               </li>
             ))}

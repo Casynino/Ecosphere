@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { buttonClass } from '@/components/ui/ButtonLink';
 import { Link } from '@/i18n/navigation';
 import logo from '@/public/brand/logo.png';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -20,16 +19,9 @@ export async function Header() {
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
-          <div className="hidden sm:block">
-            <Link href="/contact" className={buttonClass('lime', '', 'sm')}>
-              {t('cta')}
-            </Link>
-          </div>
           <MobileMenu />
         </div>
       </div>
-      {/* Fills from left to right as the visitor scrolls down the page. */}
-      <span aria-hidden="true" data-page-progress className="scroll-meter brand-bar absolute inset-x-0 bottom-0 h-[3px]" />
     </header>
   );
 }

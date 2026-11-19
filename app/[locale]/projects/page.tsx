@@ -29,7 +29,6 @@ export default async function ProjectsPage({ params }: LocaleParams) {
       <PageHero
         locale={locale}
         photo={photos.teamAtHarbour}
-        eyebrow={t('projects.eyebrow')}
         title={t('projects.title')}
         intro={t('projects.intro')}
       />

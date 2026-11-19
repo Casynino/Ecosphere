@@ -1,4 +1,3 @@
-import { ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
@@ -24,7 +23,7 @@ export default async function SectorsPage({ params }: LocaleParams) {
 
   return (
     <>
-      <PageHero locale={locale} photo={stock.mangroveAerial} eyebrow={t('eyebrow')} title={t('title')} intro={t('intro')} />
+      <PageHero locale={locale} photo={stock.mangroveAerial} title={t('title')} intro={t('intro')} />
 
       <div className="py-8 sm:py-14">
         {sectors.map((sector, index) => {
@@ -50,24 +49,20 @@ export default async function SectorsPage({ params }: LocaleParams) {
                 </div>
 
                 <div data-reveal>
-                  <p className="font-display text-xl text-teal" aria-hidden="true">
-                    0{index + 1}
-                  </p>
-                  <h2 id={`${sector.slug}-title`} className="mt-1 text-3xl sm:text-4xl">
+                  <h2 id={`${sector.slug}-title`} className="text-3xl sm:text-4xl">
                     {sector.name[locale]}
                   </h2>
                   <h3 className="mt-6 font-sans text-sm font-bold text-teal">{t('challengeTitle')}</h3>
                   <p className="mt-2 text-lg text-ink/85">{sector.challenge[locale]}</p>
                   <h3 className="mt-7 font-sans text-sm font-bold text-teal">{t('servicesTitle')}</h3>
-                  <ul className="mt-3 flex flex-wrap gap-2.5">
+                  <ul className="mt-2 flex flex-wrap gap-x-6 gap-y-1.5">
                     {applicable.map((service) => (
                       <li key={service.slug}>
                         <Link
                           href={`/services/${service.slug}`}
-                          className="panel group inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-[0.95rem] font-semibold text-ink transition-colors hover:text-teal"
+                          className="font-semibold text-ink underline decoration-teal/40 underline-offset-4 hover:text-teal"
                         >
                           {service.title[locale]}
-                          <ArrowRight className="h-4 w-4 text-teal transition-transform group-hover:translate-x-1" aria-hidden="true" />
                         </Link>
                       </li>
                     ))}
