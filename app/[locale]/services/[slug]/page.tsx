@@ -64,7 +64,7 @@ export default async function ServicePage({ params }: Props) {
         intro={service.summary[locale]}
       />
 
-      <section className="py-16 sm:py-24">
+      <section className="py-16 lg:py-24">
         <Container className="grid gap-12 lg:grid-cols-[1.6fr_1fr] lg:gap-16">
           <div>
             <Link
@@ -110,7 +110,6 @@ export default async function ServicePage({ params }: Props) {
 
           <aside className="lg:sticky lg:top-28 lg:self-start">
             <div className="on-dark bg-hero overflow-hidden rounded-card text-white">
-              <div className="brand-bar h-1.5" />
               <div className="p-7 sm:p-8">
                 <h2 className="text-2xl">{t('services.requestTitle', { service: title })}</h2>
                 <p className="mt-3 text-white/85">{t('services.requestBody')}</p>
@@ -128,13 +127,13 @@ export default async function ServicePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="pb-16 sm:pb-24">
+      <section className="pb-16 lg:pb-24">
         <Container>
           <h2 className="text-2xl sm:text-3xl">{t('services.otherServices')}</h2>
-          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="panel mt-8 divide-y divide-ink/8 overflow-hidden rounded-card sm:grid sm:grid-cols-3 sm:gap-6 sm:divide-y-0 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:shadow-none">
             {others.map((item) => (
-              <li key={item.slug} data-reveal>
-                <ServiceCard service={item} locale={locale} />
+              <li key={item.slug}>
+                <ServiceCard service={item} locale={locale} brief />
               </li>
             ))}
           </ul>

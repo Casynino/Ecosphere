@@ -18,6 +18,8 @@ const photos = {
   '02e88da6-1649-448b-8ddf-7659b522552d.JPG': 'drawings-review.jpg',
   'e9531452-1e68-4f97-8c07-103020354a1a.JPG': 'drawings-review-2.jpg',
   'f9e4e667-0e1c-44c6-9309-adbcb61a7a64.JPG': 'team-site-office.jpg',
+  'a64d9e7b-b71e-4f44-8ae0-c8f742fc5642.JPG': 'site-meeting.jpg',
+  '954deff7-be9b-479b-9201-42202c6fd608.JPG': 'team-wharf-wide.jpg',
 };
 
 // Leadership portraits, cropped to an upright 4:5 frame from the top so the face is kept.

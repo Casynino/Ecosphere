@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import type { CSSProperties } from 'react';
-import { ServiceCard } from '@/components/cards/ServiceCard';
+import { ServiceList } from '@/components/cards/ServiceCard';
 import { CtaBanner } from '@/components/sections/CtaBanner';
 import { PageHero } from '@/components/sections/PageHero';
 import { ButtonLink } from '@/components/ui/ButtonLink';
@@ -30,24 +29,16 @@ export default async function ServicesPage({ params }: LocaleParams) {
         intro={t('services.intro')}
       />
 
-      <section className="py-16 sm:py-24">
+      <section className="py-16 lg:py-24">
         <Container>
-          <ul className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, index) => (
-              <li key={service.slug} data-reveal style={{ '--reveal-delay': `${(index % 3) * 90}ms` } as CSSProperties}>
-                <ServiceCard service={service} locale={locale} heading="h2" />
-              </li>
-            ))}
-            <li data-reveal className="sm:col-span-2 lg:col-span-2">
-              <div className="on-dark bg-hero flex h-full flex-col justify-center rounded-card p-7 text-white sm:p-10">
-                <h2 className="text-2xl sm:text-3xl">{t('home.services.helpTitle')}</h2>
-                <p className="mt-3 max-w-lg text-white/85">{t('home.services.helpBody')}</p>
-                <div className="mt-6">
-                  <ButtonLink href="/contact">{t('home.services.helpCta')}</ButtonLink>
-                </div>
-              </div>
-            </li>
-          </ul>
+          <ServiceList services={services} locale={locale} heading="h2" />
+          <div data-reveal className="on-dark bg-hero mt-6 rounded-card p-6 text-white sm:mt-8 sm:p-10">
+            <h2 className="text-2xl sm:text-3xl">{t('home.services.helpTitle')}</h2>
+            <p className="mt-3 max-w-lg text-white/85">{t('home.services.helpBody')}</p>
+            <ButtonLink href="/contact" className="mt-6">
+              {t('home.services.helpCta')}
+            </ButtonLink>
+          </div>
         </Container>
       </section>
 

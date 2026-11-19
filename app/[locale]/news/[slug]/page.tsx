@@ -68,9 +68,9 @@ export default async function ArticlePage({ params }: Props) {
         </div>
       </PageHero>
 
-      <article className="py-16 sm:py-24">
+      <article className="py-16 lg:py-24">
         <Container className="max-w-4xl">
-          <div className="panel rounded-[28px] p-6 sm:p-12">
+          <div className="panel rounded-card p-6 sm:p-12">
           {article.placeholder && (
             <div className="mb-2">
               <PlaceholderBadge label={t('common.placeholder')} />

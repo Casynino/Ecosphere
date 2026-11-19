@@ -34,7 +34,7 @@ export default async function ProjectsPage({ params }: LocaleParams) {
       />
 
       {/* Photo gallery */}
-      <section className="py-16 sm:py-24">
+      <section className="py-16 lg:py-24">
         <Container>
           <SectionHeading title={t('projects.galleryTitle')} intro={t('projects.galleryIntro')} />
           <ul className="mt-12 grid grid-flow-dense grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
@@ -85,7 +85,7 @@ export default async function ProjectsPage({ params }: LocaleParams) {
       </section>
 
       {/* Case studies (placeholders until real projects are supplied) */}
-      <section className="py-16 sm:py-24">
+      <section className="py-16 lg:py-24">
         <Container>
           <SectionHeading title={t('projects.caseStudiesTitle')} intro={t('projects.caseStudiesIntro')} />
           <ul className="mt-12 grid gap-6 md:grid-cols-3">
@@ -98,8 +98,11 @@ export default async function ProjectsPage({ params }: LocaleParams) {
                         src={project.image.src}
                         alt={project.image.alt[locale]}
                         fill
-                        sizes="(min-width: 768px) 400px, 100vw"
+                        sizes="(min-width: 768px) 400px, 85vw"
+                        quality={60}
+                        placeholder="blur"
                         className="object-cover"
+                        style={{ objectPosition: project.image.position }}
                       />
                     </div>
                   ) : (

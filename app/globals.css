@@ -16,6 +16,9 @@
 
   --radius-card: 18px;
 
+  /* One easing curve for every movement on the site. */
+  --ease-glide: cubic-bezier(0.22, 1, 0.36, 1);
+
   /* Width at which the full desktop navigation fits in the header. */
   --breakpoint-nav: 72rem;
 }
@@ -28,7 +31,6 @@
 @layer base {
   :root {
     --focus-ring: var(--color-teal);
-    --brand-gradient: linear-gradient(90deg, var(--color-lime), var(--color-blue) 55%, var(--color-sky));
     /* Height of the sticky header (see components/layout/Header.tsx). */
     --header-h: 4rem;
   }
@@ -47,18 +49,25 @@
   body {
     background-color: var(--color-background);
     color: var(--color-ink);
-    line-height: 1.65;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Page and section titles use the display serif; smaller headings
+     (cards, lists) use the same sans as the text, a little heavier. */
   h1,
-  h2,
-  h3,
-  h4 {
+  h2 {
     font-family: var(--font-display);
     font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  h3,
+  h4 {
+    font-weight: 600;
+    line-height: 1.3;
     text-wrap: balance;
   }
 
@@ -88,10 +97,10 @@
     left: 1rem;
     top: -5rem;
     z-index: 60;
-    border-radius: 999px;
+    border-radius: 10px;
     background-color: var(--color-lime);
     padding: 0.75rem 1.25rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-teal-darkest);
   }
 
@@ -105,8 +114,8 @@
   .site-header {
     background-image: linear-gradient(to bottom, rgb(0 30 36 / 0.6), rgb(0 30 36 / 0));
     transition:
-      background-color 0.35s ease,
-      box-shadow 0.35s ease;
+      background-color 0.3s var(--ease-glide),
+      box-shadow 0.3s var(--ease-glide);
   }
 
   .site-header[data-scrolled],
@@ -114,19 +123,6 @@
     background-color: var(--color-teal-dark);
     background-image: none;
     box-shadow: 0 1px 0 rgb(255 255 255 / 0.08);
-  }
-
-  /* Translucent white surface that lets the living background show through. */
-  .panel {
-    border: 1px solid rgb(255 255 255 / 0.9);
-    background-color: rgb(255 255 255 / 0.8);
-    box-shadow: 0 24px 60px -36px rgb(0 68 74 / 0.45);
-  }
-
-  @media (min-width: 64rem) {
-    .panel {
-      backdrop-filter: blur(10px);
-    }
   }
 
   /* Rows that scroll sideways on phones, without a visible scrollbar. */
@@ -138,10 +134,6 @@
     display: none;
   }
 
-  .brand-bar {
-    background-image: var(--brand-gradient);
-  }
-
   .bg-hero {
     background-color: var(--color-teal-darkest);
     background-image:
@@ -150,47 +142,46 @@
   }
 }
 
+/* Plain white surface for cards and panels: a hairline edge and a soft,
+   neutral shadow. Written as a utility so it can be switched on at a
+   breakpoint (for example "sm:panel"). */
+@utility panel {
+  border: 1px solid rgb(16 41 44 / 0.08);
+  background-color: #fff;
+  box-shadow:
+    0 1px 2px rgb(16 41 44 / 0.04),
+    0 10px 28px -12px rgb(16 41 44 / 0.12);
+}
+
 /* ------------------------------------------------------------------
    Motion. Everything here is switched off for people who ask their
    device for reduced motion (see the last block).
 ------------------------------------------------------------------ */
 
-/* Reveal on scroll. components/layout/RevealObserver.tsx adds
+/* Reveal on scroll. components/layout/ScrollEffects.tsx adds
    .reveal-pending to [data-reveal] elements that are still below the
    screen, then removes it when they scroll into view. Without
    JavaScript nothing is ever hidden. */
 [data-reveal]:not(.reveal-pending) {
   transition:
-    opacity 0.8s cubic-bezier(0.2, 0.65, 0.2, 1),
-    transform 0.8s cubic-bezier(0.2, 0.65, 0.2, 1);
+    opacity 0.5s var(--ease-glide),
+    transform 0.5s var(--ease-glide);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
 .reveal-pending {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(12px);
 }
 
-.reveal-pending[data-reveal='left'] {
-  transform: translateX(-36px);
-}
-
-.reveal-pending[data-reveal='right'] {
-  transform: translateX(36px);
-}
-
-.reveal-pending[data-reveal='zoom'] {
-  transform: scale(0.94);
-}
-
-/* Headings rise from behind an invisible edge instead of fading. */
+/* Section titles rise from behind an invisible edge instead of fading. */
 [data-reveal='mask'] {
   overflow: hidden;
   padding-bottom: 0.14em;
 }
 
 [data-reveal='mask'] > * {
-  transition: transform 0.95s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: transform 0.7s var(--ease-glide);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -203,60 +194,38 @@
   transform: translateY(112%);
 }
 
-/* Entrance of the hero text when the page loads. */
+/* Entrance of the banner text when a page loads. */
 .rise {
-  animation: rise 0.9s cubic-bezier(0.2, 0.65, 0.2, 1) both;
+  animation: rise 0.6s var(--ease-glide) both;
   animation-delay: var(--delay, 0ms);
 }
 
 /* The main heading only slides (no fade) so it paints immediately. */
 .rise-solid {
-  animation: rise-solid 0.9s cubic-bezier(0.2, 0.65, 0.2, 1) both;
+  animation: rise-solid 0.6s var(--ease-glide) both;
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(22px);
+    transform: translateY(12px);
   }
 }
 
 @keyframes rise-solid {
   from {
-    transform: translateY(18px);
+    transform: translateY(12px);
   }
 }
 
-/* Slow settle of the hero photograph. */
+/* Slow settle of a banner photograph. */
 .hero-zoom {
-  animation: hero-zoom 16s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+  animation: hero-zoom 10s var(--ease-glide) both;
 }
 
 @keyframes hero-zoom {
   from {
-    transform: scale(1.14);
-  }
-}
-
-.spin-slow {
-  animation: spin 90s linear infinite;
-  transform-origin: center;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.float {
-  animation: float 7s ease-in-out infinite;
-  animation-delay: var(--delay, 0ms);
-}
-
-@keyframes float {
-  50% {
-    transform: translateY(-12px);
+    transform: scale(1.08);
   }
 }
 
@@ -295,13 +264,7 @@
 
 /* Photograph that moves slower than the page around it. */
 .parallax {
-  transform: translateY(calc((var(--p, 0.5) - 0.5) * 16%)) scale(1.18);
-  will-change: transform;
-}
-
-/* Small photo that slides against the larger one behind it. */
-.drift {
-  transform: translateY(calc((0.5 - var(--p, 0.5)) * 90px));
+  transform: translateY(calc((var(--p, 0.5) - 0.5) * 12%)) scale(1.14);
   will-change: transform;
 }
 
@@ -322,15 +285,15 @@
 @media (min-width: 64rem) {
   .sector-panels > li {
     flex: 1 1 0%;
-    transition: flex-grow 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition: flex-grow 0.6s var(--ease-glide);
   }
 
   .sector-panels .sector-text {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
     transition:
-      opacity 0.4s ease,
-      transform 0.5s ease;
+      opacity 0.3s var(--ease-glide),
+      transform 0.4s var(--ease-glide);
   }
 
   .sector-panels > li:hover,
@@ -348,37 +311,6 @@
   }
 }
 
-/* ---- Living background ----
-   One misty forest scene sits behind every page (LivingBackground.tsx).
-   The photograph glides as the page scrolls (--page runs from 0 at the
-   top of the page to 1 at the bottom) and bands of mist drift across it. */
-.living-photo {
-  transform: translateY(calc(var(--page, 0) * -6%)) scale(1.14);
-  will-change: transform;
-}
-
-.mist {
-  position: absolute;
-  left: 0;
-  width: 200%;
-  /* A continuous band of fog with a few denser patches inside it. */
-  background-image:
-    linear-gradient(to bottom, transparent 6%, rgb(255 255 255 / 0.5) 50%, transparent 94%),
-    radial-gradient(ellipse 23% 40% at 26% 52%, rgb(255 255 255 / 0.55), transparent 72%),
-    radial-gradient(ellipse 19% 34% at 52% 40%, rgb(255 255 255 / 0.45), transparent 72%),
-    radial-gradient(ellipse 22% 44% at 76% 58%, rgb(255 255 255 / 0.55), transparent 72%);
-  background-size: 50% 100%;
-  background-repeat: repeat-x;
-  animation: mist-drift var(--mist-speed, 90s) linear infinite;
-  pointer-events: none;
-}
-
-@keyframes mist-drift {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 /* ---- Scroll story ("How we work") ----
    Plain layout first: a dark section with the steps side by side.
    When ScrollEffects adds .is-pinned the scene stays fixed on screen
@@ -387,10 +319,10 @@
   position: absolute;
   inset: 0;
   opacity: 0;
-  transform: scale(1.1);
+  transform: scale(1.06);
   transition:
-    opacity 0.9s ease,
-    transform 1.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+    opacity 0.8s var(--ease-glide),
+    transform 1.4s var(--ease-glide);
 }
 
 .story-layer:first-child {
@@ -423,10 +355,10 @@
   position: absolute;
   inset: auto 0 0 0;
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(16px);
   transition:
-    opacity 0.5s ease,
-    transform 0.7s cubic-bezier(0.2, 0.65, 0.2, 1);
+    opacity 0.4s var(--ease-glide),
+    transform 0.5s var(--ease-glide);
 }
 
 .story.is-pinned[data-step='0'] .story-step:nth-child(1),
@@ -447,7 +379,7 @@
 
 /* The name of the current step is lit on the timeline. */
 .story-label {
-  transition: color 0.4s ease;
+  transition: color 0.3s var(--ease-glide);
 }
 
 .story[data-step='0'] .story-label:nth-child(1),

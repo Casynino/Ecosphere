@@ -12,16 +12,15 @@ export async function Footer() {
 
   return (
     <footer className="on-dark relative bg-teal-darkest text-white">
-      <div className="brand-bar h-1" />
       <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-14 sm:px-8 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.3fr] lg:py-16">
         <div>
           <Image src={logo} alt="Ecosphere Solutions" sizes="190px" className="h-14 w-auto" />
           <p className="mt-5 max-w-sm text-white/75">{t('footer.description')}</p>
-          <p className="mt-4 font-display text-xl text-lime">{t('common.tagline')}</p>
+          <p className="mt-4 font-display text-xl text-white">{t('common.tagline')}</p>
         </div>
 
         <nav aria-label={t('footer.footerNav')}>
-          <h2 className="font-sans text-sm font-bold text-sky">{t('footer.quickLinks')}</h2>
+          <h2 className="font-sans text-sm font-semibold tracking-normal text-white/60">{t('footer.quickLinks')}</h2>
           <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1 md:grid-cols-1">
             {navItems.map((item) => (
               <li key={item.key}>
@@ -34,7 +33,7 @@ export async function Footer() {
         </nav>
 
         <div>
-          <h2 className="font-sans text-sm font-bold text-sky">{t('footer.contactTitle')}</h2>
+          <h2 className="font-sans text-sm font-semibold tracking-normal text-white/60">{t('footer.contactTitle')}</h2>
           <ul className="mt-4 space-y-3.5 text-white/85">
             <li className="flex gap-3">
               <MapPin className="mt-1 h-5 w-5 shrink-0 text-lime" aria-hidden="true" />

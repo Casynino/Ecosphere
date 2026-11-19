@@ -42,7 +42,7 @@ export async function ScrollStory() {
 
         <Container className="flex flex-1 flex-col justify-between gap-12 pb-8 pt-12 sm:pt-16">
           <div className="max-w-xl">
-            <h2 id="how-we-work" className="text-2xl sm:text-3xl">
+            <h2 id="how-we-work" className="text-2xl sm:text-[2rem]">
               {t('title')}
             </h2>
           </div>
@@ -54,7 +54,7 @@ export async function ScrollStory() {
                   key={step.key}
                   className="story-step lg:[.is-pinned_&]:flex lg:[.is-pinned_&]:items-end lg:[.is-pinned_&]:justify-between lg:[.is-pinned_&]:gap-10"
                 >
-                  <h3 className="text-3xl [.is-pinned_&]:text-5xl sm:[.is-pinned_&]:text-7xl lg:[.is-pinned_&]:text-[6rem] lg:[.is-pinned_&]:leading-[0.95]">
+                  <h3 className="font-display text-3xl font-medium tracking-[-0.02em] [.is-pinned_&]:text-5xl sm:[.is-pinned_&]:text-7xl lg:[.is-pinned_&]:text-[6rem] lg:[.is-pinned_&]:leading-[0.95]">
                     {t(`steps.${step.key}.title`)}
                   </h3>
                   <p className="mt-3 max-w-xs text-lg text-white/90 lg:[.is-pinned_&]:mb-3 lg:[.is-pinned_&]:mt-0 lg:[.is-pinned_&]:shrink-0">
@@ -67,9 +67,9 @@ export async function ScrollStory() {
             {/* Timeline, shown once the scene is pinned. */}
             <div className="mt-8 hidden [.is-pinned_&]:block" aria-hidden="true">
               <div className="relative h-px bg-white/30">
-                <span className="story-bar brand-bar absolute inset-x-0 -top-px h-[3px]" />
+                <span className="story-bar absolute inset-x-0 -top-px h-[3px] bg-lime" />
               </div>
-              <ul className="mt-3 grid grid-cols-4 gap-2 text-xs font-semibold text-white/55 sm:text-sm">
+              <ul className="mt-3 hidden grid-cols-4 gap-2 text-sm font-semibold text-white/55 sm:grid">
                 {steps.map((step) => (
                   <li key={step.key} className="story-label">
                     {t(`steps.${step.key}.title`)}

@@ -42,10 +42,10 @@ export function PageHero({ title, intro, photo, locale, children }: Props) {
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(0_36_42/0.84)_0%,rgb(0_36_42/0.66)_60%,rgb(0_36_42/0.2)_100%)] lg:bg-[linear-gradient(90deg,rgb(0_36_42/0.9)_0%,rgb(0_36_42/0.62)_45%,rgb(0_36_42/0.08)_82%)]" />
         </div>
       )}
-      <Container className={`flex flex-col justify-center pt-[calc(var(--header-h)+4rem)] ${photo ? 'min-h-[66svh] pb-[20svh]' : 'pb-16 sm:pb-20'}`}>
-        <h1 className="rise-solid max-w-4xl text-[2.5rem] leading-[1.06] sm:text-6xl lg:text-7xl">{title}</h1>
+      <Container className={`flex flex-col justify-center pt-[calc(var(--header-h)+4rem)] ${photo ? 'min-h-[60svh] pb-[18svh]' : 'pb-16 sm:pb-20'}`}>
+        <h1 className="rise-solid max-w-3xl text-[2.25rem] leading-[1.08] sm:text-5xl lg:text-[3.5rem]">{title}</h1>
         {intro && (
-          <p className="rise mt-5 max-w-2xl text-lg text-white/90 sm:text-xl" style={delay(160)}>
+          <p className="rise mt-4 max-w-xl text-lg text-white/85" style={delay(120)}>
             {intro}
           </p>
         )}

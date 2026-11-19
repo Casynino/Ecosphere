@@ -21,14 +21,13 @@ no attribution required). Trimmed to a 14-second seamless loop, resized and expo
 | --- | --- | --- |
 | sunrise-mist.jpg | https://unsplash.com/photos/u5j63i9YVUw | @ato_aikins |
 | river-aerial.jpg | https://unsplash.com/photos/Mw6MYQaB0L4 | @ato_aikins |
-| misty-canopy.jpg | https://unsplash.com/photos/RhjVGxILcqE | @tobiastu |
 | crater-green.jpg | https://unsplash.com/photos/BlQTC_JzRLY | @matthewryanstephenson |
 | cloud-forest.jpg | https://unsplash.com/photos/HU_iSmQqpK4 | @evstki |
 | rainforest-mist.jpg | https://unsplash.com/photos/xFqH9peAlmw | @davidclode |
 | green-hills.jpg | https://unsplash.com/photos/oQq2KYU_SAs | @evans_dimsphoto |
 | kilimanjaro.jpg | https://unsplash.com/photos/mfX814jtyro | @sickle |
 | river-forest.jpg | https://unsplash.com/photos/vkQgb1lZZPQ | @ivoprod |
-| forest-canopy.jpg | https://unsplash.com/photos/fqooKAlynf0 | @andrikyrychok_art |
+| forest-canopy.jpg (also the source of `public/images/textures/canopy.jpg`, the forest in the moving background) | https://unsplash.com/photos/fqooKAlynf0 | @andrikyrychok_art |
 | mangrove-aerial.jpg | https://unsplash.com/photos/jSgCHNQqEQ4 | @nazyhu___ |
 | planting-seedling.jpg | https://unsplash.com/photos/EkEdHarUPTs | @vitormonthay |
 | hands-soil.jpg | https://unsplash.com/photos/bYZn_C-RswQ | @greenforce_staffing |

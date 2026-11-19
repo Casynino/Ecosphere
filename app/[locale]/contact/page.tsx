@@ -41,7 +41,7 @@ export default async function ContactPage({ params }: LocaleParams) {
     <>
       <PageHero locale={locale} photo={stock.darAerial} title={t('title')} intro={t('intro')} />
 
-      <section className="py-16 sm:py-24">
+      <section className="py-16 lg:py-24">
         <Container className="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-14">
           <div>
             <h2 className="text-2xl sm:text-3xl">{t('detailsTitle')}</h2>
@@ -75,7 +75,7 @@ export default async function ContactPage({ params }: LocaleParams) {
             </ul>
           </div>
 
-          <div className="panel rounded-[28px] p-6 sm:p-10">
+          <div className="panel rounded-card p-6 sm:p-10">
             <h2 className="text-2xl sm:text-3xl">{t('formTitle')}</h2>
             <div className="mt-7">
               {/* The form runs in the browser, so it gets its own strings. */}
@@ -87,7 +87,7 @@ export default async function ContactPage({ params }: LocaleParams) {
         </Container>
       </section>
 
-      <section className="pb-16 sm:pb-24">
+      <section className="pb-16 lg:pb-24">
         <Container>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="text-2xl sm:text-3xl">{t('mapTitle')}</h2>
@@ -106,7 +106,7 @@ export default async function ContactPage({ params }: LocaleParams) {
             title={t('mapFrameTitle')}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="mt-8 h-[26rem] w-full rounded-[28px] border border-white shadow-[0_24px_60px_-36px_rgb(0_68_74/0.45)]"
+            className="mt-8 h-[26rem] w-full rounded-card border border-white shadow-[0_24px_60px_-36px_rgb(0_68_74/0.45)]"
           />
         </Container>
       </section>

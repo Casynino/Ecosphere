@@ -83,7 +83,8 @@ All movement is in `app/globals.css` and three small scripts, with no animation 
 - `components/layout/ScrollEffects.tsx`: reveal on scroll, parallax, the pinned "How we work" story.
 - `components/sections/HeroVideo.tsx`: the looping drone video behind the home page headline. It loads after
   the still picture, is about 2.7 MB on computers and 0.9 MB on phones, and is skipped on data-saver or 2G connections.
-- `components/layout/LivingBackground.tsx`: the misty landscape and drifting mist behind every page.
+- `components/layout/LivingBackground.tsx`: the scene behind every page, a quiet flight over misty forest drawn
+  with WebGL. It moves forward as the page is scrolled.
 
 Visitors who ask their device for reduced motion get a still page. Without JavaScript the page reads normally.
 
@@ -124,5 +125,5 @@ Each push to the main branch triggers a new Vercel build, so push finished work 
 npm run lint && npm run check:i18n && npm run build
 ```
 
-Lighthouse (mobile, production build, nine main pages, 19 November 2026): Performance 90 to 100
+Lighthouse (mobile, production build, nine main pages, 19 November 2026): Performance 93 to 100
 (home page 100), Accessibility 100, Best Practices 100, SEO 100.

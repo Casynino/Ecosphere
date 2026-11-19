@@ -47,7 +47,7 @@ export default async function NewsPage({ params }: LocaleParams) {
         intro={t('news.intro')}
       />
 
-      <section className="py-16 sm:py-24">
+      <section className="py-16 lg:py-24">
         <Container>
           {hasPlaceholders && (
             <p className="mb-10 rounded-2xl border border-dashed border-teal/50 bg-teal/5 p-4 font-semibold text-teal">

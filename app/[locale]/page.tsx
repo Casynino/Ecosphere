@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import type { CSSProperties } from 'react';
 import { LeaderPreviewCard } from '@/components/cards/LeaderCard';
 import { SectorCard } from '@/components/cards/SectorCard';
-import { ServiceCard } from '@/components/cards/ServiceCard';
+import { ServiceList } from '@/components/cards/ServiceCard';
 import { CtaBanner } from '@/components/sections/CtaBanner';
 import { HomeHero } from '@/components/sections/HomeHero';
 import { MissionVision } from '@/components/sections/MissionVision';
@@ -15,19 +15,43 @@ import { PhotoMarquee } from '@/components/ui/Marquee';
 import { ScrollWords } from '@/components/ui/ScrollWords';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { leaders } from '@/content/leadership';
-import { fieldGallery, photos, stock } from '@/content/media';
+import { fieldGallery, photos, stock, type Photo } from '@/content/media';
 import { sectors } from '@/content/sectors';
 import { services } from '@/content/services';
+import type { Locale } from '@/content/types';
 import { getPageLocale, type LocaleParams } from '@/lib/locale';
 import { pageMetadata } from '@/lib/seo';
 
-const stagger = (index: number, step = 90) => ({ '--reveal-delay': `${index * step}ms` }) as CSSProperties;
+const stagger = (index: number) => ({ '--reveal-delay': `${index * 50}ms` }) as CSSProperties;
 
 export async function generateMetadata({ params }: LocaleParams): Promise<Metadata> {
   const locale = await getPageLocale(params);
   const t = await getTranslations({ locale, namespace: 'meta' });
   return pageMetadata({ locale, title: t('titleDefault'), description: t('description'), absoluteTitle: true });
 }
+
+/** One photo of the About mosaic, filling whatever box it is given. */
+function Tile({ photo, locale, className, sizes }: { photo: Photo; locale: Locale; className: string; sizes: string }) {
+  return (
+    <div className={`relative overflow-hidden rounded-card ${className}`}>
+      <Image
+        src={photo.src}
+        alt={photo.alt[locale]}
+        fill
+        sizes={sizes}
+        quality={60}
+        placeholder="blur"
+        className="object-cover"
+        style={{ objectPosition: photo.position }}
+      />
+    </div>
+  );
+}
+
+// Every section uses the same rhythm: 64px above and below on phones,
+// 96px on larger screens, and 32-40px between a title and its content.
+const section = 'py-16 lg:py-24';
+const below = 'mt-8 lg:mt-10';
 
 export default async function HomePage({ params }: LocaleParams) {
   const locale = await getPageLocale(params);
@@ -37,88 +61,61 @@ export default async function HomePage({ params }: LocaleParams) {
     <>
       <HomeHero locale={locale} />
 
-      {/* About */}
-      <section className="py-16 sm:py-24">
+      {/* About: words on the left, photos on the right, then mission and vision */}
+      <section className={section}>
         <Container>
-          <div className="panel rounded-[28px] p-6 sm:p-10 lg:p-14">
-            <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-              <div>
-                <SectionHeading title={t('home.about.title')} />
-                <ScrollWords text={t('company.about')} className="mt-7 font-display text-xl leading-snug sm:text-2xl" />
-                <ArrowLink href="/about" className="mt-8">
-                  {t('home.about.link')}
-                </ArrowLink>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div data-reveal className="relative row-span-2 min-h-72 overflow-hidden rounded-card">
-                  <Image
-                    src={photos.drawingsReview.src}
-                    alt={photos.drawingsReview.alt[locale]}
-                    fill
-                    sizes="(min-width: 1024px) 280px, 46vw"
-                    placeholder="blur"
-                    className="object-cover"
-                    style={{ objectPosition: photos.drawingsReview.position }}
-                  />
-                </div>
-                <div data-reveal style={stagger(1, 120)} className="relative aspect-[4/3] overflow-hidden rounded-card">
-                  <Image
-                    src={photos.teamOnWharf.src}
-                    alt={photos.teamOnWharf.alt[locale]}
-                    fill
-                    sizes="(min-width: 1024px) 280px, 46vw"
-                    placeholder="blur"
-                    className="object-cover"
-                  />
-                </div>
-                <div data-reveal style={stagger(2, 120)} className="relative aspect-[4/3] overflow-hidden rounded-card">
-                  <Image
-                    src={stock.handsSoil.src}
-                    alt={stock.handsSoil.alt[locale]}
-                    fill
-                    sizes="(min-width: 1024px) 280px, 46vw"
-                    placeholder="blur"
-                    className="object-cover"
-                  />
-                </div>
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <SectionHeading title={t('home.about.title')} />
+              <ScrollWords text={t('company.about')} className="mt-5 text-lg leading-relaxed" />
+              <ArrowLink href="/about" className="mt-6">
+                {t('home.about.link')}
+              </ArrowLink>
+            </div>
+            <div data-reveal className="grid grid-cols-5 gap-3 sm:gap-4 lg:col-span-7">
+              <Tile
+                photo={photos.drawingsReview}
+                locale={locale}
+                className="col-span-3 aspect-[4/5]"
+                sizes="(min-width: 1024px) 420px, 60vw"
+              />
+              <div className="col-span-2 grid grid-rows-2 gap-3 sm:gap-4">
+                <Tile photo={photos.teamOnWharf} locale={locale} className="min-h-0" sizes="(min-width: 1024px) 280px, 40vw" />
+                <Tile photo={stock.handsSoil} locale={locale} className="min-h-0" sizes="(min-width: 1024px) 280px, 40vw" />
               </div>
             </div>
           </div>
-          <div className="mt-6">
+          <div className="mt-10 lg:mt-16">
             <MissionVision />
           </div>
         </Container>
       </section>
 
       {/* Services */}
-      <section className="py-16 sm:py-24">
+      <section className={section}>
         <Container>
           <SectionHeading
             title={t('home.services.title')}
             intro={t('home.services.intro')}
             action={<ArrowLink href="/services">{t('services.allServices')}</ArrowLink>}
           />
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((service, index) => (
-              <li key={service.slug} data-reveal style={stagger(index % 4)}>
-                <ServiceCard service={service} locale={locale} brief />
-              </li>
-            ))}
-          </ul>
+          <div data-reveal className={below}>
+            <ServiceList services={services} locale={locale} brief />
+          </div>
         </Container>
       </section>
 
-      {/* Sectors: photo panels that open wider under the pointer */}
-      <section className="py-16 sm:py-24">
+      {/* Sectors: four photo tiles; on wide screens the one under the pointer opens */}
+      <section className={section}>
         <Container>
           <SectionHeading
             title={t('home.sectors.title')}
             intro={t('home.sectors.intro')}
             action={<ArrowLink href="/sectors">{t('home.sectors.link')}</ArrowLink>}
           />
-          <ul className="sector-panels mt-12 flex flex-col gap-4 lg:h-[34rem] lg:flex-row">
+          <ul className={`sector-panels grid grid-cols-2 gap-3 sm:gap-4 lg:flex lg:h-[30rem] ${below}`}>
             {sectors.map((sector, index) => (
-              <li key={sector.slug} data-reveal="zoom" style={stagger(index, 110)} className="min-h-60 min-w-0">
+              <li key={sector.slug} data-reveal style={stagger(index)} className="min-w-0">
                 <SectorCard sector={sector} locale={locale} />
               </li>
             ))}
@@ -130,7 +127,7 @@ export default async function HomePage({ params }: LocaleParams) {
       <ScrollStory />
 
       {/* In the field: moving strip of the team's own photos */}
-      <section className="overflow-hidden py-16 sm:py-24">
+      <section className={`overflow-hidden ${section}`}>
         <Container>
           <SectionHeading
             title={t('home.field.title')}
@@ -138,19 +135,19 @@ export default async function HomePage({ params }: LocaleParams) {
             action={<ArrowLink href="/projects">{t('home.field.link')}</ArrowLink>}
           />
         </Container>
-        <div className="mt-12">
+        <div className={below}>
           <PhotoMarquee photos={fieldGallery} locale={locale} />
         </div>
       </section>
 
-      {/* Leadership preview */}
-      <section className="py-16 sm:py-24">
+      {/* Leadership */}
+      <section className="pb-16 lg:pb-24">
         <Container>
           <SectionHeading
             title={t('home.leadership.title')}
             action={<ArrowLink href="/leadership">{t('home.leadership.link')}</ArrowLink>}
           />
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className={`grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4 ${below}`}>
             {leaders.map((leader, index) => (
               <li key={leader.slug} data-reveal style={stagger(index)}>
                 <LeaderPreviewCard leader={leader} photoAlt={t('leadership.photoAlt', { name: leader.name })} />

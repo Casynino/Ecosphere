@@ -24,7 +24,7 @@ export default async function LeadershipPage({ params }: LocaleParams) {
     <>
       <PageHero locale={locale} photo={stock.sunriseMist} title={t('title')} intro={t('intro')} />
 
-      <section className="py-16 sm:py-24">
+      <section className="py-16 lg:py-24">
         <Container>
           <ul className="grid gap-6 lg:grid-cols-2">
             {leaders.map((leader, index) => (

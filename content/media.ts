@@ -3,10 +3,12 @@ import cranesAndSkyline from '@/public/images/field/cranes-and-skyline.jpg';
 import drawingsReview from '@/public/images/field/drawings-review.jpg';
 import drawingsReview2 from '@/public/images/field/drawings-review-2.jpg';
 import siteBriefing from '@/public/images/field/site-briefing.jpg';
+import siteMeeting from '@/public/images/field/site-meeting.jpg';
 import siteWalk from '@/public/images/field/site-walk.jpg';
 import teamAtHarbour from '@/public/images/field/team-at-harbour.jpg';
 import teamOnWharf from '@/public/images/field/team-on-wharf.jpg';
 import teamSiteOffice from '@/public/images/field/team-site-office.jpg';
+import teamWharfWide from '@/public/images/field/team-wharf-wide.jpg';
 import cloudForest from '@/public/images/stock/cloud-forest.jpg';
 import craterGreen from '@/public/images/stock/crater-green.jpg';
 import cropRows from '@/public/images/stock/crop-rows.jpg';
@@ -18,7 +20,6 @@ import handsSoil from '@/public/images/stock/hands-soil.jpg';
 import heroSavanna from '@/public/images/stock/hero-savanna.jpg';
 import kilimanjaro from '@/public/images/stock/kilimanjaro.jpg';
 import mangroveAerial from '@/public/images/stock/mangrove-aerial.jpg';
-import mistyCanopy from '@/public/images/stock/misty-canopy.jpg';
 import offshorePlatform from '@/public/images/stock/offshore-platform.jpg';
 import openPitMine from '@/public/images/stock/open-pit-mine.jpg';
 import plantingSeedling from '@/public/images/stock/planting-seedling.jpg';
@@ -108,6 +109,22 @@ export const photos = {
       sw: 'Wanatimu wawili waliovaa vizibao vya usalama nje ya ofisi ya eneo la ujenzi',
     },
   },
+  siteMeeting: {
+    src: siteMeeting,
+    shape: 'landscape',
+    alt: {
+      en: 'Team members and site staff talking beside the water at a construction site',
+      sw: 'Wanatimu na wafanyakazi wa eneo la ujenzi wakizungumza kando ya maji',
+    },
+  },
+  teamWharfWide: {
+    src: teamWharfWide,
+    shape: 'landscape',
+    alt: {
+      en: 'Team members standing in a line on a wide wharf with the sea behind them',
+      sw: 'Wanatimu wakiwa wamesimama kwa mstari kwenye gati pana, bahari ikiwa nyuma yao',
+    },
+  },
 } satisfies Record<string, Photo>;
 
 export const stock = {
@@ -126,14 +143,6 @@ export const stock = {
     alt: {
       en: 'Sunrise over a green landscape covered in morning mist, with a red earth road in the foreground',
       sw: 'Macheo juu ya mandhari ya kijani iliyofunikwa na ukungu wa asubuhi, barabara ya udongo mwekundu ikiwa mbele',
-    },
-  },
-  mistyCanopy: {
-    src: mistyCanopy,
-    shape: 'landscape',
-    alt: {
-      en: 'Morning mist lying over a forest canopy',
-      sw: 'Ukungu wa asubuhi ukiwa umetanda juu ya msitu',
     },
   },
   riverAerial: {

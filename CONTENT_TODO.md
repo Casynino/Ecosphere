@@ -17,6 +17,7 @@ where real content is missing, the site says so on screen.
 - [ ] **Service details.** Each service page lists three placeholder "What's included" bullets.
       Add real ones as `included` in `content/services.ts`.
 - [ ] **Project case studies.** `/projects` shows three labelled placeholders (title, sector, location, summary).
+      Their photos are from the site-visit set and only show how a finished case study will look.
       Replace them in `content/projects.ts`. Do not publish clients, figures or results that are not confirmed.
 - [ ] **News articles.** Two placeholder drafts in `content/news/`. While only drafts exist, the news pages are
       hidden from search engines, the sitemap and the RSS feed.

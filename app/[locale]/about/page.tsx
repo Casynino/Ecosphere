@@ -33,9 +33,9 @@ export default async function AboutPage({ params }: LocaleParams) {
         intro={t('about.intro')}
       />
 
-      <section className="py-16 sm:py-24">
+      <section className="py-16 lg:py-24">
         <Container>
-          <div className="panel rounded-[28px] p-6 sm:p-10 lg:p-14">
+          <div className="panel rounded-card p-6 sm:p-10 lg:p-14">
             <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <div>
                 <SectionHeading title={t('home.about.title')} />
@@ -81,7 +81,7 @@ export default async function AboutPage({ params }: LocaleParams) {
         </Container>
       </section>
 
-      <section id="leadership" className="py-16 sm:py-24">
+      <section id="leadership" className="py-16 lg:py-24">
         <Container>
           <SectionHeading
             title={t('about.leadershipTitle')}

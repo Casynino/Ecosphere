@@ -11,15 +11,15 @@ type TrackStyle = CSSProperties & { '--marquee-duration'?: string; '--marquee-ga
  * readers. It pauses on hover and stands still for reduced-motion users.
  */
 export function PhotoMarquee({ photos, locale }: { photos: Photo[]; locale: Locale }) {
-  const style: TrackStyle = { '--marquee-duration': '70s', '--marquee-gap': '1.25rem' };
+  const style: TrackStyle = { '--marquee-duration': '70s', '--marquee-gap': '1rem' };
 
   const track = (copy: boolean) => (
     <ul className="marquee-track" style={style} aria-hidden={copy || undefined}>
       {photos.map((photo) => (
         <li
           key={photo.src.src}
-          className={`relative h-56 shrink-0 overflow-hidden rounded-card sm:h-72 ${
-            photo.shape === 'portrait' ? 'w-40 sm:w-52' : 'w-72 sm:w-96'
+          className={`relative h-48 shrink-0 overflow-hidden rounded-card sm:h-72 ${
+            photo.shape === 'portrait' ? 'w-36 sm:w-52' : 'w-64 sm:w-96'
           }`}
         >
           <Image
