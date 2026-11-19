@@ -3,8 +3,8 @@ import { getTranslations } from 'next-intl/server';
 import { ServiceList } from '@/components/cards/ServiceCard';
 import { CtaBanner } from '@/components/sections/CtaBanner';
 import { PageHero } from '@/components/sections/PageHero';
-import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Container } from '@/components/ui/Container';
+import { CtaLink } from '@/components/ui/CtaLink';
 import { stock } from '@/content/media';
 import { services } from '@/content/services';
 import { getPageLocale, type LocaleParams } from '@/lib/locale';
@@ -35,9 +35,9 @@ export default async function ServicesPage({ params }: LocaleParams) {
           <div data-reveal className="on-dark bg-hero mt-6 rounded-card p-6 text-white sm:mt-8 sm:p-10">
             <h2 className="text-2xl sm:text-3xl">{t('home.services.helpTitle')}</h2>
             <p className="mt-3 max-w-lg text-white/85">{t('home.services.helpBody')}</p>
-            <ButtonLink href="/contact" className="mt-6">
+            <CtaLink href="/contact" className="mt-6">
               {t('home.services.helpCta')}
-            </ButtonLink>
+            </CtaLink>
           </div>
         </Container>
       </section>

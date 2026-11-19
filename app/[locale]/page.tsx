@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import type { CSSProperties } from 'react';
 import { LeaderPreviewCard } from '@/components/cards/LeaderCard';
-import { AboutScene } from '@/components/sections/AboutScene';
+import { AboutSection } from '@/components/sections/AboutSection';
 import { CtaBanner } from '@/components/sections/CtaBanner';
 import { FieldShowcase } from '@/components/sections/FieldShowcase';
 import { HomeHero } from '@/components/sections/HomeHero';
-import { ScrollStory } from '@/components/sections/ScrollStory';
-import { SectorsScene } from '@/components/sections/SectorsScene';
-import { ServicesScene } from '@/components/sections/ServicesScene';
+import { HowSection } from '@/components/sections/HowSection';
+import { SectorsSection } from '@/components/sections/SectorsSection';
+import { ServicesSection } from '@/components/sections/ServicesSection';
 import { ArrowLink } from '@/components/ui/ArrowLink';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -22,8 +21,8 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
   return pageMetadata({ locale, title: t('titleDefault'), description: t('description'), absoluteTitle: true });
 }
 
-// The home page is a film in chapters. Each "scene" fills the screen and
-// changes as the visitor scrolls (see app/globals.css, "Scenes").
+// The home page scrolls normally from top to bottom. Each section is a
+// frosted panel over the moving forest behind the page.
 export default async function HomePage({ params }: LocaleParams) {
   const locale = await getPageLocale(params);
   const t = await getTranslations();
@@ -31,26 +30,28 @@ export default async function HomePage({ params }: LocaleParams) {
   return (
     <>
       <HomeHero locale={locale} />
-      <AboutScene />
-      <ServicesScene locale={locale} />
-      <SectorsScene locale={locale} />
-      <ScrollStory />
+      <AboutSection locale={locale} />
+      <ServicesSection locale={locale} />
+      <SectorsSection locale={locale} />
+      <HowSection locale={locale} />
       <FieldShowcase locale={locale} />
 
       {/* Leadership */}
-      <section className="pb-20 lg:pb-32">
+      <section className="pb-16 pt-10 lg:pb-24 lg:pt-14">
         <Container>
-          <SectionHeading
-            title={t('home.leadership.title')}
-            action={<ArrowLink href="/leadership">{t('home.leadership.link')}</ArrowLink>}
-          />
-          <ul className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 lg:mt-14 lg:grid-cols-4">
-            {leaders.map((leader, index) => (
-              <li key={leader.slug} data-reveal style={{ '--reveal-delay': `${index * 60}ms` } as CSSProperties}>
-                <LeaderPreviewCard leader={leader} photoAlt={t('leadership.photoAlt', { name: leader.name })} />
-              </li>
-            ))}
-          </ul>
+          <div className="panel rounded-[24px] p-6 sm:p-10 lg:p-14">
+            <SectionHeading
+              title={t('home.leadership.title')}
+              action={<ArrowLink href="/leadership">{t('home.leadership.link')}</ArrowLink>}
+            />
+            <ul data-reveal className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 lg:mt-10 lg:grid-cols-4">
+              {leaders.map((leader) => (
+                <li key={leader.slug}>
+                  <LeaderPreviewCard leader={leader} photoAlt={t('leadership.photoAlt', { name: leader.name })} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </Container>
       </section>
 

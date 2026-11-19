@@ -1,7 +1,7 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { navItems, site } from '@/content/site';
+import { navItems, site, whatsappLink } from '@/content/site';
 import { Link } from '@/i18n/navigation';
 import logo from '@/public/brand/logo.png';
 import { WhatsAppIcon } from './WhatsAppButton';
@@ -56,7 +56,7 @@ export async function Footer() {
             </li>
             <li className="flex gap-3">
               <WhatsAppIcon className="mt-1 h-5 w-5 shrink-0 text-accent" />
-              <a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
+              <a href={whatsappLink(t('common.whatsappGreeting'))} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
                 {t('contact.whatsappCta')}
               </a>
             </li>

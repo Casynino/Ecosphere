@@ -47,26 +47,40 @@ await sharp({ create: { width: 180, height: 180, channels: 4, background: '#ffff
   .png({ compressionLevel: 9 })
   .toFile(`${OUT}/apple-icon.png`);
 
-// Social share image (1200 x 630).
-const ogLogo = await render(reversed, FULL, 640).png().toBuffer();
-const ogBackground = Buffer.from(`
+// Social share image (1200 x 630): the picture people see when the link is
+// shared on WhatsApp, Facebook, LinkedIn or X. The opening photograph of the
+// site with the logo and the headline. Kept as a light JPEG, because some
+// apps skip preview pictures that are slow to fetch.
+const ogLogo = await render(reversed, FULL, 400).png().toBuffer();
+const ogPhoto = await sharp('public/images/stock/hero-savanna.jpg')
+  .resize(1200, 630, { fit: 'cover', position: 'centre' })
+  .toBuffer();
+const ogShade = Buffer.from(`
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#00444a"/><stop offset="0.6" stop-color="#00323a"/><stop offset="1" stop-color="#005e64"/>
+    <linearGradient id="side" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#021316" stop-opacity="0.86"/>
+      <stop offset="0.55" stop-color="#021316" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#021316" stop-opacity="0.12"/>
     </linearGradient>
-    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#8cc63f"/><stop offset="0.55" stop-color="#3b79b8"/><stop offset="1" stop-color="#5ec3d6"/>
+    <linearGradient id="foot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.35" stop-color="#021316" stop-opacity="0"/>
+      <stop offset="1" stop-color="#021316" stop-opacity="0.9"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect x="0" y="618" width="1200" height="12" fill="url(#bar)"/>
-  <text x="600" y="470" text-anchor="middle" font-family="Georgia, serif" font-size="46" fill="#ffffff">We Are The Solution.</text>
-  <text x="600" y="530" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="27" fill="#bfe3e8">Environmental consultancy · Dar es Salaam, Tanzania</text>
+  <rect width="1200" height="630" fill="url(#side)"/>
+  <rect width="1200" height="630" fill="url(#foot)"/>
+  <text x="72" y="430" font-family="Baskerville, Georgia, serif" font-size="74" fill="#ffffff">We are the solution</text>
+  <text x="72" y="512" font-family="Baskerville, Georgia, serif" font-size="74" fill="#ffffff">for a healthier planet.</text>
+  <rect x="72" y="546" width="56" height="2" fill="#8cc63f"/>
+  <text x="146" y="556" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="25" fill="#d8ebe6">Environmental consultancy · Dar es Salaam, Tanzania</text>
 </svg>`);
-await sharp(ogBackground)
-  .composite([{ input: ogLogo, top: 110, left: 280 }])
-  .png({ compressionLevel: 9 })
-  .toFile(`${OUT}/og.png`);
+await sharp(ogPhoto)
+  .composite([
+    { input: ogShade, top: 0, left: 0 },
+    { input: ogLogo, top: 60, left: 72 },
+  ])
+  .jpeg({ quality: 84, mozjpeg: true })
+  .toFile(`${OUT}/og.jpg`);
 
 console.log('Brand assets written to', OUT);

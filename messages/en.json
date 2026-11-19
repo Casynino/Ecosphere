@@ -9,7 +9,8 @@
     "skipToContent": "Skip to content",
     "placeholder": "Placeholder",
     "photoPlaceholder": "Photo to be added",
-    "requestConsultation": "Request a consultation",
+    "requestConsultation": "Let’s talk",
+    "whatsappGreeting": "Hello Ecosphere Solutions, I would like to know more about your environmental services.",
     "whatsapp": "Chat with us on WhatsApp"
   },
   "nav": {
@@ -21,7 +22,7 @@
     "leadership": "Leadership",
     "news": "News",
     "contact": "Contact",
-    "cta": "Request a consultation",
+    "cta": "Let’s talk",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "mainNav": "Main navigation",
@@ -50,7 +51,7 @@
     "hero": {
       "title": "We are the solution for a healthier planet.",
       "sub": "We help industry, government and communities protect the environment while their business grows.",
-      "primaryCta": "Request a consultation"
+      "primaryCta": "Let’s talk"
     },
     "about": {
       "title": "An environmental consultancy in Tanzania that puts ecological protection first",
@@ -169,7 +170,7 @@
   "contact": {
     "metaTitle": "Contact us",
     "metaDescription": "Request a consultation with Ecosphere Solutions in Masaki, Dar es Salaam. Call, email, WhatsApp or send us your project details.",
-    "title": "Request a consultation",
+    "title": "Let’s talk about your project",
     "intro": "Tell us about your project and the support you need. We will get back to you to arrange a conversation.",
     "detailsTitle": "Contact details",
     "address": "Address",

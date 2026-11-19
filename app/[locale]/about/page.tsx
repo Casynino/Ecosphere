@@ -75,19 +75,18 @@ export default async function AboutPage({ params }: LocaleParams) {
               </div>
             </div>
           </div>
-          <div className="mt-6">
+          <div className="mt-4 sm:mt-6">
             <MissionVision />
           </div>
         </Container>
       </section>
 
-      <section id="leadership" className="py-16 lg:py-24">
+      <section id="leadership" className="pb-16 lg:pb-24">
         <Container>
-          <SectionHeading
-            title={t('about.leadershipTitle')}
-            intro={t('about.leadershipIntro')}
-          />
-          <ul className="mt-12 grid gap-6 lg:grid-cols-2">
+          <div className="panel rounded-card p-6 sm:p-10">
+            <SectionHeading title={t('about.leadershipTitle')} intro={t('about.leadershipIntro')} />
+          </div>
+          <ul className="mt-4 grid gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-2">
             {leaders.map((leader, index) => (
               <li key={leader.slug} data-reveal style={{ '--reveal-delay': `${(index % 2) * 110}ms` } as CSSProperties}>
                 <LeaderCard

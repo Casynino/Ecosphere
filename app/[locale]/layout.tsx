@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Fraunces, Manrope } from 'next/font/google';
+import { Instrument_Serif, Manrope } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import type { ReactNode } from 'react';
@@ -18,8 +18,9 @@ import { organizationJsonLd } from '@/lib/structured-data';
 import '../globals.css';
 
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', display: 'swap' });
-// The optical-size axis makes the serif finer and more elegant at large sizes.
-const fraunces = Fraunces({ subsets: ['latin'], axes: ['opsz'], variable: '--font-fraunces', display: 'swap' });
+// Headings: Instrument Serif, an elegant display serif with a plain "&".
+// It has one weight and a very small file, which keeps pages quick to show.
+const heading = Instrument_Serif({ subsets: ['latin'], weight: '400', variable: '--font-heading', display: 'swap' });
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -49,7 +50,7 @@ export default async function LocaleLayout({ children, params }: LocaleParams & 
   const t = await getTranslations();
 
   return (
-    <html lang={locale} className={`${manrope.variable} ${fraunces.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={`${manrope.variable} ${heading.variable}`} suppressHydrationWarning>
       <body className="font-sans">
         {/* Applies a remembered dark theme before anything is drawn, so the page never flashes. */}
         <script

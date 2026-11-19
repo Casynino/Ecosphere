@@ -282,9 +282,7 @@ export const fieldGallery: Photo[] = [
   photos.siteWalk,
   photos.teamSiteOffice,
   photos.cranesAndSkyline,
-  photos.drawingsReview2,
   photos.teamOnWharf,
-  photos.teamAtHarbour,
 ];
 
 export type VideoClip = {

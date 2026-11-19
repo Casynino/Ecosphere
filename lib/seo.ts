@@ -43,7 +43,7 @@ type PageMeta = {
   type?: 'website' | 'article';
 };
 
-const ogImage = { url: '/brand/og.png', width: 1200, height: 630, alt: `${site.shortName}: We Are The Solution` };
+const ogImage = { url: '/brand/og.jpg', type: 'image/jpeg', width: 1200, height: 630, alt: `${site.shortName}: We Are The Solution` };
 
 /** Title, description, canonical URL, hreflang, Open Graph and Twitter tags for a page. */
 export function pageMetadata({

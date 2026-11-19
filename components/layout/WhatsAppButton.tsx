@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { site } from '@/content/site';
+import { whatsappLink } from '@/content/site';
 
 export function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -15,7 +15,7 @@ export async function WhatsAppButton() {
 
   return (
     <a
-      href={site.whatsappUrl}
+      href={whatsappLink(t('whatsappGreeting'))}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t('whatsapp')}

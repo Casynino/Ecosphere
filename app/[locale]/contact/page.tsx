@@ -9,7 +9,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Container } from '@/components/ui/Container';
 import { stock } from '@/content/media';
 import { services } from '@/content/services';
-import { site } from '@/content/site';
+import { site, whatsappLink } from '@/content/site';
 import { getPageLocale, type LocaleParams } from '@/lib/locale';
 import { pageMetadata } from '@/lib/seo';
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 
 function Detail({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
   return (
-    <li className="panel flex gap-4 rounded-card p-5">
+    <li className="flex gap-4 py-5">
       <span className="mt-1 shrink-0 text-accent">{icon}</span>
       <div>
         <p className="text-sm font-bold text-accent">{label}</p>
@@ -34,6 +34,7 @@ function Detail({ icon, label, children }: { icon: ReactNode; label: string; chi
 export default async function ContactPage({ params }: LocaleParams) {
   const locale = await getPageLocale(params);
   const t = await getTranslations('contact');
+  const common = await getTranslations('common');
   const messages = await getMessages();
   const { address } = site;
 
@@ -43,9 +44,9 @@ export default async function ContactPage({ params }: LocaleParams) {
 
       <section className="py-16 lg:py-24">
         <Container className="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-14">
-          <div>
+          <div className="panel self-start rounded-card p-6 sm:p-10">
             <h2 className="text-2xl sm:text-3xl">{t('detailsTitle')}</h2>
-            <ul className="mt-6 space-y-4">
+            <ul className="mt-3 divide-y divide-snow/10">
               <Detail icon={<MapPin className="h-5 w-5" aria-hidden="true" />} label={t('address')}>
                 <address className="not-italic">
                   {address.street}, {address.district},<br />
@@ -64,7 +65,7 @@ export default async function ContactPage({ params }: LocaleParams) {
               </Detail>
               <Detail icon={<WhatsAppIcon className="h-5 w-5" />} label={t('whatsapp')}>
                 <a
-                  href={site.whatsappUrl}
+                  href={whatsappLink(common('whatsappGreeting'))}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-semibold hover:text-accent"
@@ -89,6 +90,7 @@ export default async function ContactPage({ params }: LocaleParams) {
 
       <section className="pb-16 lg:pb-24">
         <Container>
+          <div className="panel rounded-card p-6 sm:p-10">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="text-2xl sm:text-3xl">{t('mapTitle')}</h2>
             <a
@@ -106,8 +108,9 @@ export default async function ContactPage({ params }: LocaleParams) {
             title={t('mapFrameTitle')}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="mt-8 h-[26rem] w-full rounded-card border border-white shadow-[0_24px_60px_-36px_rgb(0_68_74/0.45)]"
+            className="mt-6 h-[24rem] w-full rounded-xl"
           />
+          </div>
         </Container>
       </section>
     </>

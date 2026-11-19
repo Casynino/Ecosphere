@@ -25,6 +25,9 @@ export const site = {
     'https://www.google.com/maps/search/?api=1&query=Plot+1040%2C+Haile+Selassie+Road%2C+Masaki%2C+Dar+es+Salaam',
 } as const;
 
+/** WhatsApp chat link that opens with a greeting already typed in (messages: common.whatsappGreeting). */
+export const whatsappLink = (greeting: string) => `${site.whatsappUrl}?text=${encodeURIComponent(greeting)}`;
+
 /** Main navigation. `key` matches a label in messages/*.json under "nav". */
 export const navItems = [
   { key: 'about', href: '/about' },

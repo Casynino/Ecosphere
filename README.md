@@ -68,7 +68,7 @@ Image sources are in `IMAGE_CREDITS.md`.
 app/[locale]/        Pages (one folder per page), layout, RSS feed
 app/sitemap.ts       sitemap.xml        app/robots.ts   robots.txt
 components/layout    Header, footer, language and theme switches, WhatsApp button, scroll effects, moving background
-components/sections  Home page scenes (hero video, about, services, sectors, how we work), page banners, call to action
+components/sections  Home page sections (hero video, about, services, sectors, how we work, field photos), page banners, call to action
 components/cards     Service, sector and leadership cards
 components/contact   Contact form
 content/             All editable content, typed, in both languages
@@ -84,18 +84,22 @@ The site has a light theme (the default) and a dark theme, switched with the sun
 themes are at the top of `app/globals.css`. Anything placed on a photograph or film gets the class `on-dark`
 so its text stays light in both themes.
 
-All movement is in `app/globals.css` and three small scripts, with no animation library:
-- `components/layout/LivingBackground.tsx`: the scene behind every page, a flight over forest with mountains
-  and cloud, drawn with WebGL. It flies forward as the page is scrolled and follows the theme (daylight in the
-  light theme, the hour before sunrise in the dark theme).
-- `components/layout/ScrollEffects.tsx`: reveal on scroll, parallax, and the pinned "scenes" of the home page
-  (About, Services, Sectors, How we work). A scene fills the screen and steps through its content as the
-  visitor scrolls; see the "Scenes" section of `globals.css` for how to mark one up.
-- `components/sections/HeroVideo.tsx`: the looping drone video behind the home page headline. It loads after
-  the still picture, is about 2.7 MB on computers and 0.9 MB on phones, and is skipped on data-saver or 2G connections.
+All movement is in `app/globals.css` and two small scripts, with no animation library:
+- `components/layout/LivingBackground.tsx`: the film behind every page, a real drone flight over savanna
+  towards a volcano. It does not play by itself: scrolling flies the camera (down = forward, up = back),
+  while the page scrolls normally and nothing is pinned. The still picture shows first; the film loads after
+  the page (about 3.4 MB on computers, 1.7 MB on phones) and is skipped on data-saver or 2G connections.
+  A veil over the film keeps text readable (pale in the light theme, dark in the dark theme).
+- `components/layout/ScrollEffects.tsx`: sections fade up as they scroll into view, and pictures in banners
+  move a little slower than the page.
+- The opening of the home page ("Opening of the home page" in `globals.css`, markup in
+  `components/sections/HomeHero.tsx`): the logo on a plain screen, then the camera sweeps back from the clouds
+  on the volcano to the whole forest and the headline comes into focus. It plays once per visit.
 
-Visitors who ask their device for reduced motion get a still page with every scene written out in full.
-Without JavaScript the page reads normally.
+On the home page, the Services panel and the Sector pictures react to the pointer with plain CSS
+(see "Services panel" and "Sector pictures" in `globals.css`).
+
+Visitors who ask their device for reduced motion get a still page. Without JavaScript the page reads normally.
 
 ### Contact form
 `lib/contact/` holds the validation rules (shared by browser and server), the server action, a basic

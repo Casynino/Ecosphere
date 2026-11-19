@@ -63,9 +63,21 @@ export function ServiceCard({ service, locale, heading: Heading = 'h3', brief = 
  * up: a grid of cards where the first card is double width, so seven
  * cards fill the rows exactly (2 + 1 + 1, then 4).
  */
-export function ServiceList({ services, locale, heading, brief }: Omit<Props, 'service' | 'wide'> & { services: Service[] }) {
+export function ServiceList({
+  services,
+  locale,
+  heading,
+  brief,
+  bare = false,
+}: Omit<Props, 'service' | 'wide'> & { services: Service[]; /** Leave out the list's own panel (when it already sits on one). */ bare?: boolean }) {
   return (
-    <ul className="panel divide-y divide-snow/8 overflow-hidden rounded-card sm:grid sm:grid-cols-2 sm:gap-6 sm:divide-y-0 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:shadow-none lg:grid-cols-4">
+    <ul
+      className={`divide-y divide-snow/10 sm:grid sm:grid-cols-2 sm:gap-6 sm:divide-y-0 lg:grid-cols-4 ${
+        bare
+          ? ''
+          : 'panel overflow-hidden rounded-card sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:shadow-none sm:backdrop-filter-none'
+      }`}
+    >
       {services.map((service, index) => (
         <li key={service.slug} className={index === 0 ? 'sm:col-span-2' : ''}>
           <ServiceCard service={service} locale={locale} heading={heading} brief={brief} wide={index === 0} />

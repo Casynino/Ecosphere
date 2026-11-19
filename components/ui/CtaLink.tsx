@@ -3,18 +3,22 @@ import type { ComponentProps } from 'react';
 import { Link } from '@/i18n/navigation';
 
 /**
- * The main call to action ("Request a consultation").
- * Phones: plain words with a fine lime underline and an arrow, no button shape.
- * Tablets and up: the lime button.
+ * The main call to action ("Let's talk").
+ * Words only, in the heading typeface, on a fine line that fills with the
+ * accent colour on hover. No button shape, on any screen size.
  */
 export function CtaLink({ children, className = '', ...props }: ComponentProps<typeof Link>) {
   return (
     <Link
-      className={`group inline-flex items-center gap-2 text-lg font-semibold text-white underline decoration-accent decoration-2 underline-offset-8 transition-colors duration-150 sm:min-h-12 sm:justify-center sm:rounded-[10px] sm:bg-lime sm:px-6 sm:py-3 sm:text-base sm:text-teal-darkest sm:no-underline sm:hover:bg-white ${className}`}
+      className={`cta-link group inline-flex min-h-11 items-center gap-3 self-start font-display text-[1.75rem] leading-none text-snow sm:text-[2rem] ${className}`}
       {...props}
     >
-      {children}
-      <ArrowRight className="h-5 w-5 text-accent sm:hidden" strokeWidth={1.5} aria-hidden="true" />
+      <span>{children}</span>
+      <ArrowRight
+        className="h-6 w-6 text-accent transition-transform duration-300 ease-glide group-hover:translate-x-1.5"
+        strokeWidth={1.25}
+        aria-hidden="true"
+      />
     </Link>
   );
 }

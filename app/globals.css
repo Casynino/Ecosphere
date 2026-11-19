@@ -31,7 +31,7 @@
   --color-danger: var(--danger);
 
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-display: var(--font-heading), ui-serif, Georgia, serif;
 }
 
 @layer base {
@@ -45,6 +45,7 @@
     --accent: #005e64;
     --danger: #b42318;
     --surface: rgb(255 255 255 / 0.88); /* cards and panels */
+    --surface-dense: rgb(255 255 255 / 0.94); /* the same on phones, where nothing is blurred */
     --surface-line: rgb(16 41 44 / 0.1);
     /* Veil over the moving background: light over the sky, stronger over the forest. */
     --wash: linear-gradient(to bottom, rgb(244 247 245 / 0.08) 0%, rgb(244 247 245 / 0.42) 40%, rgb(244 247 245 / 0.72) 100%);
@@ -65,6 +66,7 @@
     --accent: #8cc63f;
     --danger: #fca5a5;
     --surface: rgb(2 19 22 / 0.72);
+    --surface-dense: rgb(2 19 22 / 0.88);
     --surface-line: rgb(238 244 241 / 0.12);
     --wash: linear-gradient(to bottom, rgb(2 19 22 / 0.25) 0%, rgb(2 19 22 / 0.5) 100%);
   }
@@ -78,6 +80,7 @@
     --accent: #8cc63f;
     --danger: #fca5a5;
     --surface: rgb(2 19 22 / 0.72);
+    --surface-dense: rgb(2 19 22 / 0.88);
     --surface-line: rgb(238 244 241 / 0.12);
     color: var(--text);
   }
@@ -180,34 +183,40 @@
 @utility display-1 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(2.75rem, 7.2vw, 7.5rem);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  font-size: clamp(3rem, 7.6vw, 8rem);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
 }
 
 @utility display-2 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(2.125rem, 4.6vw, 4.5rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.375rem, 4.9vw, 4.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
 }
 
 @utility display-3 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(1.625rem, 2.6vw, 2.5rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.875rem, 2.9vw, 2.75rem);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
 }
 
-/* Slightly frosted surface for cards and panels, so their text stays
-   readable over the moving scene behind the page (white in the light
-   theme, dark in the dark theme). */
+/* Surface for cards and panels, so their text stays readable over the film
+   behind the page (white in the light theme, dark in the dark theme).
+   Wide screens frost the film behind them. Phones and tablets skip the
+   blur, which is costly over moving video, and use a denser surface
+   instead (--surface-dense). */
 @utility panel {
   border: 1px solid var(--surface-line);
-  background-color: var(--surface);
-  backdrop-filter: blur(12px);
+  background-color: var(--surface-dense);
+
+  @media (min-width: 64rem) {
+    background-color: var(--surface);
+    backdrop-filter: blur(12px);
+  }
 }
 
 /* ------------------------------------------------------------------
@@ -251,15 +260,17 @@
   transform: translateY(112%);
 }
 
-/* Entrance of the banner text when a page loads. */
+/* Entrance of the banner text when a page loads. On the home page it
+   waits for the opening sequence (--intro, set further down). */
 .rise {
   animation: rise 0.8s var(--ease-glide) both;
-  animation-delay: var(--delay, 0ms);
+  animation-delay: calc(var(--intro, 0s) + var(--delay, 0ms));
 }
 
 /* The main heading only slides (no fade) so it paints immediately. */
 .rise-solid {
   animation: rise-solid 0.9s var(--ease-glide) both;
+  animation-delay: var(--intro, 0s);
 }
 
 @keyframes rise {
@@ -275,27 +286,179 @@
   }
 }
 
-/* The home page film opens like a window growing to fill the screen.
-   The picture underneath is complete from the first moment (which keeps the
-   page quick to show); what moves is a dark frame around a clear "window".
-   The frame is one very large shadow, so only a transform is animated. */
-.hero-window {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  box-shadow: 0 0 0 100vmax var(--page);
-  animation: hero-window 1.5s var(--ease-glide) both;
+/* ---- Opening of the home page ----
+   A camera move through the real footage:
+   1. A plain screen with the logo and a fine line that draws itself.
+   2. The screen clears and the logo comes forward and is gone. The camera
+      is close in the clouds on the volcano...
+   3. ...and sweeps back until the whole forest is in view. The headline
+      then comes into focus.
+   The first screen is pale in the light theme and dark in the dark theme
+   (--fog). Only transforms and opacity are animated, and the picture
+   underneath is complete from the first moment, which keeps the page quick
+   to show. It plays once per visit: ScrollEffects.tsx then sets
+   data-intro="done" on <html>, so coming back to the home page skips it.
+   See HomeHero.tsx and, for the camera, "The film behind every page". */
+.has-intro {
+  --intro: 2.5s;
 }
 
-@keyframes hero-window {
-  from {
-    transform: scale(0.8);
-    border-radius: 28px;
-  }
+.intro {
+  --fog: 240 245 243;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  animation: intro-end 0.01s linear 1.6s forwards;
+}
+
+:root[data-theme='dark'] .intro {
+  --fog: 5 28 32;
+}
+
+.intro-cover {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-color: rgb(var(--fog));
+  animation: intro-cover 0.5s ease-in 1s forwards;
+}
+
+.intro-mark {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+  animation:
+    intro-mark 0.8s var(--ease-glide) 0.1s both,
+    intro-mark-out 0.5s ease-in 1s forwards;
+}
+
+.intro-logo-dark,
+:root[data-theme='dark'] .intro-logo-light {
+  display: none;
+}
+
+:root[data-theme='dark'] .intro-logo-dark {
+  display: block;
+}
+
+.intro-line {
+  width: 7rem;
+  height: 1px;
+  background-color: color-mix(in srgb, var(--text) 16%, transparent);
+}
+
+.intro-line::after {
+  content: '';
+  display: block;
+  height: 100%;
+  background-color: var(--accent);
+  transform-origin: left;
+  animation: intro-line 0.85s cubic-bezier(0.65, 0, 0.35, 1) 0.2s both;
+}
+
+@keyframes intro-cover {
   to {
-    transform: scale(1);
-    border-radius: 0;
+    opacity: 0;
   }
+}
+
+@keyframes intro-mark {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes intro-mark-out {
+  to {
+    transform: scale(1.45);
+  }
+}
+
+@keyframes intro-line {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* The camera starts close on the summit, slightly tilted. */
+@keyframes intro-zoom {
+  from {
+    transform: scale(3.2) rotate(-2deg);
+  }
+}
+
+/* The home page headline comes into focus as it rises. */
+.rise-focus {
+  animation: rise-focus 1.3s var(--ease-glide) both;
+  animation-delay: var(--intro, 0s);
+}
+
+@keyframes rise-focus {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(28px);
+  }
+}
+
+@keyframes intro-end {
+  to {
+    visibility: hidden;
+  }
+}
+
+:root[data-intro='done'] .has-intro {
+  --intro: 0s;
+}
+
+:root[data-intro='done'] .intro {
+  display: none;
+}
+
+/* Main call to action: words in the heading typeface on a fine accent line.
+   No button shape. See components/ui/CtaLink.tsx. */
+.cta-link > span {
+  padding-bottom: 0.26em;
+  background: linear-gradient(var(--accent), var(--accent)) left bottom / 100% 1px no-repeat;
+  transition: background-size 0.5s var(--ease-glide);
+}
+
+.cta-link:hover > span {
+  background-size: 100% 2px;
+}
+
+/* ---- The film behind every page (LivingBackground.tsx) ----
+   Scrolling flies the camera through the film (the script moves the film's
+   position). On top of that the picture is pushed in slightly: --s is how
+   far the page has been scrolled, 0 to 1 over eight screens. */
+.site-film-move {
+  /* Everything turns about the summit of the volcano. */
+  transform-origin: 50% 22%;
+  transform: scale(calc(1.1 + var(--s, 0) * 0.14));
+  will-change: transform;
+}
+
+/* The mist over the film. Clear at the top of the home page (the script
+   then fades it in with scrolling); always on everywhere else. */
+.site-film-veil {
+  background-image: var(--wash);
+}
+
+.site-film[data-home] .site-film-veil {
+  opacity: 0;
+}
+
+/* The opening: the camera sweeps back from the clouds on the summit. */
+:root:has(.intro) .site-film-move {
+  animation: intro-zoom 2.3s cubic-bezier(0.7, 0, 0.16, 1) 1.15s backwards;
+}
+
+/* ...and not again when the visitor returns to the home page. */
+:root[data-intro='done'] .site-film-move {
+  animation: none;
 }
 
 /* Slow settle of a banner photograph. */
@@ -332,187 +495,83 @@
   transition: color 0.3s linear;
 }
 
-/* Two pictures that drift gently against each other as the page scrolls
-   (wide screens only; see FieldShowcase.tsx). */
-@media (min-width: 64rem) {
-  .drift-a {
-    transform: translateY(calc((0.5 - var(--p, 0.5)) * 56px));
-    will-change: transform;
-  }
-
-  .drift-b {
-    transform: translateY(calc((var(--p, 0.5) - 0.5) * 56px));
-    will-change: transform;
-  }
-}
-
 /* Closing picture: a framed window that widens to fill the screen as it arrives. */
 .closing-frame {
   --e: clamp(0, calc(var(--p, 1) * 2.6 - 0.25), 1);
   clip-path: inset(calc((1 - var(--e)) * 7%) calc((1 - var(--e)) * 6%) round calc((1 - var(--e)) * 28px));
 }
 
-/* ---- Scenes ----
-   A scene is a full-screen chapter that stays on screen while the visitor
-   scrolls through its steps (markup: [data-story] > .scene-stage).
-   ScrollEffects.tsx adds .is-pinned, keeps --p (0 to 1 across the whole
-   scene) up to date, and marks every [data-i] element inside:
-     .is-active  it belongs to the current step
-     .is-on      it belongs to the current step or an earlier one
-     .is-past    it belongs to an earlier step
-   Without JavaScript, or with reduced motion, a scene is an ordinary
-   section that lists all of its steps. */
-.scene.is-pinned {
-  height: calc(var(--steps) * var(--step, 65svh) + 100svh);
-}
-
-.scene.is-pinned > .scene-stage {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-}
-
-/* Full-size pictures, one per step, that dissolve into each other. */
-.scene-layer {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transform: scale(1.08);
-  transition:
-    opacity 0.9s var(--ease-glide),
-    transform 1.8s var(--ease-glide);
-}
-
-.scene:not(.is-pinned) .scene-layer:first-child,
-.scene-layer.is-on {
-  opacity: 1;
-  transform: none;
-}
-
-/* Blocks of text, one per step. Unpinned they are a simple list; pinned
-   they share one spot and swap. */
-.scene-stack {
-  display: grid;
-  gap: 2.5rem;
-}
-
-.scene.is-pinned .scene-stack {
-  gap: 0;
-  align-items: end;
-}
-
-.scene.is-pinned .scene-stack > * {
-  grid-area: 1 / 1;
-}
-
-.scene.is-pinned .scene-stack.is-top {
-  align-items: start;
-}
-
-.scene.is-pinned .scene-item {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.4s var(--ease-glide),
-    transform 0.6s var(--ease-glide);
-}
-
-.scene.is-pinned .scene-item.is-past {
-  transform: translateY(-20px);
-}
-
-.scene.is-pinned .scene-item.is-active {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.18s;
-}
-
-/* Line that fills as the scene is scrolled, and the step names under it. */
-.scene-bar {
-  transform: scaleX(var(--p, 0));
-  transform-origin: left;
-}
-
-.scene-label {
-  color: color-mix(in srgb, var(--text) 58%, transparent);
-  transition: color 0.3s var(--ease-glide);
-}
-
-.scene-label:hover,
-.scene-label.is-active {
-  color: var(--text);
-}
-
-/* Services scene: the list of names, with the current one lit. */
+/* ---- Services panel (wide screens) ----
+   A list of names beside one large picture. The picture and caption of the
+   name under the pointer (or with keyboard focus) are shown; when none is,
+   the first one is. Plain CSS, no script. See ServicesSection.tsx. */
 .svc-name {
   color: color-mix(in srgb, var(--text) 52%, transparent);
   transition:
-    color 0.3s var(--ease-glide),
-    transform 0.5s var(--ease-glide);
-}
-
-.svc-name:hover {
-  color: color-mix(in srgb, var(--text) 80%, transparent);
-}
-
-.scene:not(.is-pinned) .svc-name,
-.svc-name.is-active {
-  color: var(--text);
-}
-
-.svc-name.is-active {
-  transform: translateX(0.75rem);
-}
-
-/* Sectors scene: four pictures side by side (stacked on phones); the
-   current one opens wide and shows its text. */
-.sector-pane {
-  flex: 1 1 0%;
-  min-width: 0;
-  min-height: 0;
-  transition: flex-grow 0.8s var(--ease-glide);
-}
-
-.scene.is-pinned .sector-pane.is-active {
-  flex-grow: 3.4;
-}
-
-.sector-shade {
-  opacity: 0;
-  transition: opacity 0.6s var(--ease-glide);
-}
-
-.scene.is-pinned .sector-pane:not(.is-active) .sector-shade {
-  opacity: 1;
-}
-
-.scene.is-pinned .sector-text {
-  opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity 0.3s var(--ease-glide),
+    color 0.2s var(--ease-glide),
     transform 0.4s var(--ease-glide);
 }
 
-.scene.is-pinned .sector-pane.is-active .sector-text {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.3s;
+.svc-media {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s var(--ease-glide);
 }
 
-/* On wide screens the name of the open sector grows. */
+.svc-media img {
+  transform: scale(1.05);
+  transition: transform 1.2s var(--ease-glide);
+}
+
+.svc-row:hover .svc-name,
+.svc-row:focus-within .svc-name,
+.svc-list:not(:has(.svc-row:hover, .svc-row:focus-within)) .svc-row:first-child .svc-name {
+  color: var(--text);
+  transform: translateX(0.75rem);
+}
+
+.svc-row:hover .svc-media,
+.svc-row:focus-within .svc-media,
+.svc-list:not(:has(.svc-row:hover, .svc-row:focus-within)) .svc-row:first-child .svc-media {
+  opacity: 1;
+}
+
+.svc-row:hover .svc-media img,
+.svc-row:focus-within .svc-media img,
+.svc-list:not(:has(.svc-row:hover, .svc-row:focus-within)) .svc-row:first-child .svc-media img {
+  transform: none;
+}
+
+/* ---- Sector pictures (wide screens) ----
+   Four pictures side by side; the one under the pointer (or the first,
+   when none is) opens wider and shows its text. See SectorsSection.tsx. */
 @media (min-width: 64rem) {
-  .scene.is-pinned .sector-name {
-    transform-origin: left bottom;
-    transition: transform 0.7s var(--ease-glide);
+  .sector-panes > li {
+    flex: 1 1 0%;
+    min-width: 0;
+    transition: flex-grow 0.6s var(--ease-glide);
   }
 
-  .scene.is-pinned .sector-pane.is-active .sector-name {
-    transform: scale(2.2);
+  .sector-panes .sector-text {
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      opacity 0.3s var(--ease-glide),
+      transform 0.4s var(--ease-glide);
   }
 
-  .scene.is-pinned .sector-pane.is-active .sector-text {
-    transform: translateY(0);
+  .sector-panes > li:hover,
+  .sector-panes > li:focus-within,
+  .sector-panes:not(:hover):not(:focus-within) > li:first-child {
+    flex-grow: 2.8;
+  }
+
+  .sector-panes > li:hover .sector-text,
+  .sector-panes > li:focus-within .sector-text,
+  .sector-panes:not(:hover):not(:focus-within) > li:first-child .sector-text {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.18s;
   }
 }
 
@@ -527,5 +586,9 @@
   .reveal-pending {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .intro {
+    display: none;
   }
 }

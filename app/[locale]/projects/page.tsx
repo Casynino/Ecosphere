@@ -33,41 +33,37 @@ export default async function ProjectsPage({ params }: LocaleParams) {
         intro={t('projects.intro')}
       />
 
-      {/* Photo gallery */}
-      <section className="py-16 lg:py-24">
+      {/* Photo gallery: equal square pictures on one panel */}
+      <section className="py-12 lg:py-20">
         <Container>
-          <SectionHeading title={t('projects.galleryTitle')} intro={t('projects.galleryIntro')} />
-          <ul className="mt-12 grid grid-flow-dense grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
-            {fieldGallery.map((photo, index) => (
-              <li
-                key={photo.src.src}
-                data-reveal="zoom"
-                style={{ '--reveal-delay': `${(index % 4) * 80}ms` } as CSSProperties}
-                className={`group relative overflow-hidden rounded-card ${
-                  photo.shape === 'landscape' ? 'col-span-2 aspect-[4/3] lg:aspect-[3/2]' : 'aspect-[3/4]'
-                }`}
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt[locale]}
-                  fill
-                  sizes={photo.shape === 'landscape' ? '(min-width: 1024px) 620px, 85vw' : '(min-width: 1024px) 300px, 45vw'}
-                  quality={60}
-                  placeholder="blur"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                  style={{ objectPosition: photo.position }}
-                />
-              </li>
-            ))}
-          </ul>
+          <div className="panel rounded-card p-5 sm:p-10">
+            <SectionHeading title={t('projects.galleryTitle')} intro={t('projects.galleryIntro')} />
+            <ul className="mt-6 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-4 lg:grid-cols-3">
+              {fieldGallery.map((photo) => (
+                <li key={photo.src.src} data-reveal className="relative aspect-square overflow-hidden rounded-xl">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt[locale]}
+                    fill
+                    sizes="(min-width: 1024px) 370px, 46vw"
+                    quality={60}
+                    placeholder="blur"
+                    className="object-cover"
+                    style={{ objectPosition: photo.position }}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
         </Container>
       </section>
 
       {/* Video clips: the video file is only fetched when the visitor presses play */}
-      <section className="on-dark bg-hero py-20 text-white sm:py-28">
+      <section>
         <Container>
+          <div className="panel rounded-card p-5 sm:p-10">
           <SectionHeading title={t('projects.videosTitle')} intro={t('projects.videosIntro')} />
-          <ul className="mt-12 grid gap-6 sm:grid-cols-3">
+          <ul className="mt-6 grid gap-6 sm:mt-10 sm:grid-cols-3">
             {fieldVideos.map((video, index) => (
               <li key={video.src} data-reveal style={{ '--reveal-delay': `${index * 110}ms` } as CSSProperties}>
                 <figure className="mx-auto max-w-[19rem]">
@@ -76,19 +72,21 @@ export default async function ProjectsPage({ params }: LocaleParams) {
                     poster={video.poster}
                     label={t('projects.videoLabel', { title: video.title[locale] })}
                   />
-                  <figcaption className="mt-3 text-center font-semibold">{video.title[locale]}</figcaption>
+                  <figcaption className="mt-3 text-center font-semibold text-snow">{video.title[locale]}</figcaption>
                 </figure>
               </li>
             ))}
           </ul>
+          </div>
         </Container>
       </section>
 
       {/* Case studies (placeholders until real projects are supplied) */}
-      <section className="py-16 lg:py-24">
+      <section className="py-12 lg:py-20">
         <Container>
+          <div className="panel rounded-card p-5 sm:p-10">
           <SectionHeading title={t('projects.caseStudiesTitle')} intro={t('projects.caseStudiesIntro')} />
-          <ul className="mt-12 grid gap-6 md:grid-cols-3">
+          <ul className="mt-6 grid gap-6 sm:mt-10 md:grid-cols-3">
             {projects.map((project, index) => (
               <li key={project.slug} data-reveal style={{ '--reveal-delay': `${index * 100}ms` } as CSSProperties}>
                 <article className="panel flex h-full flex-col overflow-hidden rounded-card">
@@ -132,6 +130,7 @@ export default async function ProjectsPage({ params }: LocaleParams) {
               </li>
             ))}
           </ul>
+          </div>
         </Container>
       </section>
 

@@ -1,12 +1,11 @@
-import { ArrowLeft } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { ServiceCard } from '@/components/cards/ServiceCard';
 import { PageHero } from '@/components/sections/PageHero';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Container } from '@/components/ui/Container';
+import { CtaLink } from '@/components/ui/CtaLink';
 import { PlaceholderBadge } from '@/components/ui/Placeholder';
 import { getSector } from '@/content/sectors';
 import { getService, services } from '@/content/services';
@@ -62,33 +61,23 @@ export default async function ServicePage({ params }: Props) {
         photo={service.image}
         title={title}
         intro={service.summary[locale]}
+        back={{ href: '/services', label: t('services.allServices') }}
       />
 
       <section className="py-16 lg:py-24">
         <Container className="grid gap-12 lg:grid-cols-[1.6fr_1fr] lg:gap-16">
-          <div>
-            <Link
-              href="/services"
-              className="group inline-flex items-center gap-2 font-bold text-accent hover:text-snow"
-            >
-              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
-              {t('services.allServices')}
-            </Link>
-
-            <p className="mt-8 font-display text-2xl leading-snug text-snow sm:text-[1.75rem]">{service.intro[locale]}</p>
+          <div className="panel rounded-card p-6 sm:p-10">
+            <p className="font-display text-2xl leading-snug text-snow sm:text-[1.75rem]">{service.intro[locale]}</p>
 
             <div className="mt-12" data-reveal>
               <div className="flex flex-wrap items-center gap-3">
                 <h2 className="text-2xl sm:text-3xl">{t('services.includedTitle')}</h2>
                 {!included && <PlaceholderBadge label={t('common.placeholder')} />}
               </div>
-              <ul className="mt-6 space-y-3">
-                {(included ?? [1, 2, 3].map((number) => t('services.includedPlaceholder', { number }))).map((item, index) => (
-                  <li key={item} className="panel flex gap-4 rounded-2xl p-4">
-                    <span className="font-display text-lg text-accent" aria-hidden="true">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className={included ? 'text-snow' : 'text-mist'}>{item}</span>
+              <ul className="mt-5 divide-y divide-snow/10 border-y border-snow/10">
+                {(included ?? [1, 2, 3].map((number) => t('services.includedPlaceholder', { number }))).map((item) => (
+                  <li key={item} className={`py-4 ${included ? 'text-snow' : 'text-mist'}`}>
+                    {item}
                   </li>
                 ))}
               </ul>
@@ -113,10 +102,10 @@ export default async function ServicePage({ params }: Props) {
               <div className="p-7 sm:p-8">
                 <h2 className="text-2xl">{t('services.requestTitle', { service: title })}</h2>
                 <p className="mt-3 text-white/85">{t('services.requestBody')}</p>
-                <ButtonLink href={{ pathname: '/contact', query: { service: service.slug } }} className="mt-6 w-full">
+                <CtaLink href={{ pathname: '/contact', query: { service: service.slug } }} className="mt-6">
                   {t('services.requestService')}
-                </ButtonLink>
-                <p className="mt-5 text-center text-white/85">
+                </CtaLink>
+                <p className="mt-6 text-white/85">
                   <a href={`tel:${site.phone.e164}`} className="font-bold underline-offset-4 hover:underline">
                     {site.phone.display}
                   </a>
@@ -129,14 +118,16 @@ export default async function ServicePage({ params }: Props) {
 
       <section className="pb-16 lg:pb-24">
         <Container>
-          <h2 className="text-2xl sm:text-3xl">{t('services.otherServices')}</h2>
-          <ul className="panel mt-8 divide-y divide-snow/8 overflow-hidden rounded-card sm:grid sm:grid-cols-3 sm:gap-6 sm:divide-y-0 sm:overflow-visible sm:rounded-none sm:border-0 sm:bg-transparent sm:shadow-none">
-            {others.map((item) => (
-              <li key={item.slug}>
-                <ServiceCard service={item} locale={locale} brief />
-              </li>
-            ))}
-          </ul>
+          <div className="panel rounded-card p-6 sm:p-10">
+            <h2 className="text-2xl sm:text-3xl">{t('services.otherServices')}</h2>
+            <ul className="mt-4 divide-y divide-snow/10 sm:mt-8 sm:grid sm:grid-cols-3 sm:gap-6 sm:divide-y-0">
+              {others.map((item) => (
+                <li key={item.slug}>
+                  <ServiceCard service={item} locale={locale} brief />
+                </li>
+              ))}
+            </ul>
+          </div>
         </Container>
       </section>
     </>

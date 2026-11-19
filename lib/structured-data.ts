@@ -40,7 +40,7 @@ export function organizationJsonLd(description: string) {
         '@id': `${siteUrl}/#localbusiness`,
         name: site.name,
         url: siteUrl,
-        image: `${siteUrl}/brand/og.png`,
+        image: `${siteUrl}/brand/og.jpg`,
         description,
         email: site.email,
         telephone: site.phone.e164,

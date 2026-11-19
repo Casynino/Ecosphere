@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { ButtonLink } from '@/components/ui/ButtonLink';
+import { CtaLink } from '@/components/ui/CtaLink';
 import { Container } from '@/components/ui/Container';
 
 export default async function NotFound() {
@@ -11,9 +11,9 @@ export default async function NotFound() {
         <p className="font-display text-7xl text-accent">404</p>
         <h1 className="mt-4 text-4xl sm:text-5xl">{t('title')}</h1>
         <p className="mx-auto mt-4 max-w-md text-lg text-white/85">{t('body')}</p>
-        <ButtonLink href="/" className="mt-8">
+        <CtaLink href="/" className="mt-8 self-center">
           {t('home')}
-        </ButtonLink>
+        </CtaLink>
       </Container>
     </section>
   );

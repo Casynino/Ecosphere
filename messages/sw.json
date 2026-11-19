@@ -9,7 +9,8 @@
     "skipToContent": "Ruka hadi kwenye maudhui",
     "placeholder": "Maudhui ya muda",
     "photoPlaceholder": "Picha itaongezwa",
-    "requestConsultation": "Omba ushauri",
+    "requestConsultation": "Tuzungumze",
+    "whatsappGreeting": "Habari Ecosphere Solutions, ningependa kufahamu zaidi kuhusu huduma zenu za mazingira.",
     "whatsapp": "Wasiliana nasi kwa WhatsApp"
   },
   "nav": {
@@ -21,7 +22,7 @@
     "leadership": "Uongozi",
     "news": "Habari",
     "contact": "Mawasiliano",
-    "cta": "Omba ushauri",
+    "cta": "Tuzungumze",
     "openMenu": "Fungua menyu",
     "closeMenu": "Funga menyu",
     "mainNav": "Menyu kuu",
@@ -50,7 +51,7 @@
     "hero": {
       "title": "Sisi ndio suluhisho kwa sayari yenye afya bora.",
       "sub": "Tunasaidia viwanda, serikali na jamii kulinda mazingira huku biashara zao zikikua.",
-      "primaryCta": "Omba ushauri"
+      "primaryCta": "Tuzungumze"
     },
     "about": {
       "title": "Kampuni ya ushauri wa mazingira Tanzania inayotanguliza ulinzi wa ikolojia",
@@ -169,7 +170,7 @@
   "contact": {
     "metaTitle": "Wasiliana nasi",
     "metaDescription": "Omba ushauri kutoka Ecosphere Solutions, Masaki, Dar es Salaam. Tupigie simu, tuandikie barua pepe au WhatsApp, au tutumie maelezo ya mradi wako.",
-    "title": "Omba ushauri",
+    "title": "Tuzungumze kuhusu mradi wako",
     "intro": "Tueleze kuhusu mradi wako na msaada unaohitaji. Tutawasiliana nawe ili kupanga mazungumzo.",
     "detailsTitle": "Maelezo ya mawasiliano",
     "address": "Anwani",

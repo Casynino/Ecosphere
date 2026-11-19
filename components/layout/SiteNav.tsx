@@ -93,10 +93,10 @@ export function MobileMenu() {
           <Link
             href="/contact"
             onClick={() => setOpenedOn(null)}
-            className="mt-6 inline-flex items-center gap-2 text-lg font-semibold text-white underline decoration-accent decoration-2 underline-offset-8"
+            className="cta-link mt-8 inline-flex min-h-11 items-center gap-3 font-display text-[1.75rem] leading-none text-white"
           >
-            {t('cta')}
-            <ArrowRight className="h-5 w-5 text-accent" strokeWidth={1.5} aria-hidden="true" />
+            <span>{t('cta')}</span>
+            <ArrowRight className="h-6 w-6 text-accent" strokeWidth={1.25} aria-hidden="true" />
           </Link>
         </nav>
       </div>
