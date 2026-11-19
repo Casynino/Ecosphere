@@ -2,16 +2,22 @@ import Image from 'next/image';
 import type { Leader } from '@/content/leadership';
 import type { Locale } from '@/content/types';
 
-function Avatar({ leader, alt, size }: { leader: Leader; alt: string; size: 'md' | 'lg' }) {
-  const box = size === 'lg' ? 'h-32 w-32 text-4xl' : 'h-24 w-24 text-3xl';
-
+/** Portrait area: the person's photo, or their initials until a photo is added. */
+function Portrait({ leader, alt, className }: { leader: Leader; alt: string; className: string }) {
   return (
-    <div className={`relative shrink-0 overflow-hidden rounded-full bg-[linear-gradient(140deg,#00444a,#005e64)] ring-4 ring-white ${box}`}>
+    <div className={`relative overflow-hidden bg-[linear-gradient(155deg,#00323a,#005e64)] ${className}`}>
       {leader.photo ? (
-        <Image src={leader.photo} alt={alt} fill sizes="128px" placeholder="blur" className="object-cover object-top" />
+        <Image
+          src={leader.photo}
+          alt={alt}
+          fill
+          sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 90vw"
+          placeholder="blur"
+          className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+        />
       ) : (
         // Placeholder until a photo is added in content/leadership.ts.
-        <span aria-hidden="true" className="flex h-full w-full items-center justify-center font-display text-white">
+        <span aria-hidden="true" className="flex h-full w-full items-center justify-center font-display text-6xl text-white/90">
           {leader.initials}
         </span>
       )}
@@ -19,18 +25,20 @@ function Avatar({ leader, alt, size }: { leader: Leader; alt: string; size: 'md'
   );
 }
 
-/** Short card for the Home page preview. */
+/** Portrait card for the Home page preview. */
 export function LeaderPreviewCard({ leader, photoAlt }: { leader: Leader; photoAlt: string }) {
   return (
-    <article className="panel flex h-full flex-col items-center rounded-card p-7 text-center">
-      <Avatar leader={leader} alt={photoAlt} size="md" />
-      <h3 className="mt-5 text-xl text-ink">{leader.name}</h3>
-      <p className="mt-1.5 text-[0.95rem] leading-snug text-muted">{leader.title}</p>
+    <article className="panel group h-full overflow-hidden rounded-card">
+      <Portrait leader={leader} alt={photoAlt} className="aspect-[4/5]" />
+      <div className="p-5">
+        <h3 className="text-xl text-ink">{leader.name}</h3>
+        <p className="mt-1.5 text-[0.95rem] leading-snug text-muted">{leader.title}</p>
+      </div>
     </article>
   );
 }
 
-/** Full card with focus areas and bio. */
+/** Full card with portrait, bio and focus areas. */
 export function LeaderCard({
   leader,
   locale,
@@ -46,9 +54,9 @@ export function LeaderCard({
   heading?: 'h2' | 'h3';
 }) {
   return (
-    <article id={leader.slug} className="panel flex h-full flex-col gap-6 rounded-card p-7 sm:flex-row sm:p-8">
-      <Avatar leader={leader} alt={photoAlt} size="lg" />
-      <div>
+    <article id={leader.slug} className="panel group grid h-full overflow-hidden rounded-card sm:grid-cols-[13rem_1fr]">
+      <Portrait leader={leader} alt={photoAlt} className="aspect-[4/3] sm:aspect-auto sm:min-h-full" />
+      <div className="p-6 sm:p-8">
         <Heading className="text-2xl text-ink">{leader.name}</Heading>
         <p className="mt-1 font-bold text-teal">{leader.title}</p>
         <p className="mt-4 text-muted">{leader.bio[locale]}</p>

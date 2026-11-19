@@ -311,6 +311,49 @@
   transform-origin: left;
 }
 
+/* ---- Night sky behind the planet in the home page hero ---- */
+.space {
+  background-color: #010f13;
+  background-image: radial-gradient(110% 80% at 76% 46%, #06404a 0%, #032a31 38%, #010f13 78%);
+}
+
+.stars {
+  background-image:
+    radial-gradient(1.4px 1.4px at 8% 12%, rgb(255 255 255 / 0.9), transparent 70%),
+    radial-gradient(1px 1px at 23% 64%, rgb(255 255 255 / 0.7), transparent 70%),
+    radial-gradient(1.2px 1.2px at 41% 31%, rgb(255 255 255 / 0.8), transparent 70%),
+    radial-gradient(1px 1px at 57% 83%, rgb(255 255 255 / 0.6), transparent 70%),
+    radial-gradient(1.6px 1.6px at 68% 22%, rgb(255 255 255 / 0.9), transparent 70%),
+    radial-gradient(1px 1px at 79% 55%, rgb(255 255 255 / 0.7), transparent 70%),
+    radial-gradient(1.2px 1.2px at 91% 9%, rgb(255 255 255 / 0.8), transparent 70%),
+    radial-gradient(1px 1px at 96% 77%, rgb(255 255 255 / 0.6), transparent 70%),
+    radial-gradient(1px 1px at 33% 92%, rgb(255 255 255 / 0.6), transparent 70%),
+    radial-gradient(1.2px 1.2px at 15% 41%, rgb(255 255 255 / 0.7), transparent 70%);
+  background-size: 460px 460px;
+  animation: twinkle 7s ease-in-out infinite alternate;
+}
+
+.stars-far {
+  background-size: 290px 290px;
+  background-position: 120px 60px;
+  animation-duration: 11s;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 0.95;
+  }
+}
+
+/* The planet sinks a little more slowly than the page as you scroll. */
+.globe-drift {
+  transform: translateY(calc((var(--p, 0.45) - 0.45) * 26%));
+  will-change: transform;
+}
+
 /* ---- Living background ----
    One misty forest scene sits behind every page (LivingBackground.tsx).
    The photograph glides as the page scrolls (--page runs from 0 at the

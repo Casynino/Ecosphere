@@ -24,10 +24,11 @@ export function LanguageSwitcher() {
           hrefLang={code}
           lang={code}
           aria-current={code === locale ? 'true' : undefined}
-          aria-label={t(`switchTo.${code}`)}
-          className="rounded-full px-2.5 py-1.5 uppercase text-white/80 transition-colors hover:text-white aria-[current=true]:bg-white aria-[current=true]:text-teal-darkest"
+          className="rounded-full px-2.5 py-1.5 text-white/80 transition-colors hover:text-white aria-[current=true]:bg-white aria-[current=true]:text-teal-darkest"
         >
-          {code}
+          {code.toUpperCase()}
+          {/* Full language name for screen readers. */}
+          <span className="sr-only"> {t(`switchTo.${code}`)}</span>
         </Link>
       ))}
     </div>

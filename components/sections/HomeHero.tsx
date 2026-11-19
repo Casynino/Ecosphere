@@ -1,37 +1,38 @@
 import { ArrowRight } from 'lucide-react';
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import type { CSSProperties } from 'react';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Container } from '@/components/ui/Container';
-import { stock } from '@/content/media';
 import { sectors } from '@/content/sectors';
 import type { Locale } from '@/content/types';
 import { Link } from '@/i18n/navigation';
+import { EarthCanvas } from './EarthCanvas';
 
 const delay = (ms: number) => ({ '--delay': `${ms}ms` }) as CSSProperties;
 
-/** Full-screen opening scene: sunrise over a misty green landscape. */
+/**
+ * Opening scene: a live, slowly turning Earth in a night sky, with the
+ * headline beside it. The scene fades out at the bottom so the planet
+ * appears to rise out of the misty landscape that runs behind every page.
+ */
 export async function HomeHero({ locale }: { locale: Locale }) {
   const t = await getTranslations('home.hero');
 
   return (
     <section data-scroll className="on-dark relative isolate overflow-hidden text-white">
-      {/* The scene fades out at the bottom, so it dissolves into the misty page behind it. */}
-      <div className="absolute inset-0 -z-10 bg-teal-darkest [mask-image:linear-gradient(to_bottom,black_66%,transparent_100%)]">
-        <div className="parallax absolute inset-0">
-          <Image
-            src={stock.sunriseMist.src}
-            alt={stock.sunriseMist.alt[locale]}
-            fill
-            preload
-            sizes="100vw"
-            placeholder="blur"
-            className="hero-zoom object-cover object-[50%_62%]"
-          />
+      <div className="space absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,black_66%,transparent_100%)]">
+        <div className="stars absolute inset-0" aria-hidden="true" />
+        <div className="stars stars-far absolute inset-0" aria-hidden="true" />
+
+        {/* The planet: large and to the right on wide screens, rising from below on phones. */}
+        <div className="absolute left-1/2 top-[48%] w-[150vw] -translate-x-1/2 sm:w-[105vw] lg:left-auto lg:right-[-9vw] lg:top-1/2 lg:w-[min(108svh,70vw)] lg:translate-x-0 lg:-translate-y-[47%]">
+          <div className="globe-drift">
+            <EarthCanvas markerLabel={t('marker')} />
+          </div>
         </div>
-        {/* Shade behind the text: from the top on phones, from the left on wide screens. */}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(0_36_42/0.82)_0%,rgb(0_36_42/0.62)_55%,rgb(0_36_42/0.1)_100%)] lg:bg-[linear-gradient(90deg,rgb(0_36_42/0.88)_0%,rgb(0_36_42/0.58)_42%,rgb(0_36_42/0)_76%)]" />
+
+        {/* Shade that keeps the words readable where they cross the planet. */}
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(1_15_19/0.72)_0%,rgb(1_15_19/0.5)_55%,rgb(1_15_19/0)_100%)] lg:bg-[linear-gradient(90deg,rgb(1_15_19/0.88)_0%,rgb(1_15_19/0.5)_36%,rgb(1_15_19/0)_58%)]" />
       </div>
       <div className="mist -bottom-[10vh] -z-10 h-[32vh]" style={{ '--mist-speed': '70s' } as CSSProperties} aria-hidden="true" />
 
