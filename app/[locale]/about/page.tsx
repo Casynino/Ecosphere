@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import type { CSSProperties } from 'react';
 import { LeaderCard } from '@/components/cards/LeaderCard';
 import { CtaBanner } from '@/components/sections/CtaBanner';
+import { PartnersSection } from '@/components/sections/PartnersSection';
 import { MissionVision } from '@/components/sections/MissionVision';
 import { PageHero } from '@/components/sections/PageHero';
 import { Container } from '@/components/ui/Container';
@@ -86,7 +87,7 @@ export default async function AboutPage({ params }: LocaleParams) {
           <div className="panel rounded-card p-6 sm:p-10">
             <SectionHeading title={t('about.leadershipTitle')} intro={t('about.leadershipIntro')} />
           </div>
-          <ul className="mt-4 grid gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-2">
+          <ul className="mt-4 grid gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-2 lg:[&>li:last-child:nth-child(odd)]:col-span-2 lg:[&>li:last-child:nth-child(odd)]:w-[calc(50%-0.75rem)] lg:[&>li:last-child:nth-child(odd)]:justify-self-center">
             {leaders.map((leader, index) => (
               <li key={leader.slug} data-reveal style={{ '--reveal-delay': `${(index % 2) * 110}ms` } as CSSProperties}>
                 <LeaderCard
@@ -100,6 +101,8 @@ export default async function AboutPage({ params }: LocaleParams) {
           </ul>
         </Container>
       </section>
+
+      <PartnersSection className="pb-16 lg:pb-24" />
 
       <CtaBanner locale={locale} />
     </>

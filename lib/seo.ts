@@ -41,6 +41,8 @@ type PageMeta = {
   /** Keep placeholder pages out of search engines. */
   noindex?: boolean;
   type?: 'website' | 'article';
+  /** Picture shown when the page is shared; the site's share picture when left out. */
+  image?: { url: string; width: number; height: number; alt: string };
 };
 
 const ogImage = { url: '/brand/og.jpg', type: 'image/jpeg', width: 1200, height: 630, alt: `${site.shortName}: We Are The Solution` };
@@ -54,7 +56,9 @@ export function pageMetadata({
   absoluteTitle = false,
   noindex = false,
   type = 'website',
+  image,
 }: PageMeta): Metadata {
+  const shareImage = image ?? ogImage;
   const url = localePath(locale, path);
   const socialTitle = absoluteTitle ? title : `${title} | ${site.shortName}`;
 
@@ -69,9 +73,9 @@ export function pageMetadata({
       url,
       siteName: site.shortName,
       locale: locale === 'sw' ? 'sw_TZ' : 'en_GB',
-      images: [ogImage],
+      images: [shareImage],
     },
-    twitter: { card: 'summary_large_image', title: socialTitle, description, images: [ogImage.url] },
+    twitter: { card: 'summary_large_image', title: socialTitle, description, images: [shareImage.url] },
     robots: noindex ? { index: false, follow: true } : undefined,
   };
 }

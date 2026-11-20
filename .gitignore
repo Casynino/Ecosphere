@@ -18,3 +18,6 @@ next-env.d.ts
 # client source material (kept on disk, not in the repo)
 /VIDEO & PICS\ /
 /*.pdf
+
+# new client material (kept on disk, not in the repo)
+/new photos and pdf\ /

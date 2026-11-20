@@ -69,3 +69,5 @@ Run `npm run check:i18n` after editing `messages/*.json`. It confirms both langu
   gender-neutral English bios.
 - Form messages use polite "Tafadhali ...".
 - Dates are formatted by the browser's Swahili rules (for example "19 Novemba 2026").
+- The six news articles (content/news/sw/) are translations of the client's English posts and need a native
+  review before they are promoted. Names of organisations, events and the book title are kept in English.

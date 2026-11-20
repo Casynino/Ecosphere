@@ -3,7 +3,7 @@
 // videos are trimmed to short clips, compressed and exported WITHOUT sound.
 // Needs ffmpeg for the videos. Run: node scripts/prepare-media.mjs
 import { execFileSync } from 'node:child_process';
-import { mkdirSync } from 'node:fs';
+import { mkdirSync, rmSync } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 
@@ -27,6 +27,34 @@ const portraits = {
   '8bc095e5-2723-405c-b846-6602b4121700 2.JPG': 'norga-komba.jpg',
   '5695071e-14e3-49cc-96c7-1e8873be37c2 2.JPG': 'ian-komba.jpg',
 };
+
+// Second batch from the client: photos and documents for the news articles.
+const NEW_SOURCE = 'new photos and pdf ';
+// Pictures for news articles, saved whole.
+const newsPhotos = {
+  '0643ec83-c5af-4a68-a9fd-1c0b574c7a77.JPG': 'violet-mushi-seminar.jpg',
+  '1aa065f7-adb4-4273-854b-e5432f5e8568.JPG': 'norga-komba-appointment.jpg',
+  '799e2bec-9d9c-4075-aff3-5a90a1f894fb.JPG': 'phewa-dialogue-talk.jpg',
+  '57b9fb10-4808-4160-b996-7f1ddec879e4.JPG': 'phewa-dialogue-group.jpg',
+  '23a6ad5b-56f2-4006-ac95-bddbf66d43b5.JPG': 'khalid-taimur-akram.jpg',
+  '90e2c2e7-f6f3-48d3-9700-f384f5712d77.JPG': 'phewa-dialogue-meeting.jpg',
+  'd1419c41-f29f-4698-9591-b57c84b73886.JPG': 'norga-komba-khalid-akram.jpg',
+  '2d102ac3-9863-471f-87d6-b1b739a505fa.JPG': 'focac-legal-forum-delegation.jpg',
+  '0c4829cb-8e34-4155-9151-7ecfcfdb6bea.JPG': 'focac-legal-forum-podium.jpg',
+  'f054caf3-7807-4287-a372-3af85b995adc.JPG': 'focac-legal-forum-programme.jpg',
+  '5d07d4a5-f097-47d4-b89d-614c00da77ee.JPG': 'tanzania-embassy-beijing.jpg',
+  '1190dde2-57bd-45c7-b764-341004c0a69a.JPG': 'community-with-shared-future-book.jpg',
+};
+
+// News pictures cut out of a wider photo: [source file, left, top, width, height, output name].
+const newsCrops = [['44d5059f-f88c-4f5e-8cc8-19ddcefedddc.JPG', 700, 620, 1220, 915, 'violet-mushi-session.jpg']];
+
+// A certificate supplied as a one-page PDF, shown in a news article: [source file, output name].
+// The strip at the foot of the scan (the scanner app's stamp) is cut off. Needs pdftocairo (poppler).
+const certificates = [['New Doc 10-11-2025 07.40.pdf', 'violet-mushi-certificate.jpg']];
+
+// Portraits cut out of a wider photo: [source file, left, top, width, height, output name].
+const portraitCrops = [['44d5059f-f88c-4f5e-8cc8-19ddcefedddc.JPG', 930, 760, 900, 1125, 'violet-mushi.jpg']];
 
 // [source file, start (s), length (s), output name]
 const clips = [
@@ -55,6 +83,46 @@ for (const [source, output] of Object.entries(portraits)) {
     .resize({ width: side, height: Math.round(side * 1.25), fit: 'cover', position: 'north' })
     .jpeg({ quality: 86, mozjpeg: true })
     .toFile(path.join('public/images/leadership', output));
+}
+
+for (const [source, left, top, width, height, output] of portraitCrops) {
+  // Rotate first (phone photos carry their orientation as a tag), then cut.
+  const upright = await sharp(path.join(NEW_SOURCE, source)).rotate().toBuffer();
+  await sharp(upright)
+    .extract({ left, top, width, height })
+    .resize({ width: 720, height: 900, fit: 'cover' })
+    .jpeg({ quality: 86, mozjpeg: true })
+    .toFile(path.join('public/images/leadership', output));
+}
+
+mkdirSync('public/images/news', { recursive: true });
+
+for (const [source, output] of Object.entries(newsPhotos)) {
+  await sharp(path.join(NEW_SOURCE, source))
+    .rotate()
+    .resize({ width: 1600, height: 1600, fit: 'inside', withoutEnlargement: true })
+    .jpeg({ quality: 84, mozjpeg: true })
+    .toFile(path.join('public/images/news', output));
+}
+
+for (const [source, left, top, width, height, output] of newsCrops) {
+  const upright = await sharp(path.join(NEW_SOURCE, source)).rotate().toBuffer();
+  await sharp(upright)
+    .extract({ left, top, width, height })
+    .jpeg({ quality: 84, mozjpeg: true })
+    .toFile(path.join('public/images/news', output));
+}
+
+for (const [source, output] of certificates) {
+  const page = path.join('public/images/news', '.certificate');
+  execFileSync('pdftocairo', ['-jpeg', '-r', '150', '-singlefile', path.join(NEW_SOURCE, source), page]);
+  const scan = sharp(`${page}.jpg`);
+  const { width, height } = await scan.metadata();
+  await scan
+    .extract({ left: 0, top: 0, width, height: Math.round(height * 0.93) })
+    .jpeg({ quality: 82, mozjpeg: true })
+    .toFile(path.join('public/images/news', output));
+  rmSync(`${page}.jpg`);
 }
 
 for (const [source, start, length, name] of clips) {

@@ -97,12 +97,20 @@
       "link": "See more of our field work"
     },
     "leadership": {
-      "title": "Led by specialists in environment, engineering, climate and law",
+      "title": "Led by specialists in environment, engineering and law",
       "link": "Meet the leadership team"
     },
     "cta": {
       "title": "Need to meet environmental regulations or reduce your project's impact?",
       "body": "Talk to our team in Dar es Salaam about environmental compliance, environmental impact assessment and sustainability support for your project."
+    },
+    "news": {
+      "title": "Latest news"
+    },
+    "partners": {
+      "title": "Partners and collaborators",
+      "partners": "Partners",
+      "collaborators": "Collaborators"
     }
   },
   "about": {
@@ -111,7 +119,7 @@
     "title": "About Ecosphere Solutions",
     "intro": "An environmental consultancy based in Dar es Salaam, working for a healthier planet and stronger businesses.",
     "leadershipTitle": "The people who lead our work",
-    "leadershipIntro": "Our directors bring together expertise in environmental governance, engineering, climate and energy, and regulatory compliance."
+    "leadershipIntro": "Our directors bring together expertise in environmental governance, engineering and regulatory compliance."
   },
   "services": {
     "metaTitle": "Environmental consulting services in Tanzania",
@@ -152,9 +160,9 @@
   },
   "leadership": {
     "metaTitle": "Leadership",
-    "metaDescription": "Meet the directors of Ecosphere Solutions Limited: specialists in environmental governance, engineering, climate and energy, and regulatory compliance in Tanzania.",
+    "metaDescription": "Meet the directors of Ecosphere Solutions Limited: specialists in environmental governance, engineering and regulatory compliance in Tanzania.",
     "title": "Leadership team",
-    "intro": "The directors who lead Ecosphere Solutions bring together expertise in environmental governance, engineering, climate and energy, and regulatory compliance.",
+    "intro": "The directors who lead Ecosphere Solutions bring together expertise in environmental governance, engineering and regulatory compliance.",
     "focusLabel": "Focus areas",
     "photoAlt": "Portrait of {name}"
   },

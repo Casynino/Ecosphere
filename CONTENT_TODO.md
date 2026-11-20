@@ -4,7 +4,6 @@ Everything below is a placeholder or an assumption. Nothing here was invented as
 where real content is missing, the site says so on screen.
 
 ## Needed before launch
-- [ ] **Leadership portraits for Dr. Marus Gbomagba and Adv. Violet Mushi.** Their cards show initials.
       Dr. Norga Komba and Eng. Ian Komba are in place. Eng. Ian's photo is small (420 px wide); a larger
       original would look sharper. Add files to the client folder, list them in `scripts/prepare-media.mjs`
       and set `photo` in `content/leadership.ts`.
@@ -19,8 +18,12 @@ where real content is missing, the site says so on screen.
 - [ ] **Project case studies.** `/projects` shows three labelled placeholders (title, sector, location, summary).
       Their photos are from the site-visit set and only show how a finished case study will look.
       Replace them in `content/projects.ts`. Do not publish clients, figures or results that are not confirmed.
-- [ ] **News articles.** Two placeholder drafts in `content/news/`. While only drafts exist, the news pages are
-      hidden from search engines, the sitemap and the RSS feed.
+- [x] **News articles.** Six real articles from the client (November 2026), with photos, in `content/news/`.
+- [ ] **News: points to confirm.** Where the client's text and the photos disagreed, the photos were followed:
+      the FOCAC Legal Forum is dated 10–11 July 2025 (the text said May 11-13; the badge, banner and podium say
+      July), its text names Jordan University College (missing in the text; taken from the forum programme), and the
+      Phewa Dialogue theme ends "and Governance" (the text said "Government"). The date of the meeting at the
+      Communication University of China is not known, so that article shows no date.
 
 ## To confirm
 - [ ] **EIA wording.** The copy mentions the environmental impact assessment (EIA) process because it is a

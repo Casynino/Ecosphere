@@ -97,12 +97,20 @@
       "link": "Tazama zaidi kazi zetu za uwandani"
     },
     "leadership": {
-      "title": "Tunaongozwa na wataalamu wa mazingira, uhandisi, tabianchi na sheria",
+      "title": "Tunaongozwa na wataalamu wa mazingira, uhandisi na sheria",
       "link": "Ifahamu timu ya uongozi"
     },
     "cta": {
       "title": "Unahitaji kutimiza matakwa ya sheria za mazingira au kupunguza athari za mradi wako?",
       "body": "Zungumza na timu yetu jijini Dar es Salaam kuhusu uzingatiaji wa sheria za mazingira, tathmini ya athari kwa mazingira na msaada wa uendelevu kwa mradi wako."
+    },
+    "news": {
+      "title": "Habari za karibuni"
+    },
+    "partners": {
+      "title": "Wabia na washirika",
+      "partners": "Wabia",
+      "collaborators": "Washirika"
     }
   },
   "about": {
@@ -111,7 +119,7 @@
     "title": "Kuhusu Ecosphere Solutions",
     "intro": "Kampuni ya ushauri wa mazingira yenye makao yake Dar es Salaam, inayofanya kazi kwa ajili ya sayari yenye afya bora na biashara imara.",
     "leadershipTitle": "Wanaoongoza kazi zetu",
-    "leadershipIntro": "Wakurugenzi wetu wanaunganisha utaalamu katika utawala wa mazingira, uhandisi, tabianchi na nishati, pamoja na uzingatiaji wa sheria na kanuni."
+    "leadershipIntro": "Wakurugenzi wetu wanaunganisha utaalamu katika utawala wa mazingira, uhandisi, pamoja na uzingatiaji wa sheria na kanuni."
   },
   "services": {
     "metaTitle": "Huduma za ushauri wa mazingira Tanzania",
@@ -152,9 +160,9 @@
   },
   "leadership": {
     "metaTitle": "Uongozi",
-    "metaDescription": "Wafahamu wakurugenzi wa Ecosphere Solutions Limited: wataalamu wa utawala wa mazingira, uhandisi, tabianchi na nishati, na uzingatiaji wa sheria nchini Tanzania.",
+    "metaDescription": "Wafahamu wakurugenzi wa Ecosphere Solutions Limited: wataalamu wa utawala wa mazingira, uhandisi na uzingatiaji wa sheria nchini Tanzania.",
     "title": "Timu ya uongozi",
-    "intro": "Wakurugenzi wanaoongoza Ecosphere Solutions wanaunganisha utaalamu katika utawala wa mazingira, uhandisi, tabianchi na nishati, pamoja na uzingatiaji wa sheria na kanuni.",
+    "intro": "Wakurugenzi wanaoongoza Ecosphere Solutions wanaunganisha utaalamu katika utawala wa mazingira, uhandisi, pamoja na uzingatiaji wa sheria na kanuni.",
     "focusLabel": "Maeneo ya utaalamu",
     "photoAlt": "Picha ya {name}"
   },

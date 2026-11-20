@@ -1,12 +1,10 @@
 import { Rss } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getFormatter, getTranslations } from 'next-intl/server';
-import type { CSSProperties } from 'react';
+import { NewsCard } from '@/components/cards/NewsCard';
 import { PageHero } from '@/components/sections/PageHero';
 import { Container } from '@/components/ui/Container';
-import { PlaceholderBadge } from '@/components/ui/Placeholder';
 import { stock } from '@/content/media';
-import { Link } from '@/i18n/navigation';
 import { getPageLocale, type LocaleParams } from '@/lib/locale';
 import { getAllNews } from '@/lib/news';
 import { localePath, pageMetadata } from '@/lib/seo';
@@ -47,7 +45,7 @@ export default async function NewsPage({ params }: LocaleParams) {
         intro={t('news.intro')}
       />
 
-      <section className="py-16 lg:py-24">
+      <section className="py-12 lg:py-20">
         <Container>
           {hasPlaceholders && (
             <p className="mb-10 rounded-2xl border border-dashed border-accent/50 bg-accent/10 p-4 font-semibold text-accent">
@@ -55,29 +53,22 @@ export default async function NewsPage({ params }: LocaleParams) {
             </p>
           )}
 
-          <ul className="grid gap-6 md:grid-cols-2">
-            {articles.map((article, index) => (
-              <li key={article.slug} data-reveal style={{ '--reveal-delay': `${(index % 2) * 100}ms` } as CSSProperties}>
-                <Link
-                  href={`/news/${article.slug}`}
-                  className="panel group flex h-full flex-col rounded-card p-7 transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-30px_rgb(0_68_74/0.6)] sm:p-8"
-                >
-                  <div className="flex flex-wrap items-center gap-3 text-sm">
-                    <time dateTime={article.date} className="font-semibold text-mist">
-                      {format.dateTime(new Date(article.date), { dateStyle: 'long' })}
-                    </time>
-                    {article.placeholder && <PlaceholderBadge label={t('common.placeholder')} />}
-                  </div>
-                  <h2 className="mt-3 text-2xl text-snow">{article.title}</h2>
-                  <p className="mt-3 flex-1 text-mist">{article.excerpt}</p>
-                </Link>
+          <ul className="grid gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+            {articles.map((article) => (
+              <li key={article.slug} data-reveal>
+                <NewsCard
+                  article={article}
+                  heading="h2"
+                  dateLabel={article.hideDate ? null : format.dateTime(new Date(article.date), { dateStyle: 'long' })}
+                  placeholderLabel={t('common.placeholder')}
+                />
               </li>
             ))}
           </ul>
 
           <a
             href={localePath(locale, '/news/feed.xml')}
-            className="mt-12 inline-flex items-center gap-2 font-bold text-accent hover:text-snow"
+            className="mt-10 inline-flex items-center gap-2 font-bold text-accent hover:text-snow"
           >
             <Rss className="h-5 w-5" aria-hidden="true" />
             {t('news.rss')}

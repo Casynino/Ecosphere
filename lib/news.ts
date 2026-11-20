@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import type { StaticImageData } from 'next/image';
 import type { ComponentType } from 'react';
 import type { Locale } from '@/content/types';
 
@@ -15,6 +16,15 @@ export type NewsFrontmatter = {
   excerpt: string;
   /** Placeholder drafts are labelled on the site and hidden from search engines and the RSS feed. */
   placeholder?: boolean;
+  /** The article's picture: shown at the top of the article, on news cards and when the link is shared. */
+  cover?: StaticImageData;
+  coverAlt?: string;
+  /** CSS object-position for the picture when it is cropped (on cards and at the top of the article). */
+  coverPosition?: string;
+  /** Show the whole picture at the top of the article instead of a wide crop (for a document or certificate). */
+  coverWhole?: boolean;
+  /** Leave the date off the page (when the date of the event is not known). */
+  hideDate?: boolean;
 };
 
 export type NewsEntry = NewsFrontmatter & { slug: string };
@@ -46,6 +56,16 @@ export async function getAllNews(locale: Locale): Promise<NewsEntry[]> {
 
   return articles
     .filter((article) => article !== null)
-    .map(({ slug, title, date, excerpt, placeholder }) => ({ slug, title, date, excerpt, placeholder }))
+    .map(({ slug, title, date, excerpt, placeholder, cover, coverAlt, coverPosition, hideDate }) => ({
+      slug,
+      title,
+      date,
+      excerpt,
+      placeholder,
+      cover,
+      coverAlt,
+      coverPosition,
+      hideDate,
+    }))
     .sort((a, b) => b.date.localeCompare(a.date));
 }

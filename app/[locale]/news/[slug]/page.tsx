@@ -1,6 +1,7 @@
 import { ArrowLeft } from 'lucide-react';
 import type { Metadata } from 'next';
 import { getFormatter, getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { PageHero } from '@/components/sections/PageHero';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -33,6 +34,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: article.excerpt,
     type: 'article',
     noindex: article.placeholder,
+    image: article.cover && {
+      url: article.cover.src,
+      width: article.cover.width,
+      height: article.cover.height,
+      alt: article.coverAlt ?? article.title,
+    },
   });
 }
 
@@ -58,8 +65,10 @@ export default async function ArticlePage({ params }: Props) {
       />
 
       <PageHero locale={locale} title={article.title} back={{ href: '/news', label: t('news.back') }}>
-        <div className="mt-6 flex flex-wrap items-center gap-3 text-white/85">
-          <time dateTime={article.date}>{format.dateTime(new Date(article.date), { dateStyle: 'long' })}</time>
+        <div className="mt-5 flex flex-wrap items-center gap-3 text-snow/85">
+          {!article.hideDate && (
+            <time dateTime={article.date}>{format.dateTime(new Date(article.date), { dateStyle: 'long' })}</time>
+          )}
           {article.placeholder && (
             <span className="rounded-full border border-dashed border-accent px-2.5 py-0.5 text-xs font-bold text-accent">
               {t('common.placeholder')}
@@ -68,9 +77,34 @@ export default async function ArticlePage({ params }: Props) {
         </div>
       </PageHero>
 
-      <article className="py-16 lg:py-24">
+      <article className="pb-16 lg:pb-24">
         <Container className="max-w-4xl">
-          <div className="panel rounded-card p-6 sm:p-12">
+          <div className="panel overflow-hidden rounded-card">
+          {article.cover &&
+            (article.coverWhole ? (
+              <Image
+                src={article.cover}
+                alt={article.coverAlt ?? ''}
+                preload
+                sizes="(min-width: 896px) 832px, 100vw"
+                placeholder="blur"
+                className="h-auto w-full"
+              />
+            ) : (
+              <div className="relative aspect-[16/9]">
+                <Image
+                  src={article.cover}
+                  alt={article.coverAlt ?? ''}
+                  fill
+                  preload
+                  sizes="(min-width: 896px) 832px, 100vw"
+                  placeholder="blur"
+                  className="object-cover"
+                  style={{ objectPosition: article.coverPosition }}
+                />
+              </div>
+            ))}
+          <div className="p-6 sm:p-12">
           {article.placeholder && (
             <div className="mb-2">
               <PlaceholderBadge label={t('common.placeholder')} />
@@ -84,6 +118,7 @@ export default async function ArticlePage({ params }: Props) {
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
             {t('news.back')}
           </Link>
+          </div>
           </div>
         </Container>
       </article>

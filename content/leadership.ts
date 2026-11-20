@@ -1,6 +1,7 @@
 import type { StaticImageData } from 'next/image';
 import ianKomba from '@/public/images/leadership/ian-komba.jpg';
 import norgaKomba from '@/public/images/leadership/norga-komba.jpg';
+import violetMushi from '@/public/images/leadership/violet-mushi.jpg';
 import type { Localized } from './types';
 
 // To add a photo: save an upright portrait in /public/images/leadership/
@@ -51,21 +52,6 @@ export const leaders: Leader[] = [
     photo: ianKomba,
   },
   {
-    slug: 'marus-gbomagba',
-    name: 'Dr. Marus Gbomagba',
-    initials: 'MG',
-    title: 'Director of Climate, Energy & Sustainability',
-    focus: {
-      en: ['Climate Strategy', 'Energy Transition', 'Climate Policy', 'Sustainability & Green Development'],
-      sw: ['Mkakati wa Tabianchi', 'Mpito wa Nishati', 'Sera ya Tabianchi', 'Uendelevu na Maendeleo ya Kijani'],
-    },
-    bio: {
-      en: "Leads the company's strategic work on climate, energy and sustainability, supporting innovative approaches to climate action, green development and sustainable solutions.",
-      sw: 'Huongoza kazi za kimkakati za kampuni kuhusu tabianchi, nishati na uendelevu, akiunga mkono mbinu bunifu za kukabiliana na mabadiliko ya tabianchi, maendeleo ya kijani na suluhisho endelevu.',
-    },
-    photo: null,
-  },
-  {
     slug: 'violet-mushi',
     name: 'Adv. Violet Mushi',
     initials: 'VM',
@@ -78,6 +64,6 @@ export const leaders: Leader[] = [
       en: "Leads the company's work on legal and regulatory compliance, corporate governance and risk management, supporting clients to navigate complex regulatory and institutional environments.",
       sw: 'Huongoza kazi za kampuni kuhusu uzingatiaji wa sheria na kanuni, utawala bora wa kampuni na usimamizi wa vihatarishi, akiwasaidia wateja kukabiliana na mazingira changamano ya kisheria na kitaasisi.',
     },
-    photo: null,
+    photo: violetMushi,
   },
 ];

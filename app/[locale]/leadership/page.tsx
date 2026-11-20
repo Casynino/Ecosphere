@@ -26,7 +26,7 @@ export default async function LeadershipPage({ params }: LocaleParams) {
 
       <section className="py-16 lg:py-24">
         <Container>
-          <ul className="grid gap-6 lg:grid-cols-2">
+          <ul className="grid gap-4 sm:gap-6 lg:grid-cols-2 lg:[&>li:last-child:nth-child(odd)]:col-span-2 lg:[&>li:last-child:nth-child(odd)]:w-[calc(50%-0.75rem)] lg:[&>li:last-child:nth-child(odd)]:justify-self-center">
             {leaders.map((leader, index) => (
               <li key={leader.slug} data-reveal style={{ '--reveal-delay': `${(index % 2) * 110}ms` } as CSSProperties}>
                 <LeaderCard
