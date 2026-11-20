@@ -3,13 +3,18 @@ import { site } from '@/content/site';
 import type { Locale } from '@/content/types';
 import { routing } from '@/i18n/routing';
 
-/** Public address of the site, without a trailing slash. */
-export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : 'http://localhost:3000')
-).replace(/\/$/, '');
+/**
+ * Public address of the site, without a trailing slash. An address set
+ * without "https://" (for example "www.example.com") is accepted too.
+ */
+export const siteUrl = (() => {
+  const address = (
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+    process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+    'http://localhost:3000'
+  ).replace(/\/+$/, '');
+  return /^https?:\/\//.test(address) ? address : `https://${address}`;
+})();
 
 /** Path of a page in one language: "/about" in English, "/sw/about" in Swahili. */
 export function localePath(locale: Locale, path = '') {
