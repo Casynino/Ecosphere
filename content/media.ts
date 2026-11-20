@@ -22,6 +22,7 @@ import kilimanjaro from '@/public/images/stock/kilimanjaro.jpg';
 import mangroveAerial from '@/public/images/stock/mangrove-aerial.jpg';
 import offshorePlatform from '@/public/images/stock/offshore-platform.jpg';
 import openPitMine from '@/public/images/stock/open-pit-mine.jpg';
+import solarFarm from '@/public/images/stock/solar-farm.jpg';
 import plantingSeedling from '@/public/images/stock/planting-seedling.jpg';
 import rainforestMist from '@/public/images/stock/rainforest-mist.jpg';
 import riverAerial from '@/public/images/stock/river-aerial.jpg';
@@ -239,6 +240,14 @@ export const stock = {
     alt: {
       en: 'Open-pit mine with terraced walls and a pool of water, hills in the distance',
       sw: 'Mgodi wa wazi wenye kuta za ngazi na dimbwi la maji, vilima vikionekana kwa mbali',
+    },
+  },
+  solarFarm: {
+    src: solarFarm,
+    shape: 'landscape',
+    alt: {
+      en: 'Rows of solar panels in a grassy field under a blue sky with white clouds',
+      sw: 'Safu za paneli za sola katika uwanja wa nyasi chini ya anga la buluu lenye mawingu meupe',
     },
   },
   offshorePlatform: {

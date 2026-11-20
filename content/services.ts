@@ -21,7 +21,7 @@ export type Service = {
   sectors: SectorSlug[];
 };
 
-const allSectors: SectorSlug[] = ['mining', 'oil-gas', 'agriculture', 'transport'];
+const allSectors: SectorSlug[] = ['mining', 'oil-gas', 'energy', 'agriculture', 'transport'];
 
 export const services: Service[] = [
   {
@@ -39,8 +39,8 @@ export const services: Service[] = [
       sw: 'Kuendeleza kaboni sifuri, mpito kuelekea nishati safi, upunguzaji wa uzalishaji wa gesijoto na udhibiti wa uchafuzi wa mazingira kupitia mikakati jumuishi ya tabianchi na nishati yenye malengo yanayopimika ya muda mfupi, wa kati na mrefu.',
     },
     intro: {
-      en: 'We help organisations in mining, oil and gas, agriculture and transportation plan and act on climate change: cutting greenhouse gas emissions, moving to clean energy and controlling pollution, with goals they can measure.',
-      sw: 'Tunazisaidia taasisi katika sekta za madini, mafuta na gesi, kilimo na uchukuzi kupanga na kuchukua hatua kuhusu mabadiliko ya tabianchi: kupunguza uzalishaji wa gesijoto, kuhamia nishati safi na kudhibiti uchafuzi, kwa malengo yanayoweza kupimwa.',
+      en: 'We help organisations in mining, oil and gas, energy, agriculture and transportation plan and act on climate change: cutting greenhouse gas emissions, moving to clean energy and controlling pollution, with goals they can measure.',
+      sw: 'Tunazisaidia taasisi katika sekta za madini, mafuta na gesi, nishati, kilimo na uchukuzi kupanga na kuchukua hatua kuhusu mabadiliko ya tabianchi: kupunguza uzalishaji wa gesijoto, kuhamia nishati safi na kudhibiti uchafuzi, kwa malengo yanayoweza kupimwa.',
     },
     included: null,
     sectors: allSectors,
@@ -59,7 +59,7 @@ export const services: Service[] = [
       sw: 'Tunahimiza uvunaji na matumizi ya maliasili kwa uwajibikaji, tukizisaidia taasisi kuweka uwiano kati ya shughuli za sasa na uendelevu wa muda mrefu wa mazingira na uchumi.',
     },
     included: null,
-    sectors: ['mining', 'oil-gas', 'agriculture'],
+    sectors: ['mining', 'oil-gas', 'energy', 'agriculture'],
   },
   {
     slug: 'community-engagement',
@@ -75,7 +75,7 @@ export const services: Service[] = [
       sw: 'Tunaendesha programu za uelewa wa mazingira na kuunga mkono mipango inayoboresha upatikanaji wa huduma za afya, elimu na njia endelevu za kujipatia kipato kwa jamii zinazozunguka mradi.',
     },
     included: null,
-    sectors: ['mining', 'oil-gas', 'agriculture'],
+    sectors: ['mining', 'oil-gas', 'energy', 'agriculture'],
   },
   {
     slug: 'research-innovation',

@@ -39,6 +39,19 @@ export const sectors: Sector[] = [
     },
   },
   {
+    slug: 'energy',
+    image: stock.solarFarm,
+    name: { en: 'Energy', sw: 'Nishati' },
+    short: {
+      en: 'Energy transition: cleaner power with less harm to land and people.',
+      sw: 'Mpito wa nishati: umeme safi wenye madhara madogo kwa ardhi na watu.',
+    },
+    challenge: {
+      en: 'Energy is at the centre of the move to a low-carbon economy. Shifting from fossil fuels to solar, wind, hydropower and other clean sources cuts emissions, but power plants, transmission lines and storage can still affect land, water, wildlife and nearby communities. Careful planning, impact assessment and monitoring help keep the energy transition clean and fair.',
+      sw: 'Nishati ni kiini cha mpito kuelekea uchumi wenye uzalishaji mdogo wa kaboni. Kuhama kutoka nishati ya mafuta kwenda nishati ya jua, upepo, maji na vyanzo vingine safi hupunguza uzalishaji wa gesijoto, lakini mitambo ya umeme, njia za kusafirisha umeme na hifadhi ya nishati bado vinaweza kuathiri ardhi, maji, wanyamapori na jamii jirani. Mipango makini, tathmini ya athari kwa mazingira na ufuatiliaji husaidia mpito wa nishati kuwa safi na wa haki.',
+    },
+  },
+  {
     slug: 'agriculture',
     image: stock.cropRows,
     name: { en: 'Agriculture', sw: 'Kilimo' },

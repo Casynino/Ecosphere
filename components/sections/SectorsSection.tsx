@@ -19,7 +19,10 @@ export async function SectorsSection({ locale }: { locale: Locale }) {
     <section className="py-10 lg:py-14">
       <Container>
           <SectionHeading title={t('title')} intro={t('intro')} action={<ArrowLink href="/sectors">{t('link')}</ArrowLink>} />
-          <ul data-reveal className="sector-panes mt-5 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-4 lg:flex lg:h-[26rem]">
+          <ul
+            data-reveal
+            className="sector-panes mt-5 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-4 lg:flex lg:h-[26rem] max-lg:[&>li:last-child:nth-child(odd)]:col-span-2 max-lg:[&>li:last-child:nth-child(odd)>a]:aspect-[2/1]"
+          >
             {sectors.map((sector) => (
               <li key={sector.slug}>
                 <Link
@@ -39,7 +42,7 @@ export async function SectorsSection({ locale }: { locale: Locale }) {
                     aria-hidden="true"
                     className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(5_42_48/0.92)_0%,rgb(5_42_48/0.3)_50%,rgb(5_42_48/0.05)_100%)]"
                   />
-                  <h3 className="whitespace-nowrap text-xl font-extrabold tracking-[-0.03em] sm:text-[1.625rem]">
+                  <h3 className="whitespace-nowrap text-xl font-extrabold tracking-[-0.03em] sm:text-[1.625rem] lg:text-[1.375rem] xl:text-[1.5rem]">
                     {sector.name[locale]}
                   </h3>
                   <p className="sector-text mt-2 hidden max-w-md leading-snug text-white/90 sm:block lg:min-w-72">

@@ -67,7 +67,7 @@
     },
     "sectors": {
       "title": "Sectors we support",
-      "intro": "Mining, oil and gas, agriculture and transport, alongside government bodies, NGOs and international partners.",
+      "intro": "Mining, oil and gas, energy, agriculture and transport, alongside government bodies, NGOs and international partners.",
       "link": "All sectors"
     },
     "how": {
@@ -125,7 +125,7 @@
     "metaTitle": "Environmental consulting services in Tanzania",
     "metaDescription": "Environmental consulting services from Ecosphere Solutions in Tanzania: climate change and decarbonisation, natural resource protection, community engagement, research, environmental compliance, capacity building and partnerships.",
     "title": "Environmental consulting services in Tanzania",
-    "intro": "Ecosphere Solutions supports projects in mining, oil and gas, agriculture and transport with seven connected service areas, from climate change and decarbonisation to regulatory compliance.",
+    "intro": "Ecosphere Solutions supports projects in mining, oil and gas, energy, agriculture and transport with seven connected service areas, from climate change and decarbonisation to regulatory compliance.",
     "includedTitle": "What's included",
     "includedPlaceholder": "Placeholder {number}: an activity or deliverable for this service, to be supplied.",
     "sectorsTitle": "Relevant sectors",
@@ -137,7 +137,7 @@
   },
   "sectors": {
     "metaTitle": "Sectors we support",
-    "metaDescription": "Environmental consultancy for mining, oil and gas, agriculture and transport in Tanzania: the typical environmental challenges in each sector and the Ecosphere Solutions services that apply.",
+    "metaDescription": "Environmental consultancy for mining, oil and gas, energy, agriculture and transport in Tanzania: the typical environmental challenges in each sector and the Ecosphere Solutions services that apply.",
     "title": "Sectors we support",
     "intro": "Every industry affects the environment in its own way. Here are the sectors we focus on, the challenges they typically face and the services that apply.",
     "challengeTitle": "The environmental challenge",

@@ -35,6 +35,7 @@ The landscape behind the pages is not a photograph: it is drawn in code (`compon
 | hands-soil.jpg | https://unsplash.com/photos/bYZn_C-RswQ | @greenforce_staffing |
 | open-pit-mine.jpg | https://unsplash.com/photos/hv2aH0nQFPo | @aedrian |
 | offshore-platform.jpg | https://unsplash.com/photos/guADzpF9pDI | @zacharytheodore |
+| solar-farm.jpg | https://unsplash.com/photos/513dBrMJ_5w | @publicpowerorg |
 | crop-rows.jpg | https://unsplash.com/photos/xZqfw-VXnYE | @divaris |
 | dar-brt.jpg | https://unsplash.com/photos/rxsICm9TK6s | @nichiyoshi |
 | dar-aerial.jpg | https://unsplash.com/photos/lZLgqIiFHSw | @_phyllo |
