@@ -6,7 +6,6 @@ import { PageHero } from '@/components/sections/PageHero';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Container } from '@/components/ui/Container';
 import { CtaLink } from '@/components/ui/CtaLink';
-import { PlaceholderBadge } from '@/components/ui/Placeholder';
 import { getSector } from '@/content/sectors';
 import { getService, services } from '@/content/services';
 import { site } from '@/content/site';
@@ -69,19 +68,19 @@ export default async function ServicePage({ params }: Props) {
           <div className="panel rounded-card p-6 sm:p-10">
             <p className="font-display text-2xl leading-snug text-snow sm:text-[1.75rem]">{service.intro[locale]}</p>
 
-            <div className="mt-12" data-reveal>
-              <div className="flex flex-wrap items-center gap-3">
+            {/* Shown once the client supplies the list (content/services.ts, "included"). */}
+            {included && (
+              <div className="mt-12" data-reveal>
                 <h2 className="text-2xl sm:text-3xl">{t('services.includedTitle')}</h2>
-                {!included && <PlaceholderBadge label={t('common.placeholder')} />}
+                <ul className="mt-5 divide-y divide-snow/10 border-y border-snow/10">
+                  {included.map((item) => (
+                    <li key={item} className="py-4 text-snow">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="mt-5 divide-y divide-snow/10 border-y border-snow/10">
-                {(included ?? [1, 2, 3].map((number) => t('services.includedPlaceholder', { number }))).map((item) => (
-                  <li key={item} className={`py-4 ${included ? 'text-snow' : 'text-mist'}`}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            )}
 
             <div className="mt-12" data-reveal>
               <h2 className="text-2xl sm:text-3xl">{t('services.sectorsTitle')}</h2>

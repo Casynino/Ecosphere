@@ -13,9 +13,11 @@ where real content is missing, the site says so on screen.
 - [ ] **Native-speaker review of the Swahili text** (see `TRANSLATION_NOTES.md`).
 
 ## Placeholders shown on the site
-- [ ] **Service details.** Each service page lists three placeholder "What's included" bullets.
+- [ ] **Service details.** The "What's included" list on each service page is hidden until the client supplies it
+      (`included` in `content/services.ts`).
       Add real ones as `included` in `content/services.ts`.
-- [ ] **Project case studies.** `/projects` shows three labelled placeholders (title, sector, location, summary).
+- [ ] **Project case studies.** Hidden on `/projects` until real projects are supplied; the three entries in
+      `content/projects.ts` are placeholders (title, sector, location, summary).
       Their photos are from the site-visit set and only show how a finished case study will look.
       Replace them in `content/projects.ts`. Do not publish clients, figures or results that are not confirmed.
 - [x] **News articles.** Six real articles from the client (November 2026), with photos, in `content/news/`.

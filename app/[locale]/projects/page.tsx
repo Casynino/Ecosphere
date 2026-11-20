@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: LocaleParams): Promise<Metada
 export default async function ProjectsPage({ params }: LocaleParams) {
   const locale = await getPageLocale(params);
   const t = await getTranslations();
+  const caseStudies = projects.filter((project) => !project.placeholder);
 
   return (
     <>
@@ -81,13 +82,14 @@ export default async function ProjectsPage({ params }: LocaleParams) {
         </Container>
       </section>
 
-      {/* Case studies (placeholders until real projects are supplied) */}
+      {/* Case studies: shown once the client supplies real projects (content/projects.ts). */}
+      {caseStudies.length > 0 && (
       <section className="py-12 lg:py-20">
         <Container>
           <div className="panel rounded-card p-5 sm:p-10">
           <SectionHeading title={t('projects.caseStudiesTitle')} intro={t('projects.caseStudiesIntro')} />
           <ul className="mt-6 grid gap-6 sm:mt-10 md:grid-cols-3">
-            {projects.map((project, index) => (
+            {caseStudies.map((project, index) => (
               <li key={project.slug} data-reveal style={{ '--reveal-delay': `${index * 100}ms` } as CSSProperties}>
                 <article className="panel flex h-full flex-col overflow-hidden rounded-card">
                   {project.image ? (
@@ -133,6 +135,7 @@ export default async function ProjectsPage({ params }: LocaleParams) {
           </div>
         </Container>
       </section>
+      )}
 
       <CtaBanner locale={locale} />
     </>
