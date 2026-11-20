@@ -18,13 +18,24 @@ function Portrait({ leader, alt, className, sizes }: { leader: Leader; alt: stri
   );
 }
 
-/** Portrait with the name beneath it, for the Home page. */
+/**
+ * Portrait with the name, for the Home page. Phones: one row per person, a
+ * small portrait beside the name. Wider screens: the portrait with the name
+ * beneath it, the directors side by side.
+ */
 export function LeaderPreviewCard({ leader, photoAlt }: { leader: Leader; photoAlt: string }) {
   return (
-    <article>
-      <Portrait leader={leader} alt={photoAlt} className="aspect-[4/5] rounded-card" sizes="(min-width: 1024px) 300px, 50vw" />
-      <h3 className="mt-4 text-base leading-snug text-snow sm:text-lg">{leader.name}</h3>
-      <p className="mt-1 text-sm leading-snug text-mist sm:text-[0.9375rem]">{leader.title}</p>
+    <article className="flex items-center gap-4 max-sm:panel max-sm:rounded-card max-sm:p-3 sm:block">
+      <Portrait
+        leader={leader}
+        alt={photoAlt}
+        className="aspect-[4/5] w-20 shrink-0 rounded-xl sm:w-auto sm:rounded-card"
+        sizes="(min-width: 640px) 360px, 80px"
+      />
+      <div className="min-w-0">
+        <h3 className="text-base leading-snug text-snow sm:mt-4 sm:text-lg">{leader.name}</h3>
+        <p className="mt-1 text-sm leading-snug text-mist sm:text-[0.9375rem]">{leader.title}</p>
+      </div>
     </article>
   );
 }

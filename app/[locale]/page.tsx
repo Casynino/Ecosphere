@@ -46,7 +46,7 @@ export default async function HomePage({ params }: LocaleParams) {
               title={t('home.leadership.title')}
               action={<ArrowLink href="/leadership">{t('home.leadership.link')}</ArrowLink>}
             />
-            <ul data-reveal className="mt-5 grid grid-cols-2 gap-x-4 gap-y-8 sm:mt-8 sm:grid-cols-3 sm:gap-x-6">
+            <ul data-reveal className="mt-5 grid gap-3 sm:mt-8 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-8">
               {leaders.map((leader) => (
                 <li key={leader.slug}>
                   <LeaderPreviewCard leader={leader} photoAlt={t('leadership.photoAlt', { name: leader.name })} />
