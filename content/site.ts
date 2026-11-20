@@ -8,10 +8,10 @@ export const site = {
   // in the environment, or change the fallback below.
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'intecosphere.solutions@gmail.com',
   phone: {
-    display: '+255 753 440 471',
-    e164: '+255753440471',
+    display: '+255 672 262 230',
+    e164: '+255672262230',
   },
-  whatsappUrl: 'https://wa.me/255753440471',
+  whatsappUrl: 'https://wa.me/255672262230',
   address: {
     street: 'Plot 1040, Haile Selassie Road',
     district: 'Masaki',
