@@ -60,7 +60,7 @@
     },
     "services": {
       "title": "Huduma za ushauri wa mazingira",
-      "intro": "Maeneo saba ya huduma, kuanzia uhifadhi hadi uzingatiaji wa sheria za mazingira na ushauri wa tabianchi na uendelevu.",
+      "intro": "Maeneo saba ya huduma, kuanzia mabadiliko ya tabianchi na uondoaji wa kaboni hadi uzingatiaji wa sheria za mazingira na ushauri wa uendelevu.",
       "helpTitle": "Huna uhakika unahitaji huduma ipi?",
       "helpBody": "Tueleze kuhusu mradi wako nasi tutakuelekeza kwenye msaada unaofaa.",
       "helpCta": "Zungumza na timu yetu"
@@ -123,9 +123,9 @@
   },
   "services": {
     "metaTitle": "Huduma za ushauri wa mazingira Tanzania",
-    "metaDescription": "Huduma za ushauri wa mazingira za Ecosphere Solutions nchini Tanzania: uhifadhi, ulinzi wa maliasili, ushirikishwaji wa jamii, utafiti, uzingatiaji wa sheria za mazingira, kujenga uwezo na ubia.",
+    "metaDescription": "Huduma za ushauri wa mazingira za Ecosphere Solutions nchini Tanzania: mabadiliko ya tabianchi na uondoaji wa kaboni, ulinzi wa maliasili, ushirikishwaji wa jamii, utafiti, uzingatiaji wa sheria za mazingira, kujenga uwezo na ubia.",
     "title": "Huduma za ushauri wa mazingira Tanzania",
-    "intro": "Ecosphere Solutions inasaidia miradi ya madini, mafuta na gesi, kilimo na uchukuzi kupitia maeneo saba ya huduma yanayoshirikiana, kuanzia uhifadhi wa mazingira hadi uzingatiaji wa sheria na kanuni.",
+    "intro": "Ecosphere Solutions inasaidia miradi ya madini, mafuta na gesi, kilimo na uchukuzi kupitia maeneo saba ya huduma yanayoshirikiana, kuanzia mabadiliko ya tabianchi na uondoaji wa kaboni hadi uzingatiaji wa sheria na kanuni.",
     "includedTitle": "Kinachojumuishwa",
     "includedPlaceholder": "Maudhui ya muda {number}: shughuli au matokeo ya huduma hii, yataongezwa.",
     "sectorsTitle": "Sekta husika",

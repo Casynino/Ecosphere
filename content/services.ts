@@ -12,8 +12,8 @@ export type Service = {
   /** Opening paragraph of the service page. */
   intro: Localized;
   /**
-   * "What's included" bullets. While this is null the page shows clearly
-   * labelled placeholder bullets. Replace with real items, for example:
+   * "What's included" bullets. While this is null the section is not shown.
+   * Add real items, for example:
    * included: { en: ['First item', 'Second item'], sw: ['...', '...'] }
    */
   included: Localized<string[]> | null;
@@ -25,17 +25,22 @@ const allSectors: SectorSlug[] = ['mining', 'oil-gas', 'agriculture', 'transport
 
 export const services: Service[] = [
   {
-    slug: 'environmental-conservation',
+    // Was "Environmental Conservation" (/services/environmental-conservation) until 20 November 2026;
+    // the old address redirects here (next.config.ts).
+    slug: 'climate-change-decarbonisation',
     image: stock.forestCanopy,
-    tagline: { en: 'Mitigating environmental pollution', sw: 'Kupunguza uchafuzi wa mazingira' },
-    title: { en: 'Environmental Conservation', sw: 'Uhifadhi wa Mazingira' },
+    tagline: { en: 'Carbon neutrality, clean energy and pollution control', sw: 'Kaboni sifuri, nishati safi na udhibiti wa uchafuzi' },
+    title: {
+      en: 'Climate Change, Decarbonisation and Environmental Pollution Mitigation',
+      sw: 'Mabadiliko ya Tabianchi, Uondoaji wa Kaboni na Kupunguza Uchafuzi wa Mazingira',
+    },
     summary: {
-      en: 'Strategies to mitigate environmental pollution across mining, oil and gas, agriculture and transportation.',
-      sw: 'Mikakati ya kupunguza uchafuzi wa mazingira katika sekta za madini, mafuta na gesi, kilimo na uchukuzi.',
+      en: 'Advancing carbon neutrality, clean energy transitions, greenhouse gas emissions reduction, and environmental pollution control through integrated climate and energy strategies with measurable short-, medium- and long-term goals.',
+      sw: 'Kuendeleza kaboni sifuri, mpito kuelekea nishati safi, upunguzaji wa uzalishaji wa gesijoto na udhibiti wa uchafuzi wa mazingira kupitia mikakati jumuishi ya tabianchi na nishati yenye malengo yanayopimika ya muda mfupi, wa kati na mrefu.',
     },
     intro: {
-      en: 'We design and apply strategies that reduce environmental pollution across mining, oil and gas, agriculture and transportation, so that projects can grow without degrading the land, water and air around them.',
-      sw: 'Tunabuni na kutekeleza mikakati inayopunguza uchafuzi wa mazingira katika sekta za madini, mafuta na gesi, kilimo na uchukuzi, ili miradi ikue bila kuharibu ardhi, maji na hewa inayoizunguka.',
+      en: 'We help organisations in mining, oil and gas, agriculture and transportation plan and act on climate change: cutting greenhouse gas emissions, moving to clean energy and controlling pollution, with goals they can measure.',
+      sw: 'Tunazisaidia taasisi katika sekta za madini, mafuta na gesi, kilimo na uchukuzi kupanga na kuchukua hatua kuhusu mabadiliko ya tabianchi: kupunguza uzalishaji wa gesijoto, kuhamia nishati safi na kudhibiti uchafuzi, kwa malengo yanayoweza kupimwa.',
     },
     included: null,
     sectors: allSectors,

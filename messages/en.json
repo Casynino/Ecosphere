@@ -60,7 +60,7 @@
     },
     "services": {
       "title": "Environmental consulting services",
-      "intro": "Seven service areas, from conservation to environmental compliance and climate and sustainability consulting.",
+      "intro": "Seven service areas, from climate change and decarbonisation to environmental compliance and sustainability consulting.",
       "helpTitle": "Not sure which service you need?",
       "helpBody": "Tell us about your project and we will point you to the right support.",
       "helpCta": "Talk to our team"
@@ -123,9 +123,9 @@
   },
   "services": {
     "metaTitle": "Environmental consulting services in Tanzania",
-    "metaDescription": "Environmental consulting services from Ecosphere Solutions in Tanzania: conservation, natural resource protection, community engagement, research, environmental compliance, capacity building and partnerships.",
+    "metaDescription": "Environmental consulting services from Ecosphere Solutions in Tanzania: climate change and decarbonisation, natural resource protection, community engagement, research, environmental compliance, capacity building and partnerships.",
     "title": "Environmental consulting services in Tanzania",
-    "intro": "Ecosphere Solutions supports projects in mining, oil and gas, agriculture and transport with seven connected service areas, from environmental conservation to regulatory compliance.",
+    "intro": "Ecosphere Solutions supports projects in mining, oil and gas, agriculture and transport with seven connected service areas, from climate change and decarbonisation to regulatory compliance.",
     "includedTitle": "What's included",
     "includedPlaceholder": "Placeholder {number}: an activity or deliverable for this service, to be supplied.",
     "sectorsTitle": "Relevant sectors",

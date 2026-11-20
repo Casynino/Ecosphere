@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
     // Photo backgrounds sit under a colour wash, so they can be compressed harder.
     qualities: [45, 60, 75],
   },
+  // Old addresses that moved, so links already shared keep working.
+  async redirects() {
+    return [
+      { source: '/services/environmental-conservation', destination: '/services/climate-change-decarbonisation', permanent: true },
+      { source: '/sw/services/environmental-conservation', destination: '/sw/services/climate-change-decarbonisation', permanent: true },
+    ];
+  },
   async headers() {
     return [
       {
