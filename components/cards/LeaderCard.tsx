@@ -1,6 +1,8 @@
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import type { Leader } from '@/content/leadership';
 import type { Locale } from '@/content/types';
+import { Link } from '@/i18n/navigation';
 
 /** Portrait area: the person's photo, or their initials until a photo is added. */
 function Portrait({ leader, alt, className, sizes }: { leader: Leader; alt: string; className: string; sizes: string }) {
@@ -19,24 +21,37 @@ function Portrait({ leader, alt, className, sizes }: { leader: Leader; alt: stri
 }
 
 /**
- * Portrait with the name, for the Home page. Phones: one row per person, a
- * small portrait beside the name. Wider screens: the portrait with the name
- * beneath it, the directors side by side.
+ * Portrait with the name, for the Home page. The whole card opens the
+ * person's profile on the Leadership page (bio and focus areas).
+ * Phones: one row per person, a small portrait beside the name and an arrow.
+ * Wider screens: the portrait with the name beneath it, the directors side by side.
  */
 export function LeaderPreviewCard({ leader, photoAlt }: { leader: Leader; photoAlt: string }) {
   return (
-    <article className="flex items-center gap-4 max-sm:panel max-sm:rounded-card max-sm:p-3 sm:block">
-      <Portrait
-        leader={leader}
-        alt={photoAlt}
-        className="aspect-[4/5] w-20 shrink-0 rounded-xl sm:w-auto sm:rounded-card"
-        sizes="(min-width: 640px) 360px, 80px"
-      />
-      <div className="min-w-0">
-        <h3 className="text-base leading-snug text-snow sm:mt-4 sm:text-lg">{leader.name}</h3>
+    <Link
+      href={`/leadership#${leader.slug}`}
+      className="group flex items-center gap-4 max-sm:panel max-sm:rounded-card max-sm:p-3 sm:block"
+    >
+      <div className="relative w-20 shrink-0 overflow-hidden rounded-xl sm:w-auto sm:rounded-card">
+        <Portrait
+          leader={leader}
+          alt={photoAlt}
+          className="aspect-[4/5] transition-transform duration-700 ease-glide group-hover:scale-[1.04]"
+          sizes="(min-width: 640px) 360px, 80px"
+        />
+      </div>
+      <div className="min-w-0 flex-1">
+        <h3 className="text-base leading-snug text-snow transition-colors group-hover:text-accent sm:mt-4 sm:text-lg">
+          {leader.name}
+          <ArrowRight
+            className="ml-1.5 hidden h-4 w-4 align-[-0.125em] text-accent transition-transform duration-300 ease-glide group-hover:translate-x-1 sm:inline"
+            aria-hidden="true"
+          />
+        </h3>
         <p className="mt-1 text-sm leading-snug text-mist sm:text-[0.9375rem]">{leader.title}</p>
       </div>
-    </article>
+      <ChevronRight className="h-[18px] w-[18px] shrink-0 text-mist sm:hidden" strokeWidth={1.5} aria-hidden="true" />
+    </Link>
   );
 }
 
