@@ -24,8 +24,7 @@ where real content is missing, the site says so on screen.
 - [ ] **News: points to confirm.** Where the client's text and the photos disagreed, the photos were followed:
       the FOCAC Legal Forum is dated 10–11 July 2025 (the text said May 11-13; the badge, banner and podium say
       July), its text names Jordan University College (missing in the text; taken from the forum programme), and the
-      Phewa Dialogue theme ends "and Governance" (the text said "Government"). The date of the meeting at the
-      Communication University of China is not known, so that article shows no date.
+      Phewa Dialogue theme ends "and Governance" (the text said "Government").
 
 ## To confirm
 - [ ] **EIA wording.** The copy mentions the environmental impact assessment (EIA) process because it is a
